@@ -29,8 +29,8 @@ function NavBar() {
                     Favorited
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="/AddItem">
-                    Add Item
+                  <NavDropdown.Item href="/Browse">
+                    Browse
                   </NavDropdown.Item>
                 </NavDropdown>
 
