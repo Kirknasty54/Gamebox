@@ -1,10 +1,13 @@
-function Footer()
-{
-    return(
-        <footer>
-            <p>&copy; {new Date().getFullYear()} UCMCyber</p>
-        </footer>
-    );
+import React from 'react';
+
+function Footer() {
+  return (
+    <footer className="footer">
+      <div className="container">
+        <p>&copy; {new Date().getFullYear()} Your Company Name</p>
+      </div>
+    </footer>
+  );
 }
 
-export default Footer
+export default Footer;

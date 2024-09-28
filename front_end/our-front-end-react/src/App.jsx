@@ -1,5 +1,11 @@
 
 import NavBar from './Components/NavBar' 
+import AboutPage from './Pages/AboutPage';
+import AddItem from './Pages/AddItem';
+import SignIn from './Pages/SignIn';
+import Favorited from './Pages/Favorited';
+import Popular from './Pages/Popular';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 function App() {
@@ -8,6 +14,13 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path= "/" element = {<NavBar/>}/>
+      </Routes>
+      <Routes>
+        <Route path="/about" element={<AboutPage />} />
+        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/AddItem" element={<AddItem />} />
+        <Route path="/Favorited" element={<Favorited />} />
+        <Route path="/Popular" element={<Popular />} />
       </Routes>
     </BrowserRouter>
     </>
