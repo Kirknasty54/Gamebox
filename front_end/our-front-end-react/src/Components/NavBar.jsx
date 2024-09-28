@@ -20,21 +20,19 @@ function NavBar() {
               >
               <Nav.Link href="/">Home</Nav.Link>
 
-                <Nav.Link href="/Cards">About</Nav.Link>
+                <Nav.Link href="/about">About</Nav.Link>
             
                 <NavDropdown title="My List" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Popular</NavDropdown.Item>
-                  <NavDropdown.Item href="#action4">
+                  <NavDropdown.Item href="/Popular">Popular</NavDropdown.Item>
+                  <NavDropdown.Item href="/Favorited">
                     Favorited
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
-                  <NavDropdown.Item href="#action5">
+                  <NavDropdown.Item href="/AddItem">
                     Add Item
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link classname="login" href="#" disabled>
-                  Login
-                </Nav.Link>
+              
               </Nav>
               <Form className="d-flex">
                 <Form.Control
@@ -44,7 +42,15 @@ function NavBar() {
                   aria-label="Search"
                 />
                 <Button variant="outline-success">Search</Button>
+                
               </Form>
+              <Nav.Link 
+              href="/SignIn" 
+              className='ms-3 fload-end'
+              
+              > 
+              Login
+              </Nav.Link>
             </Navbar.Collapse>
           </Container>
         </Navbar>
