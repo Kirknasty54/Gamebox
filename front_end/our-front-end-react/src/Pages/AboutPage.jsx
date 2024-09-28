@@ -22,6 +22,57 @@ const AboutPage = () => {
     </div>
     </div>
 </div>
+    <ul className="dropdown-menu d-block position-static mx-0 border-0 shadow" data-bs-theme="dark" style={{ width: '220px' }}>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#files" />
+          </svg>
+          Documents
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#image-fill" />
+          </svg>
+          Photos
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#film" />
+          </svg>
+          Movies
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#music-note-beamed" />
+          </svg>
+          Music
+        </a>
+      </li>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#joystick" />
+          </svg>
+          Games
+        </a>
+      </li>
+      <li><hr className="dropdown-divider" /></li>
+      <li>
+        <a className="dropdown-item d-flex gap-2 align-items-center" href="#">
+          <svg className="bi" width="16" height="16">
+            <use xlinkHref="#trash" />
+          </svg>
+          Trash
+        </a>
+      </li>
+    </ul>
 </>
   );
 };

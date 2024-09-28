@@ -1,82 +1,105 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import Validation from '../Components/Signupvalidation';
+import Validation from '../Components/Signupvalidation'; // Assume this is your validation logic
 import axios from 'axios';
-import NavBar from '../Components/NavBar';
-
+import Navbar from "../Components/NavBar"
 
 const SignUp = () => {
-    const [values, setValues] =useState({
-        name:'',
-        email:'',
-        password:''
-      })
-      const[errors,setErrors] = useState({});
-      const navigate = useNavigate();
-    
-      const handleInput = (event)=>{
-        setValues(prev => ({...prev, [event.target.name]:[event.target.value]}))
-      }
-      const handleSubmit = (event) => {
-        event.preventDefault();
-        setErrors(Validation(values)); // Set validation errors
-    
-        
-        if (Object.keys(errors).length === 0) {
-          axios.post('http://localhost:8080/Signup', values)
-            .then(() => {
-              navigate('/SignIn'); // Navigate to the login page on successful signup
-            })
-            .catch(err => console.log(err));
-        }
-      };
-      return (
-        <>
-    <NavBar/>
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-      <div className='bg-white p-3 rounded w-25'>
-        <h2>Sign-Up</h2>
-        <form action = "" onSubmit={handleSubmit}>
-          <div className='mb-3'>
-            <label htmlFor='name'><strong>Name</strong></label>
-            <input type='text'
-              placeholder='Enter Name'
-              name='name'
-              className='form-control rounded-0'
-              onChange={handleInput}
-            />
-            {errors.name && <span className='text-danger'>{errors.name}</span>}
+  const [values, setValues] = useState({
+    name: '',
+    email: '',
+    password: ''
+  });
+  const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
+
+  const handleInput = (event) => {
+    setValues(prev => ({ ...prev, [event.target.name]: event.target.value }));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    const validationErrors = Validation(values);
+    setErrors(validationErrors);
+
+    if (Object.keys(validationErrors).length === 0) {
+      axios.post('http://localhost:8080/Signup', values)
+        .then(() => {
+          navigate('/SignIn'); // Navigate to the login page on successful signup
+        })
+        .catch(err => console.log(err));
+    }
+  };
+
+  return (
+    <>
+    <Navbar/>
+    <div className="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabIndex="-1" role="dialog" id="modalSignin">
+      <div className="modal-dialog" role="document">
+        <div className="modal-content rounded-4 shadow">
+          <div className="modal-header p-5 pb-4 border-bottom-0">
+            <h1 className="fw-bold mb-0 fs-2 text-dark">Sign up for free</h1>
+            <button type="button" className="btn-close" aria-label="Close" onClick={() => navigate('/')}></button>
           </div>
-          <div className='mb-3'>
-            <label htmlFor='email'><strong>Email</strong></label>
-            <input type='email'
-              placeholder='Enter Email'
-              name='email'
-              className='form-control rounded-0'
-              onChange={handleInput}
-            />
-            {errors.email && <span className='text-danger'>{errors.email}</span>}
+
+          <div className="modal-body p-5 pt-0">
+            <form onSubmit={handleSubmit}>
+              <div className="form-floating mb-3">
+                <input
+                  type="text"
+                  name="name"
+                  className="form-control rounded-3"
+                  placeholder="Enter Name"
+                  onChange={handleInput}
+                />
+                <label htmlFor="floatingInput" className="text-dark">Name</label>
+                {errors.name && <span className="text-danger">{errors.name}</span>}
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  type="email"
+                  name="email"
+                  className="form-control rounded-3"
+                  placeholder="name@example.com"
+                  onChange={handleInput}
+                />
+                <label htmlFor="floatingInput" className="text-dark">Email address</label>
+                {errors.email && <span className="text-danger">{errors.email}</span>}
+              </div>
+              <div className="form-floating mb-3">
+                <input
+                  type="password"
+                  name="password"
+                  className="form-control rounded-3"
+                  placeholder="Password"
+                  onChange={handleInput}
+                />
+                <label htmlFor="floatingPassword" className="text-dark">Password</label>
+                {errors.password && <span className="text-danger">{errors.password}</span>}
+              </div>
+              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Sign up</button>
+              <small className="text-body-secondary">By clicking Sign up, you agree to the terms of use.</small>
+              <hr className="my-4" />
+              <h2 className="fs-5 fw-bold mb-3 text-dark">Or use a third-party</h2>
+              <button className="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button">
+                <svg className="bi me-1" width="16" height="16"><use xlinkHref="#twitter"></use></svg>
+                Sign up with Twitter
+              </button>
+              <button className="w-100 py-2 mb-2 btn btn-outline-primary rounded-3" type="button">
+                <svg className="bi me-1" width="16" height="16"><use xlinkHref="#facebook"></use></svg>
+                Sign up with Facebook
+              </button>
+              <button className="w-100 py-2 mb-2 btn btn-outline-secondary rounded-3" type="button">
+                <svg className="bi me-1" width="16" height="16"><use xlinkHref="#github"></use></svg>
+                Sign up with GitHub
+              </button>
+            </form>
           </div>
-          <div className='mb-3'>
-            <label htmlFor='password'><strong>Password</strong></label>
-            <input type='password'
-              placeholder='Enter Password'
-              className='form-control rounded-0'
-              name='password'
-              onChange={handleInput}
-            />
-            {errors.password && <span className='text-danger'>{errors.password}</span>}
-          </div>
-          <button className='btn btn-success w-100 rounded-0'>Sign up</button>
-          <p>You agree to our terms and conditions</p>
-          <Link to='/Login'>
-            <button type='button' className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Login</button>
-          </Link>
-        </form>
+        </div>
       </div>
     </div>
     </>
-    )
+  );
 }
 
-export default SignUp
+export default SignUp;

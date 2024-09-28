@@ -6,7 +6,14 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 
-function NavBar() {
+import Col from 'react-bootstrap/Col';
+
+import Image from 'react-bootstrap/Image';
+import Row from 'react-bootstrap/Row';
+
+
+
+function NavBarUser() {
     return (
     
         <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary">
@@ -28,7 +35,10 @@ function NavBar() {
                   <NavDropdown.Item href="/Favorited">
                     Favorited
                   </NavDropdown.Item>
-                  
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/AddItem">
+                    Add Item
+                  </NavDropdown.Item>
                 </NavDropdown>
 
               </Nav>
@@ -41,17 +51,26 @@ function NavBar() {
                 />
                 <Button variant="outline-success">Search</Button>  
               </Form>
-              <Nav.Link 
-              href="/SignIn" 
-              className='ms-3 fload-end'
 
-              > 
-              Login
+              <Nav.Link 
+              href="/Profile" 
+              className='ms-3 fload-end circle-link'> 
+              <NavDropdown title="User" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="/Popular">Popular</NavDropdown.Item>
+                  <NavDropdown.Item href="/Favorited">
+                    Favorited
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/AddItem">
+                    Add Item
+                  </NavDropdown.Item>
+                </NavDropdown>
               </Nav.Link>
+
             </Navbar.Collapse>
           </Container>
         </Navbar>
       );
 }
 
-export default NavBar;
+export default NavBarUser;
