@@ -33,12 +33,12 @@ const SignUp = () => {
       return (
         <>
     <NavBar/>
-    <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
-      <div className='bg-white p-3 rounded w-25'>
+    <div className='d-flex justify-content-center align-items-center bg-dark vh-100'>
+      <div className='bg-white p-3 rounded w-25 text-black'>
         <h2>Sign-Up</h2>
         <form action = "" onSubmit={handleSubmit}>
           <div className='mb-3'>
-            <label htmlFor='name'><strong>Name</strong></label>
+            <label className = 'text-black' htmlFor='name'>Name</label>
             <input type='text'
               placeholder='Enter Name'
               name='name'
@@ -48,7 +48,7 @@ const SignUp = () => {
             {errors.name && <span className='text-danger'>{errors.name}</span>}
           </div>
           <div className='mb-3'>
-            <label htmlFor='email'><strong>Email</strong></label>
+            <label htmlFor='email'>Email</label>
             <input type='email'
               placeholder='Enter Email'
               name='email'
@@ -58,7 +58,7 @@ const SignUp = () => {
             {errors.email && <span className='text-danger'>{errors.email}</span>}
           </div>
           <div className='mb-3'>
-            <label htmlFor='password'><strong>Password</strong></label>
+            <label htmlFor='password'>Password</label>
             <input type='password'
               placeholder='Enter Password'
               className='form-control rounded-0'
@@ -67,10 +67,10 @@ const SignUp = () => {
             />
             {errors.password && <span className='text-danger'>{errors.password}</span>}
           </div>
-          <button className='btn btn-success w-100 rounded-0'>Sign up</button>
+          <button className='btn btn-success w-100 rounded-0 '>Sign up</button>
           <p>You agree to our terms and conditions</p>
           <Link to='/Login'>
-            <button type='button' className='btn btn-default border w-100 bg-light rounded-0 text-decoration-none'>Login</button>
+            <button type='button' className='btn btn-dark text-black border w-100 bg-light rounded-0 text-decoration-none'>Login</button>
           </Link>
         </form>
       </div>
