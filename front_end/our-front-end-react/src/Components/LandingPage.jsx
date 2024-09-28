@@ -1,6 +1,6 @@
 import React from 'react'
-import GameCards from '../Components/GameCards'
-import NavBar from '../Components/NavBar'
+import GameCards from './GameCards'
+import NavBar from './NavBar'
 function LandingPage() {
   return (
     <>
@@ -18,11 +18,17 @@ function LandingPage() {
             </p>
         </div>
     </div>
-    <div className = 'row'>
-        <GameCards/>
-        <GameCards/>
-        <GameCards/>
-        <GameCards/>
+    <div className = 'container-fluid'>
+      <div className='row justify-content-center'>
+        <div className = 'col-md-12'>
+          <div className ='row'>
+          <GameCards/>
+          <GameCards/>
+          <GameCards/>
+          <GameCards/>
+          </div>
+        </div>
+      </div>
     </div>
     </>
   )
