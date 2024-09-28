@@ -1,6 +1,7 @@
 import React from 'react'
 import GameCards from '../Components/GameCards'
 import NavBar from '../Components/NavBar'
+import { Link } from "react-router-dom";
 function LandingPage() {
   return (
     <>
@@ -37,7 +38,7 @@ function LandingPage() {
                     <p className="card-text text-dark">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-outline-secondary">View Game</button>
+                        <a href='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</a>
                       </div>
                       <small className="text-dark">9 mins</small>
                     </div>

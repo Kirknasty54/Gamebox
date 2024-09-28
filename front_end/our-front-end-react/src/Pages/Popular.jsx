@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../Components/NavBar';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 const Favorited = () => {
   const [items, setItems] = useState([]); // Ensure initial state is an array
@@ -25,6 +26,7 @@ const Favorited = () => {
 
   // Sample placeholders for displaying items
   const sampleItems = Array(9).fill().map((_, index) => ({
+    id: index,
     title: `Favorite Game ${index + 1}`,
     description: `Description for Favorite Game ${index + 1}`,
   }));
@@ -41,7 +43,6 @@ const Favorited = () => {
           </div>
         </div>
       </section>
-
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -58,6 +59,7 @@ const Favorited = () => {
                     <p className="card-text text-dark">{item.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="btn-group">
+                        <Link to = {`/GoToGame`} className ="btn btn-primary">View Test</Link>
                         <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
                       </div>
