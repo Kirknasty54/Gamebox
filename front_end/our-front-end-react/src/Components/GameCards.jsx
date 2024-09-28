@@ -3,7 +3,6 @@ import Card from 'react-bootstrap/Card';
 
 const GameCards = () => {
   return (
-   
  <Card className = 'ms-3' style={{ marginBottom: '12px' , width: '18rem' }}>
       <Card.Img variant="top" src='../src\image.svg'/>
       <Card.Body>

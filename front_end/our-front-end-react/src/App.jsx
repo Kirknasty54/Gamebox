@@ -5,8 +5,7 @@ import AddItem from './Pages/AddItem';
 import SignIn from './Pages/SignIn';
 import Favorited from './Pages/Favorited';
 import Popular from './Pages/Popular';
-import LandingPage from './Pages/LandingPage';
-import SignUp from './Pages/SignUp';
+import LandingPage from './Components/LandingPage';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
@@ -24,6 +23,8 @@ function App() {
         <Route path="/Popular" element={<Popular />} />
       </Routes>
     </BrowserRouter>
+    <LandingPage/>
+
     </>
   )
 }
