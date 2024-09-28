@@ -8,6 +8,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavBar() {
     return (
+    
         <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary">
           <Container fluid>
             <Navbar.Brand href="#">GameBox</Navbar.Brand>
@@ -32,9 +33,13 @@ function NavBar() {
                     Add Item
                   </NavDropdown.Item>
                 </NavDropdown>
-                <Nav.Link href="#" disabled>
+<<<<<<<<< Temporary merge branch 1
+              
+=========
+                <Nav.Link classname="login" href="#" disabled>
                   Login
                 </Nav.Link>
+>>>>>>>>> Temporary merge branch 2
               </Nav>
               <Form className="d-flex">
                 <Form.Control

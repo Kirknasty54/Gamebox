@@ -4,8 +4,8 @@ import Card from 'react-bootstrap/Card';
 const GameCards = () => {
   return (
    
- <Card style={{ width: '18rem' }}>
-      <Card.Img variant="top" src="holder.js/100px180" />
+ <Card className = 'ms-3' style={{ marginBottom: '12px' , width: '18rem' }}>
+      <Card.Img variant="top" src='../src\image.svg'/>
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
         <Card.Text>
