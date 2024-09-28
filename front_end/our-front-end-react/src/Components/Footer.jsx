@@ -1,4 +1,4 @@
-<<<<<<<<< Temporary merge branch 1
+
 import React from 'react';
 
 function Footer() {
@@ -12,5 +12,4 @@ function Footer() {
 }
 
 export default Footer;
-=========
->>>>>>>>> Temporary merge branch 2
+
