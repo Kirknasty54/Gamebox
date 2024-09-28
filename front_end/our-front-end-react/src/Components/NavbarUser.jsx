@@ -51,21 +51,22 @@ function NavBarUser() {
                 />
                 <Button variant="outline-success">Search</Button>  
               </Form>
+
               <Nav.Link 
-              href="/SignIn" 
+              href="/Profile" 
               className='ms-3 fload-end circle-link'> 
-                 <Container>
-                  <Row>
-                   <Col xs={9} md={9}>
-                   <Image src="holder.js/171x180" roundedCircle={{ width: '400px', height: '150px' }}/>
-                 </Col>
-                  </Row>
-               </Container>
-                
-                
-              
-           
+              <NavDropdown title="User" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="/Popular">Popular</NavDropdown.Item>
+                  <NavDropdown.Item href="/Favorited">
+                    Favorited
+                  </NavDropdown.Item>
+                  <NavDropdown.Divider />
+                  <NavDropdown.Item href="/AddItem">
+                    Add Item
+                  </NavDropdown.Item>
+                </NavDropdown>
               </Nav.Link>
+
             </Navbar.Collapse>
           </Container>
         </Navbar>
