@@ -1,9 +1,10 @@
 import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 
-function GameCards() {
+const GameCards = () => {
   return (
-    <Card style={{ width: '18rem' }}>
+   
+ <Card style={{ width: '18rem' }}>
       <Card.Img variant="top" src="holder.js/100px180" />
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
@@ -14,7 +15,7 @@ function GameCards() {
         <Button variant="primary">Go somewhere</Button>
       </Card.Body>
     </Card>
-  );
+  )
 }
 
-export default GameCards;
+export default GameCards
