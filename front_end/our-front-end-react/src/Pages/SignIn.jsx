@@ -1,26 +1,55 @@
-import React from 'react'
+import React, {useState,useEffect} from 'react'
 import "./SignIn.css"
+import NavBar from '../Components/NavBar'
+import axios from 'axios'
+import Validation from '../Components/Validation'
+
 
 
 const SignIn = () => {
+    const [post, setPost] = useState({
+        username: '',
+        password: '',
+        
+    });
+    
+    function handleSubmit(event){
+        event.preventDefault()
+        setErrors(Validation(post))
+        axios.post("http://localhost:8080/addRun", post)
+        .then(response => console.log(response))
+        .catch(err => console.log(err))
+    }
+
   return (
-        <div className='container'>
-        <div className='row justify-content-center'>
-        <div className = "p-5 mt-3 mb-4 bg-dark rounded-3" data-bs-theme='dark'>
-            <div className='container-fluid py-5'>
-                <h1 className='display-5 fw-bold text-light'>
-                    Welcome to GameBox
-                </h1>
-                <p className = 'col-md-8 fs-4 text-light'>We are a group of dedicated 
-                    gamers who are seeking to bring more poeple into the fold</p>
-                <div className='col-md-4 justify-content-center'>
-                    <input className='form-control mt-3' placeholder='Username'></input>
-                    <input className='form-control mt-3' placeholder='Password'></input>
-                </div>
-            </div>
+    <>
+    <NavBar/>
+        <div className = "Signin">
+            <form action={handleSubmit}>
+                <input type = "text"
+                className='form-control'
+                placeholder='Username'
+                name = "username"
+                value = {post.title}
+                onChange = {e => {setPost({...post, title: e.target.value});
+                }}
+                />
+
+                <input type = {"text"}
+                className='form-control'
+                placeholder='password'
+                name = "password"
+                value = {post.start}
+                onChange = {e => {setPost({...post, start: e.target.value});
+                 }}
+                />
+            </form>
+
+            <button onClick = {(e) => handleSubmit(e)} className = "btn btn-primary">
+                Submit
+            </button>
         </div>
-        </div>
-    </div>
+   </>  
   )
 }
 
