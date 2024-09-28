@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import "./SignIn.css"
-import NavBar from '../Components/NavBar'
+import NavBar from '../Components/NavBarSignUp'
 import axios from 'axios'
 import Validation from '../Components/Validation'
 import {Link} from 'react-router-dom';

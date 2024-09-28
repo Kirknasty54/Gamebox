@@ -1,15 +1,17 @@
-import GameCards from './Components/GameCards';
-import NavBar from './Components/NavBar' 
-import Theme from './Components/Theme';
+import Theme from "./Components/Theme"
 import AboutPage from './Pages/AboutPage';
 import AddItem from './Pages/AddItem';
 import SignIn from './Pages/SignIn';
+import SignUp from './Pages/SignUp';
 import Favorited from './Pages/Favorited';
 import Popular from './Pages/Popular';
 import LandingPage from './Pages/LandingPage';
-import SignUp from './Pages/SignUp'
+import Theme from './Components/Theme';
+import Footer from './Components/Footer';
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
+
 function App() {
   return (
     <>
@@ -25,6 +27,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     <Theme/>
+    <Footer/>
     </>
   )
 }
