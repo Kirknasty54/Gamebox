@@ -25,7 +25,7 @@ const SignUp = () => {
         if (Object.keys(errors).length === 0) {
           axios.post('http://localhost:8080/Signup', values)
             .then(() => {
-              navigate('/Login'); // Navigate to the login page on successful signup
+              navigate('/SignIn'); // Navigate to the login page on successful signup
             })
             .catch(err => console.log(err));
         }

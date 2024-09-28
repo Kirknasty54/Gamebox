@@ -1,4 +1,4 @@
-
+import Theme from "./Components/Theme"
 import AboutPage from './Pages/AboutPage';
 import AddItem from './Pages/AddItem';
 import SignIn from './Pages/SignIn';
@@ -24,7 +24,7 @@ function App() {
         <Route path="/Popular" element={<Popular />} />
       </Routes>
     </BrowserRouter>
-    
+    <Theme/>
     </>
   )
 }
