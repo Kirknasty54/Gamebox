@@ -4,7 +4,7 @@ function GoToGame(){
   return (
     <>
     <NavBar/>
-    <div className = "container mt-3">
+    <div className = "container-fluid mt-3">
         <div className = "row justify-content-center">
             <div className = 'col-md-4'>
                 <img src='../src\image.svg'></img>

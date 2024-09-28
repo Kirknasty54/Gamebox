@@ -37,7 +37,7 @@ const Favorited = () => {
           <div className="col-lg-6 col-md-8 mx-auto">
             <h1 className="fw-light text-light">Favorited Games</h1>
             <a href="/Popular" className="btn btn-primary my-2 mx-2">Popular Games</a>
-            <a href="/Browse" className="btn btn-secondary my-2 mx-2">Browse Games</a>
+            <a href="/" className="btn btn-secondary my-2 mx-2">Browse Games</a>
           </div>
         </div>
       </section>

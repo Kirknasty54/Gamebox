@@ -28,10 +28,7 @@ function NavBar() {
                   <NavDropdown.Item href="/Favorited">
                     Favorited
                   </NavDropdown.Item>
-                  <NavDropdown.Divider />
-                  <NavDropdown.Item href="/Browse">
-                    Browse
-                  </NavDropdown.Item>
+                  
                 </NavDropdown>
 
               </Nav>
