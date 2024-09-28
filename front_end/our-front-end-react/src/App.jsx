@@ -1,3 +1,4 @@
+import GameCards from './Components/GameCards';
 
 import NavBar from './Components/NavBar' 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -10,6 +11,7 @@ function App() {
         <Route path= "/" element = {<NavBar/>}/>
       </Routes>
     </BrowserRouter>
+
     </>
   )
 }
