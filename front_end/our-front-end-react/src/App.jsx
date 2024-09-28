@@ -14,7 +14,7 @@ function App() {
     <>
     <BrowserRouter>
       <Routes>
-        <Route path= "/" element = {<NavBar/>}/>
+        <Route path= "/" element = {<LandingPage/>}/>
       </Routes>
       <Routes>
         <Route path="/about" element={<AboutPage />} />
@@ -24,7 +24,7 @@ function App() {
         <Route path="/Popular" element={<Popular />} />
       </Routes>
     </BrowserRouter>
-    <LandingPage/>
+
 
     </>
   )
