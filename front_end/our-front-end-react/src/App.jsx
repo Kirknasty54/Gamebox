@@ -1,6 +1,6 @@
 import Theme from "./Components/Theme"
 import AboutPage from './Pages/AboutPage';
-import AddItem from './Pages/AddItem';
+import BrowseGames from "./Pages/BrowseGames";
 import SignIn from './Pages/SignIn';
 import SignUp from './Pages/SignUp';
 import Favorited from './Pages/Favorited';
@@ -23,7 +23,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
-        <Route path="/AddItem" element={<AddItem />} />
+        <Route path="/Browse" element={<BrowseGames />} />
         <Route path="/Favorited" element={<Favorited />} />
         <Route path="/Popular" element={<Popular />} />
         <Route path="/Profile" element={<Profile />} />
