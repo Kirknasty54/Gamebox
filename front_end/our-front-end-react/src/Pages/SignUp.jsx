@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Validation from '../Components/Signupvalidation'; // Assume this is your validation logic
 import axios from 'axios';
+import Navbar from "../Components/NavBar"
 
 const SignUp = () => {
   const [values, setValues] = useState({
@@ -31,6 +32,8 @@ const SignUp = () => {
   };
 
   return (
+    <>
+    <Navbar/>
     <div className="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabIndex="-1" role="dialog" id="modalSignin">
       <div className="modal-dialog" role="document">
         <div className="modal-content rounded-4 shadow">
@@ -95,6 +98,7 @@ const SignUp = () => {
         </div>
       </div>
     </div>
+    </>
   );
 }
 
