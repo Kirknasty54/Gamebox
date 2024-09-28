@@ -33,13 +33,10 @@ function NavBar() {
                     Add Item
                   </NavDropdown.Item>
                 </NavDropdown>
-<<<<<<<<< Temporary merge branch 1
-              
-=========
                 <Nav.Link classname="login" href="#" disabled>
                   Login
                 </Nav.Link>
->>>>>>>>> Temporary merge branch 2
+
               </Nav>
               <Form className="d-flex">
                 <Form.Control
@@ -48,8 +45,7 @@ function NavBar() {
                   className="me-2"
                   aria-label="Search"
                 />
-                <Button variant="outline-success">Search</Button>
-                
+                <Button variant="outline-success">Search</Button>  
               </Form>
               <Nav.Link 
               href="/SignIn" 
