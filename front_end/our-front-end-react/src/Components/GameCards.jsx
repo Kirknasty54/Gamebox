@@ -3,11 +3,11 @@ import Card from 'react-bootstrap/Card';
 
 const GameCards = () => {
   return (
- <Card className = 'ms-3' style={{ marginBottom: '12px' , width: '18rem' }}>
-      <Card.Img variant="top" src='../src\image.svg'/>
+ <Card bg = {'dark'} className = 'ms-3' style={{ marginBottom: '12px' , width: '18rem' }}>
+      <Card.Img className = 'mt-3' variant="top" src='../src\image.svg'/>
       <Card.Body>
         <Card.Title>Card Title</Card.Title>
-        <Card.Text>
+        <Card.Text className = 'text-white'>
           Some quick example text to build on the card title and make up the
           bulk of the card's content.
         </Card.Text>
