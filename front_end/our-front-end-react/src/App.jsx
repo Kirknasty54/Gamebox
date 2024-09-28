@@ -6,6 +6,8 @@ import SignUp from './Pages/SignUp';
 import Favorited from './Pages/Favorited';
 import Popular from './Pages/Popular';
 import LandingPage from './Pages/LandingPage';
+import Theme from './Components/Theme';
+import Footer from './Components/Footer';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
@@ -25,6 +27,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     <Theme/>
+    <Footer/>
     </>
   )
 }
