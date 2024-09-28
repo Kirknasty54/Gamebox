@@ -47,7 +47,7 @@ function NavBar() {
               <Nav.Link 
               href="/SignIn" 
               className='ms-3 fload-end'
-         
+
               > 
               Login
               </Nav.Link>

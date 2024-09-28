@@ -11,6 +11,7 @@ import Profile from './Pages/Profile';
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
+import GoToGame from "./Pages/GoToGame";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
     <BrowserRouter>
       <Routes>
       <Route path= "/" element = {<LandingPage/>}/>
+        <Route path="/GoToGame" element={<GoToGame />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
