@@ -10,6 +10,7 @@ import LandingPage from './Pages/LandingPage';
 import SignUp from './Pages/SignUp'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
+import Footer from './Components/Footer';
 function App() {
   return (
     <>
@@ -25,6 +26,7 @@ function App() {
       </Routes>
     </BrowserRouter>
     <Theme/>
+    <Footer/>
     </>
   )
 }
