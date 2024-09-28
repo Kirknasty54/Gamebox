@@ -93,7 +93,12 @@ const SignUp = () => {
               </button>
             </form>
           </div>
-        </div>
+          <button className='btn btn-success w-100 rounded-0 '>Sign up</button>
+          <p>You agree to our terms and conditions</p>
+          <Link to='/Login'>
+            <button type='button' className='btn btn-dark text-black border w-100 bg-light rounded-0 text-decoration-none'>Login</button>
+          </Link>
+        </form>
       </div>
     </div>
     
