@@ -1,8 +1,10 @@
 // AboutPage.js
 import React from 'react';
-
+import NavBar from '../Components/NavBar';
 const AboutPage = () => {
   return (
+    <>
+    <NavBar/>
     <div className='container'>
     <div className='row justify-content-center'>
     <div className = "p-5 mt-3 mb-4 bg-dark rounded-3" data-bs-theme='dark'>
@@ -20,6 +22,7 @@ const AboutPage = () => {
     </div>
     </div>
 </div>
+</>
   );
 };
 
