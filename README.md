@@ -18,7 +18,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 2. **John Kutney**
 3. **Jacob Lee**
 4. **Noah Bowling**
-5. **Davis**
+5. **Collin Davis** || **cgd09190@ucmo.edu**
 
 <br /><br />
 
@@ -29,7 +29,7 @@ Gamebox
 <br /><br />
 ## What does your app do?
 *Describe in a paragraph or so*
-It's like MovieBox but for Games. Really good!
+It's like MovieBox but for Games. Really good! Super Good!
 
 <br /><br />
 
@@ -39,11 +39,11 @@ It's like MovieBox but for Games. Really good!
 - [ ]  Pinata Challenge
 - [ ]  Pinata AI Challenge
 - [ ]  Pinata Enterprise Challenge
-- [ ]  AWS Bedrock Challenge
+- [Check]  AWS Bedrock Challenge
 - [ ]  Red Hat | Intel AI Challenge
 - [ ]  Zoom Challenge
 - [ ]  USDA Challenge
-- [ ]  brAIn Rot Challenge
+- [Check]  brAIn Rot Challenge
 
 
 <br /><br />
