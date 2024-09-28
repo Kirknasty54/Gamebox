@@ -1,6 +1,6 @@
 import React from 'react'
-import GameCards from './GameCards'
-import NavBar from './NavBar'
+import GameCards from '../Components/GameCards'
+import NavBar from '../Components/NavBar'
 function LandingPage() {
   return (
     <>
