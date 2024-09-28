@@ -1,6 +1,6 @@
 import React, {useState,useEffect} from 'react'
 import "./SignIn.css"
-import NavBar from '../Components/NavBar'
+import NavBar from '../Components/NavBarSignUp'
 import axios from 'axios'
 import Validation from '../Components/Validation'
 import {Link} from 'react-router-dom';
@@ -22,11 +22,11 @@ const SignIn = () => {
       return (
         <>
        <NavBar/>
-        <div className='d-flex justify-content-center align-items-center bg-primary vh-100'>
+        <div className='d-flex justify-content-center align-items-center bg-dark vh-100'>
         <div className='bg-white p-3 rounded w-25'>
-        <h2>Sign-in</h2>
+        <h2 className = 'text-black'>Sign-in</h2>
           <form action='' onSubmit={handleSubmit}>
-              <div className='mb-3'>
+              <div className='mb-3 text-black'>
                 <label htmlFor='email'>Email</label>
                  <input 
                  type='email' 
@@ -38,7 +38,7 @@ const SignIn = () => {
                   {errors.email && <span className='text-danger'>{errors.email}</span>}
               </div>
               <div className='mb-3'>
-                <label htmlFor='password'>Password</label>
+                <label htmlFor='password' className = 'text-black'>Password</label>
                  <input 
                  type='password' 
                  placeholder='Enter Password' 
@@ -48,7 +48,7 @@ const SignIn = () => {
                  />
                  {errors.password && <span className='text-danger'>{errors.password}</span>}
               </div>
-              <button type='submit'className='btn btn-sucesss w-100 rounded-0'>Login</button>
+              <button type='submit'className='btn btn-success w-100 rounded-0 '>Login</button>
               <p>You are agree to are terms </p>
               <Link to='/Signup'><button className='btn btn-default border'>Create Account</button> </Link>
             </form>
