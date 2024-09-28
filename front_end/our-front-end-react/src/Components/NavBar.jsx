@@ -10,7 +10,7 @@ function NavBar() {
     return (
         <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary">
           <Container fluid>
-            <Navbar.Brand href="#">Navbar scroll</Navbar.Brand>
+            <Navbar.Brand href="#">GameBox</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -20,19 +20,20 @@ function NavBar() {
               >
               <Nav.Link href="/">Home</Nav.Link>
 
-                <Nav.Link href="/Cards">Link</Nav.Link>
-                <NavDropdown title="Link" id="navbarScrollingDropdown">
-                  <NavDropdown.Item href="#action3">Action</NavDropdown.Item>
+                <Nav.Link href="/Cards">About</Nav.Link>
+            
+                <NavDropdown title="My List" id="navbarScrollingDropdown">
+                  <NavDropdown.Item href="#action3">Popular</NavDropdown.Item>
                   <NavDropdown.Item href="#action4">
-                    Another action
+                    Favorited
                   </NavDropdown.Item>
                   <NavDropdown.Divider />
                   <NavDropdown.Item href="#action5">
-                    Something else here
+                    Add Item
                   </NavDropdown.Item>
                 </NavDropdown>
                 <Nav.Link href="#" disabled>
-                  Link
+                  Login
                 </Nav.Link>
               </Nav>
               <Form className="d-flex">
