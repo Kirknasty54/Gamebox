@@ -1,18 +1,17 @@
 package com.GamBox.Project.service;
 
-import org.springframework.stereotype.Service;
-
-import lombok.AllArgsConstructor;
 import com.GamBox.Project.domain.UserInfo;
 import com.GamBox.Project.repository.UserInfoRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Optional;
 
 @Service
 @AllArgsConstructor
 public class UserService {
-
   @Autowired
   private UserInfoRepository userInfoRepository;
 
@@ -24,8 +23,8 @@ public class UserService {
     return userInfoRepository.findAll();
   }
 
-  public Optional<UserInfo> singleUser(Long id) {
-    return userInfoRepository.findById(id);
+  public Optional<UserInfo> singleUser(Long uId) {
+    return userInfoRepository.findById(uId);
   }
 
   public Optional<UserInfo> auth(String userEmail, String password) {

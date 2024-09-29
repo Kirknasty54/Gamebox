@@ -7,7 +7,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBarUser.css';
 
 function NavBarUser() {
-    const RandomNumber = Math.floor(Math.random() * 6) + 1;
+    const RandomNumber = Math.floor(Math.random() * 5) + 1;
     return (
         <>
             <Navbar expand="sm" bg="dark" data-bs-theme="light" className="bg-body-tertiary fs-6 shadow-lg py-2">
@@ -35,20 +35,21 @@ function NavBarUser() {
                             />
                             <Button variant="outline-success">Search</Button>
                         </Form>
-                        {/* Profile Dropdown */}
-                        <NavDropdown title="Profile" id="profileDropdown" className="ms-3" drop="down" align="end">
+
+                        {/* Profile Dropdown with User Image */}
+                        <NavDropdown 
+                            id="profileDropdown" 
+                            drop="down" 
+                            align="end" 
+                            className="ms-3"
+                            title={<img src={`./D${RandomNumber}.png`} alt="User Avatar" className="user-avatar" />} 
+                        >
                             <NavDropdown.Item href="/profile">View Profile</NavDropdown.Item>
                             <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
                             <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
                         </NavDropdown>
 
-                        {/* User Image */}
-                        <img 
-                            src="./user-avatar.png" // replace with your image path
-                            alt="User Avatar"
-                            className="user-avatar ms-3"
-                        />
                     </Navbar.Collapse>
                 </Container>
             </Navbar>
@@ -57,4 +58,3 @@ function NavBarUser() {
 }
 
 export default NavBarUser;
-

@@ -1,81 +1,45 @@
-/* App.css */
-
 .header {
-    text-align: center;
-    font-size: 2.5rem;
-    margin: 20px 0;
-    color: #fdfdfd; /* Adjust as needed */
-  }
+  text-align: center;
+  margin: 20px 0;
+}
 
-  .box {
-    background-color: #0e0d0d; /* Light background for contrast */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px; /* Limit width */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  
-  .title {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #007BFF; /* Primary color */
-  }
-  
-  .content {
-    display: flex; /* Use flexbox */
-    align-items: flex-start; /* Align items to the start */
-  }
-  
-  .about-image {
-    max-width: 45%; /* 50 times smaller */
-    height: auto ;
-    margin-left: 20px; 
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  
-  .p1 {
-    font-size: 1rem;
-    margin-left: 20px;
-    position: right ;
-    line-height: 1.5;
-    color: #666; /* Text color */
-  }
-  
-  .box1 {
-    background-color: #0e0d0d; /* Light background for contrast */
-    border: 1px solid #ddd; /* Light border */
-    border-radius: 8px;
-    padding: 20px;
-    margin: 20px auto;
-    max-width: 600px; /* Limit width */
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-  }
-  .title1 {
-    font-size: 1.5rem;
-    margin-bottom: 15px;
-    color: #007BFF; /* Primary color */
-  }
-  
-  .content1 {
-    display: flex; /* Use flexbox */
-    align-items: flex-start; /* Align items to the start */
-  }
-  
-  .about-image1 {
-    max-width: 45%; /* 50 times smaller */
-    height: auto ;
-    margin-left: 20px; 
-    border-radius: 5px; /* Rounded corners */
-  }
-  
-  
-  .p2 {
-    font-size: 1rem;
-    margin-left: 20px;
-    position: right ;
-    line-height: 1.5;
-    color: #666; /* Text color */
-  }
+.box {
+  background-color: #0e0d0d; /* Dark background */
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 8px;
+  padding: 20px;
+  margin: 10px; /* Space between boxes */
+  height: 300px; /* Fixed height */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Space out content */
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  color: #fff; /* Text color */
+}
+
+.content {
+  display: flex;
+  flex-direction: column; /* Stack image and text */
+  align-items: center; /* Center content */
+  flex-grow: 1; /* Allow content to take up available space */
+}
+
+.about-image {
+  width: 100px; /* Set a fixed width */
+  height: 100px; /* Set a fixed height */
+  border-radius: 50%; /* Circular images */
+  margin-bottom: 10px; /* Space below image */
+  object-fit: cover; /* Ensure image covers the circle */
+}
+
+.title {
+  text-align: center;
+  font-size: 1.5rem; /* Adjust title size */
+  margin-bottom: 10px; /* Space below title */
+}
+
+.p1 {
+  text-align: center; /* Center text */
+  color: #ccc; /* Lighter text color */
+}
+

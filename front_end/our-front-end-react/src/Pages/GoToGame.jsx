@@ -56,7 +56,7 @@ function GoToGame(){
         </div>
         </>
         ))}
-        <div className = 'row mt-3 justify-content-end bg-white'>
+        <div className = 'row justify-content-end'>
             <div className = 'col-md-12 text-center'>
                 <h2 className="text-black mt-2" style={{ fontFamily: 'Geist' }}>User Reviews</h2>
                 <UserReviews/>
