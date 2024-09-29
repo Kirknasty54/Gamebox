@@ -1,19 +1,41 @@
 .footer {
     background-color: #343a40; /* Dark background */
     color: #ffffff; /* Light text */
+    padding: 2rem 0; /* Adequate padding for better spacing */
   }
   
   .footer a {
     color: #ffffff; /* Ensure links are white */
     text-decoration: none;
+    transition: color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
   }
   
   .footer a:hover {
+    color: #ff6b6b; /* Change link color on hover */
     text-decoration: underline; /* Underline on hover */
+    transform: scale(1.05); /* Slightly enlarge link on hover */
   }
   
-  .py-2 {
-    padding-top: 0.5rem; 
-    padding-bottom: 0.5rem; 
+  .footer-links {
+    margin-top: 1rem; /* Space above the links */
+    display: flex; /* Use flexbox for links */
+    flex-wrap: wrap; /* Wrap links if needed */
+    justify-content: center; /* Center links horizontally */
+  }
+  
+  .footer-link {
+    margin: 0 1rem; /* Horizontal spacing between links */
+  }
+  
+  /* Optional: Responsive adjustments */
+  @media (max-width: 576px) {
+    .footer {
+      padding: 1.5rem 0; /* Less padding on smaller screens */
+    }
+    
+    .footer-links {
+      flex-direction: column; /* Stack links vertically */
+      align-items: center; /* Center align links */
+    }
   }
   
