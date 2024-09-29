@@ -1,7 +1,8 @@
-.navbar-logo {
-    width: 40px; /* Set width to fit nicely */
-    height: auto; /* Maintain aspect ratio */
-    margin-right: 10px; /* Space between logo and text */
-    border-radius: 8px; /* Adjust value for desired roundness */
-    overflow: hidden; /* Ensures that rounded corners are applied */
+.text-secondary {
+    color: #ffffff; /* Change to white for visibility */
+    font-size: 1.2rem; /* Adjust size if necessary */
+}
+
+.text-secondary:hover {
+    color: #ffc107; /* Change color on hover */
 }
