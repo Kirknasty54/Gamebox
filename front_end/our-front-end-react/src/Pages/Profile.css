@@ -1,0 +1,75 @@
+.profile-container {
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.profile-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.profile-picture {
+    width: 100px; /* Adjust as needed */
+    height: 100px; /* Adjust as needed */
+    border-radius: 50%;
+    margin-right: 20px;
+}
+
+.profile-name {
+    font-size: 2rem;
+    color: #333;
+}
+
+.profile-details {
+    margin: 20px 0;
+    font-size: 1rem;
+    color: #666;
+}
+
+.profile-games {
+    margin: 20px 0;
+}
+
+.profile-games h2 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    color: #333;
+}
+
+.profile-games ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.profile-games li {
+    padding: 5px 0;
+    color: #555;
+}
+
+.profile-actions {
+    display: flex;
+    justify-content: space-between;
+}
+
+.edit-button, .logout-button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.edit-button {
+    background-color: #007bff;
+    color: white;
+}
+
+.logout-button {
+    background-color: #dc3545;
+    color: white;
+}
