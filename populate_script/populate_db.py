@@ -1,7 +1,6 @@
 import requests
 import mysql.connector
 import time
-import re
 
 # Giant Bomb API Key and Database connection details
 API_KEY = "2f10762828e577b7956ba70452dcd91164c806e9"
@@ -49,7 +48,7 @@ def fetch_game_details(game_id):
     params = {
         "api_key": API_KEY,
         "format": "json",
-        "field_list": "id,name,developers,publishers,original_release_date,image",
+        "field_list": "id,name,developers,publishers,image,deck",  # Removed release date
     }
 
     response = requests.get(url, headers=headers, params=params)
@@ -63,33 +62,13 @@ def fetch_game_details(game_id):
         return {}
 
 
-# Extract the release date from CDATA format
-def extract_release_date(detailed_game_info):
-    # Try to get the release date directly
-    original_release_date = detailed_game_info.get("original_release_date")
-
-    # If it's None, return "N/A"
-    if original_release_date is None:
-        return "N/A"
-
-    # If it is a string, check if it's in CDATA format
-    if isinstance(original_release_date, str):
-        match = re.search(r"\<\!\[CDATA\[(.*?)\]\]\>", original_release_date)
-        if match:
-            return match.group(1)
-        else:
-            return original_release_date  # Return it as is if not in CDATA format
-
-    return "N/A"  # Return a default value if original_release_date is not a string
-
-
 # Upload the fetched games to the database
 def upload_games_to_db(games):
     connection = connect_to_db()
     cursor = connection.cursor()
 
     insert_query = """
-    INSERT INTO game_info (game_id, game_name, developer, publisher, release_date, image_url)
+    INSERT INTO game_info (game_id, game_name, developer, publisher, image_url, description)
     VALUES (%s, %s, %s, %s, %s, %s)
     """
 
@@ -111,13 +90,19 @@ def upload_games_to_db(games):
             else "N/A"
         )
 
-        # Extract the release date
-        release_date = extract_release_date(detailed_game_info)
         image_url = detailed_game_info.get("image", {}).get("super_url", "N/A")
+        description = detailed_game_info.get("deck", "N/A")  # Get description
 
         cursor.execute(
             insert_query,
-            (game_id, game_name, developer, publisher, release_date, image_url),
+            (
+                game_id,
+                game_name,
+                developer,
+                publisher,
+                image_url,
+                description,
+            ),  # No release date
         )
 
         # Add a delay to avoid rate limiting
