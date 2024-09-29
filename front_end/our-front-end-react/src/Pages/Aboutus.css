@@ -1,0 +1,46 @@
+/* App.css */
+
+.header {
+    text-align: center;
+    font-size: 2.5rem;
+    margin: 20px 0;
+    color: #fdfdfd; /* Adjust as needed */
+  }
+  
+  .box {
+    background-color: #0e0d0d; /* Light background for contrast */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px;
+    padding: 20px;
+    margin: 20px auto;
+    max-width: 600px; /* Limit width */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    color: #007BFF; /* Primary color */
+  }
+  
+  .content {
+    display: flex; /* Use flexbox */
+    align-items: flex-start; /* Align items to the start */
+  }
+  
+  .about-image {
+    max-width: 45%; /* 50 times smaller */
+    height: auto ;
+    margin-left: 20px; 
+    border-radius: 5px; /* Rounded corners */
+  }
+  
+  
+  p {
+    font-size: 1rem;
+    margin-left: 20px;
+    position: right ;
+    line-height: 1.5;
+    color: #666; /* Text color */
+  }
+  

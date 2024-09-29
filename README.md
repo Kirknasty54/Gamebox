@@ -14,9 +14,10 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 ## Who's on your team?
 *List the full names,  email address & Github username of your teammates*
 
-1.   **Jackson Kirkpatrick**  || **kirkpatrick545454@gmail.com**  (jdk30150@ucmo.edu) || **Kirknasty54**
-2. **John Kutney**
-3. **Jacob Lee**
+1.   **Jackson Kirkpatrick**  || **kirkpatrick545454@gmail.com**  
+2.  || **Kirknasty54**
+3. **John Kutney** || **jkutney@gmail.com**
+4. **Jacob Lee**
 4. **Noah Bowling**
 5. **Collin Davis** || **cgd09190@ucmo.edu**
 
