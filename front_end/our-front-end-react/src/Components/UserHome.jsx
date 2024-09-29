@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-
+import { useNavigate } from 'react-router-dom';
 import NavBar from './NavBar';
 import NavBarUser from './NavBarUser';
 
@@ -15,6 +15,20 @@ const gameList = [
     { id: 2, title: 'Game B', genre: 'Strategy' },
     { id: 3, title: 'Game C', genre: 'Shooter' },
 ];
+const navigate = useNavigate();
+const [logoutMessage, setLogoutMessage] = useState('');
+
+const handleEditProfile = () => {
+    navigate('/settings'); // Navigate to settings page
+};
+
+const handleLogout = () => {
+    setLogoutMessage('User has successfully logged out');
+    // Redirect after a short delay
+    setTimeout(() => {
+        navigate('/'); // Navigate back to home
+    }, 2000); // Wait 2 seconds before redirecting
+};
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -76,8 +90,20 @@ const gameList = [
                 </div>
 
                 <div className="profile-actions">
-                    <button className="edit-button">Edit Profile</button>
-                    <button className="logout-button">Logout</button>
+                <div>
+                <button className="edit-button" onClick={handleEditProfile}>
+                    Edit Profile
+                </button>
+                <button className="logout-button" onClick={handleLogout}>
+                    Logout
+                </button>
+
+                {logoutMessage && (
+                    <div style={{ color: 'green', marginTop: '10px' }}>
+                        {logoutMessage}
+                    </div>
+                )}
+            </div>
                 </div>
             </div>
         </>
