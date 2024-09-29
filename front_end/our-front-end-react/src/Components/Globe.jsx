@@ -1,77 +1,66 @@
-import React, { useEffect, useRef } from 'react';
+import React from 'react';
 import Particles from '@tsparticles/react';
+import './Globe.css'; // Import your CSS
 
-function Globe() {
-    const svgRef = useRef(null);
-
-    useEffect(() => {
-        // Initialize any SVG animation or interaction logic here
-    }, []);
-
+function Globe(){
     return (
-        <div style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
+        <div id="particles-js" style={{ position: 'relative', height: '100vh', overflow: 'hidden' }}>
             <Particles
+                id="tsparticles"
                 options={{
-                    fullScreen: {
-                        enable: true,
-                        zIndex: 1,
-                    },
                     particles: {
                         number: {
-                            value: 150, // More particles for a fuller effect
+                            value: 189,
+                            density: { enable: true, value_area: 315.65905665290904 },
+                        },
+                        color: { value: "#4940dc" },
+                        shape: {
+                            type: "circle",
+                            stroke: { width: 6, color: "#483fde" },
+                        },
+                        opacity: {
+                            value: 0.5,
+                            random: true,
+                            anim: { enable: false },
                         },
                         size: {
-                            value: { min: 3, max: 7 }, // Varying sizes for depth
-                        },
-                        move: {
-                            enable: true,
-                            speed: 3, // Faster movement
-                            direction: "none",
+                            value: 3,
                             random: true,
-                            straight: false,
-                            outMode: "out",
+                            anim: { enable: false },
                         },
                         line_linked: {
                             enable: true,
-                            distance: 120,
-                            color: '#ffffff',
-                            opacity: 0.5,
-                            width: 2,
+                            distance: 150,
+                            color: "#4456aa",
+                            opacity: 0.4,
+                            width: 1,
                         },
-                        opacity: {
-                            value: 0.7, // Slightly more transparent
+                        move: {
+                            enable: true,
+                            speed: 6,
+                            direction: "none",
                             random: false,
+                            straight: false,
+                            out_mode: "out",
+                            bounce: false,
                         },
                     },
                     interactivity: {
+                        detect_on: "canvas",
                         events: {
-                            onhover: {
-                                enable: true,
-                                mode: 'repulse', // Particles repel on hover
-                            },
-                            onclick: {
-                                enable: true,
-                                mode: 'push', // Add more particles on click
-                            },
+                            onhover: { enable: true, mode: "repulse" },
+                            onclick: { enable: true, mode: "push" },
                             resize: true,
                         },
                         modes: {
-                            grab: {
-                                distance: 400,
-                                links: {
-                                    opacity: 1,
-                                },
-                            },
-                            repulse: {
-                                distance: 150, // Increased repulsion distance
-                                duration: 0.4,
-                            },
-                            push: {
-                                particles_nb: 5, // More particles on click
-                            },
+                            grab: { distance: 400, line_linked: { opacity: 1 } },
+                            bubble: { distance: 400, size: 40, duration: 2, opacity: 8, speed: 3 },
+                            repulse: { distance: 200, duration: 0.4 },
+                            push: { particles_nb: 4 },
+                            remove: { particles_nb: 2 },
                         },
                     },
-                    retina_detect: true, // For high-DPI screens
+                    retina_detect: true,
                 }}
                 style={{
                     position: 'absolute',
@@ -82,25 +71,11 @@ function Globe() {
                     zIndex: 1,
                 }}
             />
-            <svg
-                ref={svgRef}
-                height="100%"
-                viewBox="-1 -1 802 402"
-                width="100%"
-                style={{ position: 'relative', zIndex: 2 }}
-            >
-                <circle cx="400" cy="400" fill="lightblue" r="400" />
-                <path
-                    d="M 400 800 A -400 400 0 0 0 400 0"
-                    fill="none"
-                    stroke="url(#globe-gradient)"
-                    strokeWidth="2"
-                    vectorEffect="non-scaling-stroke"
-                />
-                {/* Additional SVG paths for grid lines and nodes can be added here */}
-            </svg>
+            <div className="count-particles">
+                <span className="js-count-particles"></span>
+            </div>
         </div>
     );
-}
+};
 
 export default Globe;

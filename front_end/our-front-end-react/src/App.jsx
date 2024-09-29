@@ -28,12 +28,10 @@ function App() {
         <Route path="/Favorited" element={<Favorited />} />
         <Route path="/Popular" element={<Popular />} />
         <Route path="/Profile" element={<Profile />} />
-        <Route path="/Globe" element={<Globe />} />
       </Routes>
     </BrowserRouter>
     <Theme/>
     <Footer/>
-    <Globe/>
     </>
   )
 }
