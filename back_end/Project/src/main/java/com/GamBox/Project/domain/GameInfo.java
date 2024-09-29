@@ -18,7 +18,10 @@ import java.util.List;
 public class GameInfo {
   @Id
   private Long gameId;
-  @Column(unique = true)
+  @Column(unique = true, nullable = false)
   private String gameName;
+  private String developer;
+  private String publisher;
+  private String releaseDate;
 
 }
