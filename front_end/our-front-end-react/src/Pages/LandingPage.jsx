@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import GameCards from '../Components/GameCards';
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
 import AnimatedBg from "react-animated-bg";
