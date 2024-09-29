@@ -1,0 +1,43 @@
+/* Global styles for light and dark themes */
+body.light-theme {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+.theme-button {
+    margin: 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+}
+
+.close-button {
+    margin-top: 20px;
+    padding: 10px 20px;
+    cursor: pointer;
+    border: none;
+    border-radius: 4px;
+    background-color: #dc3545;
+    color: #fff;
+}
+/* Global styles for light and dark themes */
+body.light-theme {
+    background-color: #fff;
+    color: #000;
+}
+
+body.dark-theme {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Additional styles */
+.text-dark {
+    color: inherit; /* Inherit color from body */
+}
