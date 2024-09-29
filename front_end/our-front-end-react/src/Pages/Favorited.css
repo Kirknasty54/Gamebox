@@ -1,0 +1,8 @@
+.album {
+    background-color: rgba(255, 255, 255, 0.7); /* Optional: if you want to have a slight background color for cards */
+  }
+  
+  .card {
+    border-radius: 15px; /* Optional: curved edges for the cards */
+  }
+  

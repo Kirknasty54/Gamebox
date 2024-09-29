@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../Components/NavBar';
 import axios from 'axios';
+import AnimatedBg from 'react-animated-bg';
+import './Favorited.css'; // Ensure this CSS file exists
+import { Link } from "react-router-dom";
 
 const sampleItems = Array(9).fill().map((_, index) => ({
   title: `Sample Game ${index + 1}`,
@@ -8,7 +11,7 @@ const sampleItems = Array(9).fill().map((_, index) => ({
 }));
 
 const Favorited = () => {
-  const [items, setItems] = useState(sampleItems); // Use sample items initially
+  const [items, setItems] = useState(sampleItems);
 
   useEffect(() => {
     const fetchFavorites = async () => {
@@ -18,11 +21,11 @@ const Favorited = () => {
           setItems(response.data);
         } else {
           console.error('Response data is not an array:', response.data);
-          setItems(sampleItems); // Reset to sample items if needed
+          setItems(sampleItems);
         }
       } catch (error) {
         console.error('Error fetching favorites:', error.response ? error.response.data : error.message);
-        setItems(sampleItems); // Use sample items if there's an error
+        setItems(sampleItems);
       }
     };
     // Uncomment the line below to fetch data from the backend once it's ready
@@ -32,15 +35,24 @@ const Favorited = () => {
   return (
     <>
       <NavBar />
-      <section className="py-5 text-center container">
-        <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light text-light">Favorited Games</h1>
-            <a href="/Popular" className="btn btn-primary my-2 mx-2">Popular Games</a>
-            <a href="/" className="btn btn-secondary my-2 mx-2">Browse Games</a>
+      <AnimatedBg
+        colors={["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bfbcf", "#a0e7e5"]}
+        duration={5}
+        delay={1}
+        timingFunction="linear"
+        randomMode
+        style={{ height: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
+        <section className="text-center container">
+          <div className="row py-lg-5">
+            <div className="col-lg-6 col-md-8 mx-auto">
+              <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>Favorited Games</h1>
+              <a href="/Popular" className="btn btn-primary my-2 mx-2">Popular Games</a>
+              <a href="/" className="btn btn-secondary my-2 mx-2">Browse Games</a>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      </AnimatedBg>
 
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
@@ -54,12 +66,11 @@ const Favorited = () => {
                     <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
                   </svg>
                   <div className="card-body">
-                    <h5 className="card-title">{item.title}</h5>
-                    <p className="card-text text-dark">{item.description}</p>
+                    <h5 className="card-title" style={{ fontFamily: 'Geist' }}>{item.title}</h5>
+                    <p className="card-text text-dark" style={{ fontFamily: 'Geist' }}>{item.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
-                      <div className="btn-group">
-                        <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
+                    <div className="btn-group">
+                        < Link to='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
                       </div>
                       <small className="text-dark">9 mins</small>
                     </div>
