@@ -3,7 +3,7 @@ import axios from 'axios'; // Import Axios
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
 import AnimatedBg from "react-animated-bg";
-import './Landing.css';
+import './Landing.css'; // Ensure this file includes your new CSS
 import LoadingSpinner from '../Components/LoadingSpinner';
 import ReviewModal from '../Components/ReviewModal';
 import NavBarUser from '../Components/NavBarUser';
@@ -18,7 +18,6 @@ function LandingPage() {
   const [selectedGameForReview, setSelectedGameForReview] = useState(null);
   const [user, setUser] = useState(null);
 
-  // Fetch games using Axios
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
@@ -36,7 +35,6 @@ function LandingPage() {
     fetchGames();
   }, []);
 
-
   useEffect(() => {
     const filtered = games.filter(game => game.game_name.toLowerCase().includes(searchTerm.toLowerCase()));
     setFilteredGames(filtered);
@@ -53,9 +51,7 @@ function LandingPage() {
         : [...prevFavorites, game]
     );
   };
-const goToGame = (gameID) => {
 
-}
   const openReviewModal = (game) => {
     setSelectedGameForReview(game);
     setReviewModalVisible(true);
@@ -141,7 +137,7 @@ const goToGame = (gameID) => {
                             </div>
                             <div className="card-footer">
                               <div className="btn-group">
-                                <Link to={`/GoToGame/${game.gameId}`}role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
+                                <Link to={`/GoToGame/${game.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
                                 <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
                                 <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
                                   {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
@@ -174,8 +170,6 @@ const goToGame = (gameID) => {
           closeModal={closeReviewModal} 
         />
       )}
-
-
     </>
   );
 }
