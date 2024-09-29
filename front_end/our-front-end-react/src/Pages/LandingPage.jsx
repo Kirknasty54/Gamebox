@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios'; // Import Axios
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
 import AnimatedBg from "react-animated-bg";
@@ -15,16 +16,17 @@ function LandingPage() {
   const [favorites, setFavorites] = useState([]);
   const [reviewModalVisible, setReviewModalVisible] = useState(false);
   const [selectedGameForReview, setSelectedGameForReview] = useState(null);
+  const [user, setUser] = useState(null);
 
+  // Fetch games using Axios
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await new Promise((resolve) => {
-          setTimeout(() => resolve(Array(9).fill({ title: 'Sample Game', description: 'Description here', img: 'https://via.placeholder.com/150', rating: 4.5, reviews: [] })), 1000);
-        });
-        setGames(response);
-        setFilteredGames(response);
+        const response = await axios.get('http://localhost:8080/api/v1/games');
+        const gamesData = response.data.slice(0, 9); // Limit to 9 games
+        setGames(gamesData);
+        setFilteredGames(gamesData);
       } catch (error) {
         console.error('Error fetching games:', error);
       } finally {
@@ -34,8 +36,9 @@ function LandingPage() {
     fetchGames();
   }, []);
 
+
   useEffect(() => {
-    const filtered = games.filter(game => game.title.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filtered = games.filter(game => game.game_name.toLowerCase().includes(searchTerm.toLowerCase()));
     setFilteredGames(filtered);
   }, [searchTerm, games]);
 
@@ -50,7 +53,9 @@ function LandingPage() {
         : [...prevFavorites, game]
     );
   };
+const goToGame = (gameID) => {
 
+}
   const openReviewModal = (game) => {
     setSelectedGameForReview(game);
     setReviewModalVisible(true);
@@ -61,14 +66,15 @@ function LandingPage() {
     setSelectedGameForReview(null);
   };
 
-    const [user, setUser] = useState(null);
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
       setUser(JSON.parse(storedUserSession));
     }
   }, []);
+
   const navBar = user ? <NavBarUser/> : <NavBar />;
+
   return (
     <>
       {navBar}
@@ -115,7 +121,6 @@ function LandingPage() {
             <div id="gameCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
               <div className="carousel-inner">
                 {filteredGames.reduce((rows, game, index) => {
-                  // Create a new carousel item for each row of 3 games
                   if (index % 3 === 0) {
                     rows.push([]);
                   }
@@ -127,16 +132,16 @@ function LandingPage() {
                       {group.map((game, gameIndex) => (
                         <div className="col" key={gameIndex}>
                           <div className="card shadow-sm">
-                            <img src={game.img} alt={`Thumbnail for ${game.title}`} className="card-img-top" />
+                            <img src={game.image_url} alt={`Thumbnail for ${game.game_name}`} className="card-img-top" />
                             <div className="card-body">
-                              <h5 className="card-title">{game.title}</h5>
-                              <p className="card-text text-dark">{game.description}</p>
+                              <h5 className="card-title">{game.game_name}</h5>
+                              <p className="card-text text-dark">{game.developer}</p>
                               <div className="rating">{`⭐ ${game.rating}`}</div>
                               <small className="time-text">9 mins</small>
                             </div>
                             <div className="card-footer">
                               <div className="btn-group">
-                                <Link to='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
+                                <Link to={`/GoToGame/${game.gameId}`}role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
                                 <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
                                 <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
                                   {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
@@ -170,20 +175,7 @@ function LandingPage() {
         />
       )}
 
-      <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">
-        ↑
-      </button>
-      <footer className="footer">
-        <div className="container text-center">
-          <p>© 2024 GameBox. All Rights Reserved.</p>
-          <div className="footer-links">
-            <Link to="/privacy" className="footer-link">Privacy Policy</Link>
-            <Link to="/terms" className="footer-link">Terms of Service</Link>
-            <Link to="/login" className="footer-link">Login</Link>
-            <Link to="/signup" className="footer-link">Sign Up</Link>
-          </div>
-        </div>
-      </footer>
+
     </>
   );
 }

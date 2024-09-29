@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavBarUser from '../Components/NavBarUser';
+import NavBar from '../Components/NavBar';
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -33,10 +34,17 @@ const Login = () => {
       })
       .catch(err => console.log(err));
   };
-
+    const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setUser(JSON.parse(storedUserSession));
+    }
+  }, []);
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
   return (
     <>
-      <NavBarUser />
+      {navBar}
       <div className="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabIndex="-1" role="dialog" id="modalLogin">
         <div className="modal-dialog" role="document">
           <div className="modal-content rounded-4 shadow">

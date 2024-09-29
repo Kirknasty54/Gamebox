@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../Components/NavBar';
+import NavBarUser from '../Components/NavBarUser';
 import axios from 'axios';
 import AnimatedBg from 'react-animated-bg';
 import './Favorited.css'; 
@@ -35,10 +36,17 @@ const Favorited = () => {
     setSelectedGame(game);
     setModalShow(true);
   };
-
+const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setUser(JSON.parse(storedUserSession));
+    }
+  }, []);
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
   return (
     <>
-      <NavBar />
+      {navBar}
       <AnimatedBg
         colors={["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bfbcf", "#a0e7e5"]}
         duration={5}
