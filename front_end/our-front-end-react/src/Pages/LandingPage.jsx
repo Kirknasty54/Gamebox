@@ -136,8 +136,8 @@ const goToGame = (gameID) => {
                             <div className="card-body">
                               <h5 className="card-title">{game.game_name}</h5>
                               <p className="card-text text-dark">{game.developer}</p>
+                                <p className="card-text text-dark">{game.description}</p>
                               <div className="rating">{`⭐ ${game.rating}`}</div>
-                              <small className="time-text">9 mins</small>
                             </div>
                             <div className="card-footer">
                               <div className="btn-group">
