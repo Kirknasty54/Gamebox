@@ -141,12 +141,12 @@
 
 /* Set a maximum height for the carousel and adjust image/card sizes */
 .carousel-item {
-  height: 800px;
+  height: 500px;
   /* Adjust the overall height of each carousel item */
 }
 
 .carousel-card {
-  height: 700px;
+  height: auto;
   /* Make sure each card takes up the full height of the carousel item */
 }
 
