@@ -27,8 +27,8 @@ public class UserService {
     return userInfoRepository.findById(uId);
   }
 
-  public Optional<UserInfo> auth(String username, String password) {
-    return userInfoRepository.findByUserNameAndPassword(username, password);
+  public Optional<UserInfo> auth(String userEmail, String password) {
+    return userInfoRepository.findByEmailAndPassword(userEmail, password);
   }
 
   public UserInfo save(UserInfo userInfo) {

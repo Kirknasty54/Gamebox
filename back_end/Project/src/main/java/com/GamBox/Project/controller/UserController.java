@@ -48,12 +48,12 @@ public class UserController {
 
   static class AuthenticationResponse {
     @Getter
-    private Long UID;
+    private String userEmail;
     @Getter
     private boolean authenticated;
 
-    public AuthenticationResponse(Long UID, boolean authenticated) {
-      this.UID = UID;
+    public AuthenticationResponse(String userEmail, boolean authenticated) {
+      this.userEmail = userEmail;
       this.authenticated = authenticated;
     }
   }
@@ -61,13 +61,13 @@ public class UserController {
   @PostMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
   public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
     AuthenticationResponse response;
-    String username = credentials.get("username");
+    String userEmail = credentials.get("email");
     String password = credentials.get("password");
-    Optional<UserInfo> authenticatedUser = userService.auth(username, password);
+    Optional<UserInfo> authenticatedUser = userService.auth(userEmail, password);
 
     if (authenticatedUser.isPresent()) {
       UserInfo user = authenticatedUser.get();
-      response = new AuthenticationResponse(user.getUId(), true);
+      response = new AuthenticationResponse(user.getEmail(), true);
       return new ResponseEntity<>(response, HttpStatus.OK);
     } else {
       response = new AuthenticationResponse(null, false);
