@@ -25,10 +25,11 @@
 }
 
 .about-image {
-  width: 80px; /* Set a fixed width for images */
-  height: auto; /* Maintain aspect ratio */
+  width: 100px; /* Set a fixed width */
+  height: 100px; /* Set a fixed height */
   border-radius: 50%; /* Circular images */
   margin-bottom: 10px; /* Space below image */
+  object-fit: cover; /* Ensure image covers the circle */
 }
 
 .title {
@@ -41,3 +42,4 @@
   text-align: center; /* Center text */
   color: #ccc; /* Lighter text color */
 }
+
