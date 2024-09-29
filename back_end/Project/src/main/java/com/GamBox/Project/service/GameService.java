@@ -23,6 +23,10 @@ public class GameService {
     return gameInfoRepository.findAll();
   }
 
+  public GameInfo findGame(Long gameId) {
+    return gameInfoRepository.findBygameId(gameId).get();
+  }
+
   public List<GameInfo> getLikedGames(Long userId) {
     // This method should interact with the repository to fetch liked games for the
     // user

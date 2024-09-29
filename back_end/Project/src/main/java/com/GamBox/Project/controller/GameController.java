@@ -39,6 +39,14 @@ public class GameController {
     return new ResponseEntity<>(gameRespones, HttpStatus.OK);
   }
 
+  @GetMapping("/{gameId}")
+  public ResponseEntity<GameRespones> getOneGame(@PathVariable Long gameId) {
+    GameInfo game = gameService.findGame(gameId);
+    GameRespones gameRespones = new GameRespones(game.getGameId(), game.getDeveloper(), game.getGameName(),
+        game.getPublisher(), game.getImageUrl(), game.getDescription());
+    return new ResponseEntity<>(gameRespones, HttpStatus.OK);
+  }
+
   private static class GameRespones {
     @Getter
     private Long gameId;
