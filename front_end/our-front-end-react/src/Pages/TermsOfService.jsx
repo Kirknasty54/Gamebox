@@ -1,8 +1,10 @@
 import React from 'react';
 import './TermsOfService.css';
-
+import NavBar from '../Components/NavBar';
 const TermsOfService = () => {
   return (
+    <>
+    <NavBar/>
     <div className="terms-container">
       <h1 className="terms-header">Terms of Service</h1>
       <p className="terms-intro">
@@ -39,6 +41,7 @@ const TermsOfService = () => {
         If you have any questions about these Terms, please contact us at support@example.com.
       </p>
     </div>
+    </>
   );
 };
 
