@@ -19,12 +19,12 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!values.email || !values.password) {
-      setErrors({ email: !values.email ? 'Email is required' : '', password: !values.password ? 'Password is required' : '' });
-      return;
-    }
+    // if (!values.email || !values.password) {
+    //   setErrors({ email: !values.email ? 'Email is required' : '', password: !values.password ? 'Password is required' : '' });
+    //   return;
+    // }
     
-    axios.post('http://localhost:8080/Login', values)
+    axios.post('http://localhost:8080/users/auth', values)
       .then(response => {
         if (values.rememberMe) {
           localStorage.setItem('userSession', JSON.stringify(response.data)); // Store session in localStorage
@@ -57,7 +57,7 @@ const Login = () => {
                     required
                   />
                   <label htmlFor="floatingInput" className="text-dark">Email address</label>
-                  {errors.email && <span className="text-danger">{errors.email}</span>}
+                  
                 </div>
                 <div className="form-floating mb-3">
                   <input
@@ -69,16 +69,16 @@ const Login = () => {
                     required
                   />
                   <label htmlFor="floatingPassword" className="text-dark">Password</label>
-                  {errors.password && <span className="text-danger">{errors.password}</span>}
+                
                 </div>
-                <div className="form-check mb-3">
+                <div className="mb-3">
                   <input
                     type="checkbox"
                     name="rememberMe"
-                    className="form-check-input"
+                    className="input"
                     onChange={handleInput}
                   />
-                  <label className="form-check-label" htmlFor="rememberMe">Keep me signed in</label>
+                  <label className="label" htmlFor="rememberMe">Keep me signed in</label>
                 </div>
                 <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
                 <small className="text-body-secondary">Don't have an account? <Link to="/signup">Sign up</Link></small>
