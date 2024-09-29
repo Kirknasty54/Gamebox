@@ -24,7 +24,7 @@ const Login = () => {
   return;
      }
     
-    axios.post('http://localhost:8080/users/auth', values)
+    axios.post('http://localhost:8080/api/v1/users/auth', values)
       .then(response => {
         if (values.rememberMe) {
           localStorage.setItem('userSession', JSON.stringify(response.data)); // Store session in localStorage

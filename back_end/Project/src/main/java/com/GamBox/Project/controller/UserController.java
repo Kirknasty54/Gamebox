@@ -20,7 +20,8 @@ import com.GamBox.Project.service.UserService;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin
+
 @RequestMapping("/api/v1/users")
 public class UserController {
   @Autowired
