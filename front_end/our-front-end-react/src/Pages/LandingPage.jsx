@@ -1,7 +1,6 @@
-import React from 'react';
-import GameCards from '../Components/GameCards';
+import React, { useState, useEffect } from 'react'; // Include useEffect here
 import NavBar from '../Components/NavBar';
-import { Link } from "react-router-dom";
+import { Link } from "react-router-dom"; // Correct import
 import AnimatedBg from "react-animated-bg";
 import LoadingSpinner from '../Components/LoadingSpinner';
 import ReviewModal from '../Components/ReviewModal';

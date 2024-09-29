@@ -23,9 +23,9 @@ const SignUp = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios.post('http://localhost:8080/Signup', values)
+      axios.post('http://localhost:8080/auth', values)
         .then(() => {
-          navigate('/SignIn'); // Navigate to the login page on successful signup
+          navigate('/profile'); // Navigate to the login page on successful signup
         })
         .catch(err => console.log(err));
     }
