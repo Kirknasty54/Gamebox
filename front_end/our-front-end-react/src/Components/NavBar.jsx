@@ -6,7 +6,7 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBar.css'; // Make sure to import your CSS file
 
-import { FaCog } from 'react-icons/fa'; // Import the settings icon
+// import { FaCog } from 'react-icons/fa'; // Import the settings icon
 
 function NavBar() {
     return (
@@ -40,7 +40,7 @@ function NavBar() {
                     </Nav.Link>
                     {/* Add settings icon */}
                     <Nav.Link href="/settings" className="text-secondary ms-3">
-                        <FaCog /> {/* Render settings icon */}
+                        {/* <FaCog /> Render settings icon */}
                     </Nav.Link>
                 </Navbar.Collapse>
             </Container>

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './Settings.css';
+import NavBar from './NavBarUser.jsx';
 
 const ProfileSettings = () => {
     const [name, setName] = useState("Yuki Hayashi");
@@ -24,6 +25,8 @@ const ProfileSettings = () => {
     };
 
     return (
+        <>
+        <NavBar/>
         <div className="container">
             <div className="row gutters">
                 <div className="col-xl-3 col-lg-3 col-md-12 col-sm-12 col-12">
@@ -170,6 +173,7 @@ const ProfileSettings = () => {
                 </div>
             </div>
         </div>
+        </>
     );
 };
 

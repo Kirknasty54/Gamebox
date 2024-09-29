@@ -14,6 +14,9 @@ import TermsOfService from "./Pages/TermsOfService";
 import GoToGame from "./Pages/GoToGame";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Settings from "./Components/Settings";
+import ProtectedRoute from "./Components/ProtectedRoute";
+import UserHome from "./Components/UserHome";
+
 
 function App() {
   return (
@@ -21,6 +24,7 @@ function App() {
       <Theme />
       <Routes>
         <Route path="/" element={<LandingPage />} />
+        <Route path="/Home" element={<LandingPage />} />
         <Route path="/GoToGame" element={<GoToGame />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/SignIn" element={<SignIn />} />
@@ -32,6 +36,7 @@ function App() {
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/Settings" element={<Settings />} />
+        <Route path = "/UserHome" element = {<ProtectedRoute><UserHome/></ProtectedRoute>} />
       </Routes>
       <Footer />
     </BrowserRouter>

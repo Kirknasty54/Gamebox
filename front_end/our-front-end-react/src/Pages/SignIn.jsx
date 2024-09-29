@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../components/NavBarSignUp';
+import NavBarUser from '../Components/NavBarUser';
 
 const Login = () => {
   const [values, setValues] = useState({
+    name: '',
     email: '',
     password: '',
     rememberMe: false,
@@ -19,24 +20,23 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    // if (!values.email || !values.password) {
-    //   setErrors({ email: !values.email ? 'Email is required' : '', password: !values.password ? 'Password is required' : '' });
-    //   return;
-    // }
     
-    axios.post('http://localhost:8080/users/auth', values)
+    axios.post('http://localhost:8080/api/v1/users/auth', values)
       .then(response => {
+        const userData = response.data;
         if (values.rememberMe) {
-          localStorage.setItem('userSession', JSON.stringify(response.data)); // Store session in localStorage
+          localStorage.setItem('userSession', JSON.stringify(userData)); // Store session in localStorage
+        } else {
+          sessionStorage.setItem('userSession', JSON.stringify(userData)); // Store session in sessionStorage
         }
-        navigate('/Home'); // Navigate to the home page on successful login
+        navigate('/UserHome'); // Navigate to the home page on successful login
       })
       .catch(err => console.log(err));
   };
 
   return (
     <>
-      <Navbar />
+      <NavBarUser />
       <div className="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabIndex="-1" role="dialog" id="modalLogin">
         <div className="modal-dialog" role="document">
           <div className="modal-content rounded-4 shadow">
