@@ -25,7 +25,7 @@ function LandingPage() {
       setLoading(true);
       try {
         const response = await axios.get('http://localhost:8080/api/v1/games');
-        const gamesData = response.data; 
+        const gamesData = response.data.slice(21,30)
         setGames(gamesData);
         setFilteredGames(gamesData);
       } catch (error) {

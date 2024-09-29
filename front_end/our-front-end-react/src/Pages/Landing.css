@@ -159,13 +159,20 @@
 /* Landing.css */
 .carousel-control-prev,
 .carousel-control-next {
-  width: 10%; /* Adjust width for better visibility */
-  opacity: 1; /* Ensure buttons are fully opaque */
-  background-color: rgba(128, 128, 128, 0.7); /* Gray background */
-  border-radius: 100%; /* Make the button circular */
-  border: none; /* Remove default border */
-  transition: background-color 0.3s; /* Smooth transition */
-  position: relative; /* Position relative for absolute positioning of pseudo-element */
+  width: 10%;
+  /* Adjust width for better visibility */
+  opacity: 1;
+  /* Ensure buttons are fully opaque */
+  background-color: rgba(128, 128, 128, 0.7);
+  /* Gray background */
+  border-radius: 100%;
+  /* Make the button circular */
+  border: none;
+  /* Remove default border */
+  transition: background-color 0.3s;
+  /* Smooth transition */
+  position: relative;
+  /* Position relative for absolute positioning of pseudo-element */
 }
 
 
@@ -173,48 +180,69 @@
 .carousel-control-next::after {
   content: '';
   position: absolute;
-  top: 50%; /* Center vertically */
-  left: 50%; /* Center horizontally */
-  width: 40px; /* Width of the hover circle */
-  height: 40px; /* Height of the hover circle */
-  border-radius: 50%; /* Make it a circle */
-  background-color: rgba(255, 255, 255, 0.5); /* Light background for contrast */
-  transform: translate(-50%, -50%); /* Center the circle */
-  opacity: 0; /* Initially hidden */
-  transition: opacity 0.3s; /* Smooth transition for opacity */
+  top: 50%;
+  /* Center vertically */
+  left: 50%;
+  /* Center horizontally */
+  width: 40px;
+  /* Width of the hover circle */
+  height: 40px;
+  /* Height of the hover circle */
+  border-radius: 50%;
+  /* Make it a circle */
+  background-color: rgba(255, 255, 255, 0.5);
+  /* Light background for contrast */
+  transform: translate(-50%, -50%);
+  /* Center the circle */
+  opacity: 0;
+  /* Initially hidden */
+  transition: opacity 0.3s;
+  /* Smooth transition for opacity */
 }
 
 .carousel-control-prev:hover::after,
 .carousel-control-next:hover::after {
-  opacity: 1; /* Show the circle on hover */
+  opacity: 1;
+  /* Show the circle on hover */
 }
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-  background-color: transparent; /* Keep the icon background transparent */
-  height: 30px; /* Adjust icon size */
-  width: 30px; /* Adjust icon size */
-  background-size: 100%; /* Ensure the icon fits */
-  color: gray; /* Set the icon color to gray for visibility */
+  background-color: transparent;
+  /* Keep the icon background transparent */
+  height: 30px;
+  /* Adjust icon size */
+  width: 30px;
+  /* Adjust icon size */
+  background-size: 100%;
+  /* Ensure the icon fits */
+  color: gray;
+  /* Set the icon color to gray for visibility */
 }
 
 .carousel-control-prev-icon::before {
-  content: '◀'; /* Use a custom character or icon for the arrow */
-  font-size: 25px; /* Adjust size */
-  color: hwb(188 2% 9%); /* Set icon color */
+  content: '◀';
+  /* Use a custom character or icon for the arrow */
+  font-size: 20px;
+  /* Adjust size */
+  color: gray;
+  /* Set icon color */
 }
 
 .carousel-control-next-icon::before {
-  content: '▶'; /* Use a custom character or icon for the arrow */
-  font-size: 20px; /* Adjust size */
-  color: hwb(188 2% 9%); /* Set icon color */
+  content: '▶';
+  /* Use a custom character or icon for the arrow */
+  font-size: 20px;
+  /* Adjust size */
+  color: gray;
+  /* Set icon color */
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon::before,
 .carousel-control-next:hover .carousel-control-next-icon::before {
-  color: hwb(188 2% 50%); /* Change icon color to white on hover */
+  color: white;
+  /* Change icon color to white on hover */
 }
-
 .card {
   height: 350px; /* Fixed height for the card */
   display: flex;
