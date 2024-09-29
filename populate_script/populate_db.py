@@ -1,8 +1,9 @@
-import time
 import requests
-import random
 import mysql.connector
+import time
+import re
 
+# Giant Bomb API Key and Database connection details
 API_KEY = "2f10762828e577b7956ba70452dcd91164c806e9"
 DB_URL = "hackmidwest-gamebox-app.c986wiuwap7e.us-east-1.rds.amazonaws.com"
 DB_USER = "admin"
@@ -10,117 +11,122 @@ DB_PASSWORD = "MAR123456f$"
 DB_NAME = "GameBox"
 
 
+# Function to connect to MySQL database
 def connect_to_db():
     return mysql.connector.connect(
         host=DB_URL, user=DB_USER, password=DB_PASSWORD, database=DB_NAME
     )
 
 
+# Fetch the basic game list (100 random games)
 def fetch_games():
     url = "https://www.giantbomb.com/api/games/"
-    headers = {
-        "User-Agent": "MyGameScraper/1.0"  # Custom User Agent
-    }
+    headers = {"User-Agent": "MyCustomUserAgent/1.0"}  # Updated User-Agent
 
     params = {
         "api_key": API_KEY,
         "format": "json",
-        "limit": 100,  # Fetch 100 games at a time
+        "limit": 100,
         "offset": 0,
+        "sort": "original_release_date:desc",
+        "filter": "original_release_date:1900-01-01|2024-12-31",  # Fetch released games
     }
 
-    released_games = []
-    while len(released_games) < 100:
-        response = requests.get(url, headers=headers, params=params)
+    response = requests.get(url, headers=headers, params=params)
 
-        if response.status_code == 200:
-            all_games = response.json().get("results", [])
-            # Filter games that have an original_release_date
-            released_games += [
-                game for game in all_games if game.get("original_release_date")
-            ]
-
-            # If no more games are returned, break the loop
-            if not all_games:
-                break
-
-            # Increment offset for the next batch of games
-            params["offset"] += 100
-        else:
-            print(f"Error: {response.status_code}, {response.text}")
-            break
-
-    # Randomly select 100 released games (or all if less than 100 found)
-    if len(released_games) >= 100:
-        return random.sample(released_games, 100)
+    if response.status_code == 200:
+        return response.json().get("results", [])
     else:
-        print(f"Only found {len(released_games)} released games.")
-        return released_games  # Return whatever is available
+        print(f"Error fetching games: {response.status_code}, {response.text}")
+        return []
 
 
+# Fetch detailed information about each game
 def fetch_game_details(game_id):
-    time.sleep(5)
     url = f"https://www.giantbomb.com/api/game/{game_id}/"
-    headers = {
-        "User-Agent": "MyGameScraper/1.0"  # Custom User Agent
-    }
+    headers = {"User-Agent": "MyCustomUserAgent/1.0"}  # Updated User-Agent
+
     params = {
         "api_key": API_KEY,
         "format": "json",
-        "field_list": "id,name,developers,publishers,original_release_date",
+        "field_list": "id,name,developers,publishers,original_release_date,image",
     }
+
     response = requests.get(url, headers=headers, params=params)
+
     if response.status_code == 200:
-        print(
-            response.json().get(
-                "results",
-            )
-        )
-        return response.json().get("results", [])
+        return response.json().get("results", {})
     else:
         print(
             f"Error fetching details for game ID {game_id}: {response.status_code}, {response.text}"
         )
-        return []
+        return {}
 
 
-# Function to upload game data to the MySQL database
+# Extract the release date from CDATA format
+def extract_release_date(detailed_game_info):
+    # Try to get the release date directly
+    original_release_date = detailed_game_info.get("original_release_date")
+
+    # If it's None, return "N/A"
+    if original_release_date is None:
+        return "N/A"
+
+    # If it is a string, check if it's in CDATA format
+    if isinstance(original_release_date, str):
+        match = re.search(r"\<\!\[CDATA\[(.*?)\]\]\>", original_release_date)
+        if match:
+            return match.group(1)
+        else:
+            return original_release_date  # Return it as is if not in CDATA format
+
+    return "N/A"  # Return a default value if original_release_date is not a string
+
+
+# Upload the fetched games to the database
 def upload_games_to_db(games):
     connection = connect_to_db()
     cursor = connection.cursor()
 
     insert_query = """
-    INSERT INTO game_info (game_id, developer, game_name, publisher, release_date)
-    VALUES (%s, %s, %s, %s, %s)
+    INSERT INTO game_info (game_id, game_name, developer, publisher, release_date, image_url)
+    VALUES (%s, %s, %s, %s, %s, %s)
     """
 
     for game in games:
         game_id = game.get("id")
         game_name = game.get("name")
 
-        # Fetch detailed game data
+        # Fetch detailed information for each game
         detailed_game_info = fetch_game_details(game_id)
 
-        # Check if detailed game information is available
-        if detailed_game_info and len(detailed_game_info) > 0:
-            # Check for developers and publishers
-            developers = detailed_game_info[0].get("developers", [])
-            publishers = detailed_game_info[0].get("publishers", [])
+        developer = (
+            detailed_game_info.get("developers", [{"name": "N/A"}])[0]["name"]
+            if detailed_game_info.get("developers")
+            else "N/A"
+        )
+        publisher = (
+            detailed_game_info.get("publishers", [{"name": "N/A"}])[0]["name"]
+            if detailed_game_info.get("publishers")
+            else "N/A"
+        )
 
-            developer = developers[0]["name"] if developers else None
-            publisher = publishers[0]["name"] if publishers else None
-            release_date = detailed_game_info[0].get("original_release_date")
-        else:
-            developer = publisher = release_date = None
+        # Extract the release date
+        release_date = extract_release_date(detailed_game_info)
+        image_url = detailed_game_info.get("image", {}).get("super_url", "N/A")
 
         cursor.execute(
-            insert_query, (game_id, developer, game_name, publisher, release_date)
+            insert_query,
+            (game_id, game_name, developer, publisher, release_date, image_url),
         )
+
+        # Add a delay to avoid rate limiting
+        time.sleep(1)
 
     connection.commit()
     cursor.close()
     connection.close()
-    print("Games uploaded successfully!")
+    print(f"Successfully uploaded {cursor.rowcount} games to the database!")
 
 
 # Main function

@@ -52,7 +52,7 @@ function NavBarUser() {
                             <NavDropdown.Item href="/profile">View Profile</NavDropdown.Item>
                             <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/landingPage" onClick ={handleLogout}>Logout</NavDropdown.Item>
+                            <NavDropdown.Item href="/" onClick ={handleLogout}>Logout</NavDropdown.Item>
                         </NavDropdown>
 
                     </Navbar.Collapse>

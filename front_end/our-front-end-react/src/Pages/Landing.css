@@ -2,10 +2,20 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  flex: 1;
+  height: 200px;
   padding: 15px; /* Add padding for inner spacing */
 }
-img {
-  height: 125px;
+.card {
+  height: 150px;
+  /* Set a fixed height for the card */
+}
+
+.card-img-top {
+  height: 150px;
+  /* Set a smaller height for the images */
+  object-fit: cover;
+  /* Ensures images maintain their aspect ratio while covering the space */
 }
 .card-footer {
   display: flex;
@@ -113,12 +123,7 @@ img {
     font-size: 0.8rem; /* Smaller font size on small screens */
   }
 }
-.footer {
-  background-color: rgb(72, 69, 69); /* Dark background color */
-  padding: 20px 0;
-  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
-  color: rgb(255, 255, 255); /* Light text color */
-}
+
 
 .footer-links {
   margin-top: 10px; /* Spacing above links */
@@ -136,7 +141,7 @@ img {
 
 /* Set a maximum height for the carousel and adjust image/card sizes */
 .carousel-item {
-  height: 400px;
+  height: 500px;
   /* Adjust the overall height of each carousel item */
 }
 
