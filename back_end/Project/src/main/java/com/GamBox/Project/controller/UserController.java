@@ -1,0 +1,77 @@
+package com.GamBox.Project.controller;
+
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
+import java.util.Map;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import com.GamBox.Project.domain.UserInfo;
+import com.GamBox.Project.repository.UserInfoRepository;
+import com.GamBox.Project.service.UserService;
+
+@RestController
+@AllArgsConstructor
+@RequestMapping("/api/v1/users")
+public class UserController {
+  @Autowired
+  private UserService userService;
+  @Autowired
+  private UserInfoRepository userInfoRepository;
+
+  @GetMapping
+  public ResponseEntity<List<UserResponse>> getAllUser() {
+    List<UserInfo> users = userService.allUsers();
+    List<UserResponse> userResponses = new ArrayList<>();
+    for (UserInfo user : users) {
+      userResponses.add(new UserResponse(user.getUId()));
+    }
+    return new ResponseEntity<>(userResponses, HttpStatus.OK);
+  }
+
+  private static class UserResponse {
+    @Getter
+    private Long UId;
+
+    public UserResponse(Long UId) {
+      this.UId = UId;
+    }
+  }
+
+  static class AuthenticationResponse {
+    @Getter
+    private Long UID;
+    @Getter
+    private boolean authenticated;
+
+    public AuthenticationResponse(Long UID, boolean authenticated) {
+      this.UID = UID;
+      this.authenticated = authenticated;
+    }
+  }
+
+  @PostMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
+    AuthenticationResponse response;
+    String username = credentials.get("username");
+    String password = credentials.get("password");
+    Optional<UserInfo> authenticatedUser = userService.auth(username, password);
+
+    if (authenticatedUser.isPresent()) {
+      UserInfo user = authenticatedUser.get();
+      response = new AuthenticationResponse(user.getUId(), true);
+      return new ResponseEntity<>(response, HttpStatus.OK);
+    } else {
+      response = new AuthenticationResponse(null, false);
+      return ResponseEntity.ok(response);
+    }
+  }
+}

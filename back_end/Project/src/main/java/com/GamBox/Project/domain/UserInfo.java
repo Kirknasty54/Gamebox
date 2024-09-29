@@ -10,20 +10,20 @@ import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
+
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
+@CrossOrigin
 public class UserInfo {
   @Id
-  @GeneratedValue(strategy = GenerationType.IDENTITY)
+  // @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long uId;
   @Column(unique = true)
   private String userName;
   private String password;
-  private Timestamp createdAt;
-  private Timestamp lastLogin;
-  private int consFailedLoginAttempts;
   @Column(unique = true)
   private String userEmail;
 
