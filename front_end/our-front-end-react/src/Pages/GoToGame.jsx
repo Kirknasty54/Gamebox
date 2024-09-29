@@ -54,7 +54,7 @@ function GoToGame(){
         </div>
         </>
         ))}
-        <div className = 'row justify-content-end'>
+        <div className = 'row mt-3 justify-content-end bg-white'>
             <div className = 'col-md-12 text-center'>
                 <h2>User Reviews</h2>
                 <UserReviews/>
