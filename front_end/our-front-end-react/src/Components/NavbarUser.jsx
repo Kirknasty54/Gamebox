@@ -7,6 +7,11 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBarUser.css';
 
 function NavBarUser() {
+    const handleLogout = (event) => {
+    event.preventDefault();
+    localStorage.clear();
+    sessionStorage.clear();
+  };
     const RandomNumber = Math.floor(Math.random() * 5) + 1;
     return (
         <>
@@ -47,7 +52,7 @@ function NavBarUser() {
                             <NavDropdown.Item href="/profile">View Profile</NavDropdown.Item>
                             <NavDropdown.Item href="/settings">Settings</NavDropdown.Item>
                             <NavDropdown.Divider />
-                            <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
+                            <NavDropdown.Item href="/landingPage" onClick ={handleLogout}>Logout</NavDropdown.Item>
                         </NavDropdown>
 
                     </Navbar.Collapse>

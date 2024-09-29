@@ -33,7 +33,7 @@ const gameList = [
 
     return (
         <>
-            <NavBarUser />
+            <NavBarUser/>
             <div className="profile-container">
               {user ? (
                 <>
