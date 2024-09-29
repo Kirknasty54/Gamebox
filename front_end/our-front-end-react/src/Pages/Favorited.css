@@ -1,95 +1,88 @@
 .album {
-    background-color: rgba(255, 255, 255, 0.7); /* Optional: if you want to have a slight background color for cards */
-  }
-  
-  .card {
-    border-radius: 15px; /* Optional: curved edges for the cards */
-  }
-  /* Global Styles */
+    background-color: rgba(255, 255, 255, 0.7); /* Optional: slight background color for cards */
+}
+
+.card {
+    border-radius: 15px; /* Curved edges for the cards */
+}
+
+/* Global Styles */
 body {
     font-family: 'Geist', sans-serif;
     background-color: #f0f8ff; /* Light background for contrast */
     color: #333; /* Dark text for readability */
     margin: 0;
     padding: 0;
-  }
-  
-  h1 {
+}
+
+h1 {
     font-size: 2.5rem; /* Larger heading for impact */
     letter-spacing: 2px; /* Increased letter spacing */
-    font-weight: 700; /* Make it bold for emphasis */
-  }
-  
-  h5 {
+    font-weight: 700; /* Bold for emphasis */
+}
+
+h5 {
     font-size: 1.25rem;
     color: #ff6347; /* Tomato color for emphasis */
-  }
-  
-  .text-box {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque white */
-    border-radius: 10px; /* Curved edges */
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-    margin: 20px 0;
-  }
-  
-  /* Button Styles */
-  .btn {
+}
+
+/* Button Styles */
+.btn {
     border-radius: 20px; /* Round buttons for a retro look */
-    padding: 10px 20px;
+    padding: 8px 15px; /* Adjusted padding for smaller screens */
     font-weight: bold;
     transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .btn-primary {
+}
+
+.btn-primary {
     background-color: #ff6b6b; /* Bright primary color */
     border: none; /* No border for clean look */
     color: white;
-  }
-  
-  .btn-primary:hover {
+}
+
+.btn-primary:hover {
     background-color: #ff3b3b; /* Darker shade on hover */
     transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .btn-secondary {
+}
+
+.btn-secondary {
     background-color: #4facfe; /* Sky blue for secondary buttons */
     border: none;
     color: white;
-  }
-  
-  .btn-secondary:hover {
+}
+
+.btn-secondary:hover {
     background-color: #3b9ddc; /* Darker shade on hover */
     transform: scale(1.05);
-  }
-  
-  /* Card Styles */
-  .card {
+}
+
+/* Card Styles */
+.card {
     border: none; /* Remove card border */
     border-radius: 15px; /* Round card edges */
     background-color: #fff; /* White background for cards */
     transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .card:hover {
+}
+
+.card:hover {
     transform: translateY(-5px); /* Lift effect on hover */
     box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  }
-  
-  /* Placeholder SVG styles */
-  .bd-placeholder-img {
+}
+
+/* Placeholder SVG styles */
+.bd-placeholder-img {
     background-color: #ccc; /* Light gray background for placeholders */
     border-radius: 15px 15px 0 0; /* Rounded top corners */
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
     h1 {
-      font-size: 2rem; /* Smaller heading on mobile */
+        font-size: 2rem; /* Smaller heading on mobile */
     }
     
-    .text-box {
-      padding: 15px; /* Less padding on mobile */
+    .btn {
+        padding: 6px 10px; /* Smaller buttons on mobile */
+        font-size: 0.9rem; /* Slightly smaller font size */
     }
-  }
-  
+}

@@ -1,87 +1,133 @@
-/* Global Styles */
-body {
-  font-family: 'Geist', sans-serif;
-  background-color: #f0f8ff; /* Light background for contrast */
-  color: #333; /* Dark text for readability */
-  margin: 0;
-  padding: 0;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px; /* Add padding for inner spacing */
 }
 
-h1 {
-  font-size: 2.5rem; /* Larger heading for impact */
-  letter-spacing: 2px; /* Increased letter spacing */
-  font-weight: 700; /* Make it bold for emphasis */
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center vertically */
+  margin-top: auto; /* Push the footer to the bottom */
+  padding-top: 10px; /* Add padding for separation */
+  border-top: 1px solid #ccc; /* Light border to separate from body */
 }
 
-h5 {
-  font-size: 1.25rem;
-  color: #ff6347; /* Tomato color for emphasis */
+.time-text {
+  font-size: 0.9rem; /* Slightly larger for better readability */
+  color: #888; /* More neutral color */
 }
 
-.text-box {
-  background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque white */
-  border-radius: 10px; /* Curved edges */
-  padding: 20px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-  margin: 20px 0;
+.btn-group {
+  display: flex;
+  gap: 5px; /* Space between buttons */
 }
 
-/* Button Styles */
 .btn {
-  border-radius: 20px; /* Round buttons for a retro look */
-  padding: 10px 20px;
-  font-weight: bold;
+  padding: 8px 12px; /* Adjust padding */
+  font-weight: bold; /* Ensure text stands out */
+  border-radius: 20px; /* Round edges for a softer look */
   transition: background-color 0.3s, transform 0.2s;
 }
 
 .btn-primary {
-  background-color: #ff6b6b; /* Bright primary color */
-  border: none; /* No border for clean look */
+  background-color: #ff6b6b;
   color: white;
 }
 
 .btn-primary:hover {
-  background-color: #ff3b3b; /* Darker shade on hover */
-  transform: scale(1.05); /* Slightly enlarge on hover */
+  background-color: #ff3b3b; 
+  transform: scale(1.05);
 }
 
 .btn-secondary {
-  background-color: #4facfe; /* Sky blue for secondary buttons */
-  border: none;
+  background-color: #4facfe;
   color: white;
 }
 
 .btn-secondary:hover {
-  background-color: #3b9ddc; /* Darker shade on hover */
+  background-color: #3b9ddc; 
   transform: scale(1.05);
-}
-
-/* Card Styles */
-.card {
-  border: none; /* Remove card border */
-  border-radius: 15px; /* Round card edges */
-  background-color: #fff; /* White background for cards */
-  transition: transform 0.2s, box-shadow 0.2s;
-}
-
-.card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-}
-
-/* Placeholder SVG styles */
-.bd-placeholder-img {
-  background-color: #ccc; /* Light gray background for placeholders */
-  border-radius: 15px 15px 0 0; /* Rounded top corners */
 }
 
 /* Responsive Adjustments */
 @media (max-width: 768px) {
-  h1 {
-    font-size: 2rem; /* Smaller heading on mobile */
+  .btn {
+    padding: 6px 10px; /* Smaller padding for medium screens */
+    font-size: 0.9rem; /* Slightly smaller font size */
   }
-  
-  .text-box {
-    padding: 15px; /* Less padding on mobile */
+}
+
+@media (max-width: 576px) {
+  .btn {
+    padding: 5px 8px; /* Smaller padding for small screens */
+    font-size: 0.8rem; /* Even smaller font size */
   }
+}
+.time-text {
+  font-size: 0.9rem; /* Slightly larger for better readability */
+  color: #888; /* More neutral color */
+  margin-top: 10px; /* Add some spacing above */
+}
+.search-input {
+  width: 100%; /* Full width on its own line */
+  padding: 10px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center buttons */
+  gap: 10px; /* Space between buttons */
+}
+
+.footer {
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-links {
+  margin-top: 10px; /* Spacing above links */
+}
+
+.footer-link {
+  margin: 0 10px; /* Spacing between links */
+  color: #4facfe;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 576px) {
+  .footer-link {
+    font-size: 0.8rem; /* Smaller font size on small screens */
+  }
+}
+.footer {
+  background-color: rgb(72, 69, 69); /* Dark background color */
+  padding: 20px 0;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255); /* Light text color */
+}
+
+.footer-links {
+  margin-top: 10px; /* Spacing above links */
+}
+
+.footer-link {
+  margin: 0 10px; /* Spacing between links */
+  color: #009af3; /* White color for links */
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }
