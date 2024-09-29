@@ -1,0 +1,36 @@
+.terms-container {
+    max-width: 800px; /* Limit the width of the content */
+    margin: 20px auto; /* Center the content */
+    padding: 20px; /* Add some padding */
+    color:#030303;
+    background-color: #f3f0f0; /* Light background for contrast */
+    border: 1px solid #ddd; /* Light border */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.terms-header {
+    text-align: center; /* Center the header */
+    font-size: 2rem; /* Larger font size */
+    margin-bottom: 20px; /* Space below the header */
+}
+
+.terms-intro {
+    font-size: 1.2rem; /* Slightly larger font for the intro */
+    margin-bottom: 20px; /* Space below the intro */
+    text-align: center; /* Center the intro text */
+}
+
+.terms-section-title {
+    font-size: 1.5rem; /* Section title size */
+    margin-top: 20px; /* Space above the section title */
+    margin-bottom: 10px; /* Space below the section title */
+    color: #030303; /* Darker text color */
+}
+
+.terms-paragraph {
+    font-size: 1rem; /* Standard font size for paragraphs */
+    line-height: 1.5; /* Line height for readability */
+    margin-bottom: 15px; /* Space below each paragraph */
+    color: #666; /* Lighter text color */
+}
