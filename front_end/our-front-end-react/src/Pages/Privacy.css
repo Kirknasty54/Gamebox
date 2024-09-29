@@ -1,0 +1,60 @@
+.privacy-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffffff; /* White background for contrast */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text for readability */
+  }
+  
+  h1 {
+    color: #4facfe; /* Match your website's primary color */
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Geist', sans-serif; /* Use the same font as your site */
+  }
+  
+  h2 {
+    color: #4facfe; /* Use the same primary color for subheadings */
+    margin-top: 1.5rem;
+  }
+  
+  p {
+    line-height: 1.7;
+    color: #555; /* Slightly lighter text for paragraphs */
+  }
+  
+  ul {
+    margin-left: 1.5rem;
+    padding: 0;
+  }
+  
+  li {
+    margin-bottom: 0.5rem;
+    list-style-type: disc;
+  }
+  
+  a {
+    color: #4facfe; /* Link color matching primary theme */
+    text-decoration: none;
+  }
+  
+  a:hover {
+    text-decoration: underline; /* Underline on hover for links */
+  }
+  
+  @media (max-width: 600px) {
+    .privacy-container {
+      padding: 1rem;
+    }
+  
+    h1 {
+      font-size: 1.8rem; /* Responsive font size for headings */
+    }
+  
+    h2 {
+      font-size: 1.5rem; /* Responsive font size for subheadings */
+    }
+  }
+  
