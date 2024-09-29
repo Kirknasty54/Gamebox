@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
@@ -22,6 +23,6 @@ public class UserInfo {
   private String userName;
   private String password;
   @Column(unique = true)
-  private String userEmail;
+  private String email;
 
 }
