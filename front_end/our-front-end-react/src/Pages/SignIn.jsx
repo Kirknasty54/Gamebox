@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import Navbar from '../components/NavBarSignUp';
+import NavBarUser from '../Components/NavBarUser';
 
 const Login = () => {
   const [values, setValues] = useState({
+    name: '',
     email: '',
     password: '',
     rememberMe: false,
@@ -35,7 +36,7 @@ const Login = () => {
 
   return (
     <>
-      <Navbar />
+      <NavBarUser />
       <div className="modal modal-sheet position-static d-block bg-body-secondary p-4 py-md-5" tabIndex="-1" role="dialog" id="modalLogin">
         <div className="modal-dialog" role="document">
           <div className="modal-content rounded-4 shadow">

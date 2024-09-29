@@ -1,7 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import Profile from '../Pages/Profile';
+
+import NavBar from './NavBar';
+import NavBarUser from './NavBarUser';
 
 const UserHome = () => {
+  const likedGames = [
+    { id: 1, title: 'Game One', genre: 'Action' },
+    { id: 2, title: 'Game Two', genre: 'Adventure' },
+    { id: 3, title: 'Game Three', genre: 'Puzzle' },
+  ];
+
+const gameList = [
+    { id: 1, title: 'Game A', genre: 'RPG' },
+    { id: 2, title: 'Game B', genre: 'Strategy' },
+    { id: 3, title: 'Game C', genre: 'Shooter' },
+];
   const [user, setUser] = useState(null);
 
   useEffect(() => {
@@ -18,29 +31,28 @@ const UserHome = () => {
     }
   }, [user]); // Runs when 'user' is updated
 
-  // return (
-  //   <div>
-  //     {/* <h1>Welcome to the Home Page</h1>
-  //     {user ? (
-  //       <p>Hello, {user.userEmail}! You are logged in.</p>
-  //     ) : (
-  //       <p>Please log in to see your information.</p>
-  //     )} */}
     return (
         <>
-            <NavBar />
+            <NavBarUser />
             <div className="profile-container">
+              {user ? (
+                <>
                 <div className="profile-header">
                     <img src="./D1.png" alt="Profile" className="profile-picture" />
-                    <h1 className="profile-name">John Doe</h1>
+                    <h1 className="profile-name">{user.name}</h1>
                 </div>
                 <div className="profile-details">
-                    <p className="profile-email">Email: johndoe@example.com</p>
+                    <p className="profile-email">Email: {user.userEmail}</p>
                     <p className="profile-bio">
                         Bio: A passionate gamer and tech enthusiast. Always looking to explore new adventures!
                     </p>
                 </div>
-                
+                  </>
+              ) : (
+                    <p>this</p>
+
+
+                    )}
                 <div className="profile-games">
                     <h2>Liked Games</h2>
                     <ul>
