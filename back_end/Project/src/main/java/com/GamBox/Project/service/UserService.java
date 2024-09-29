@@ -30,10 +30,6 @@ public class UserService {
     likedGameInfoRepository.save(likedGame);
   }
 
-  public void unlikeGame(Long likedGameId) {
-    likedGameInfoRepository.deleteById(likedGameId);
-  }
-
   public List<LikedGamesInfo> getLikedGames(Long userId) {
     return likedGameInfoRepository.findByUser_uId(userId);
   }
@@ -62,4 +58,27 @@ public class UserService {
     return userInfoRepository.findByUserName(username);
   }
 
+  public void likeGame(Long userId, Long gameId) {
+    Optional<LikedGamesInfo> existingLike = likedGameInfoRepository.findByUser_uIdAndGame_gameId(userId, gameId);
+    if (existingLike.isPresent()) {
+      throw new IllegalArgumentException("Game is already liked by this user.");
+    }
+
+    UserInfo user = userInfoRepository.findById(userId)
+        .orElseThrow(() -> new IllegalArgumentException("User not found"));
+    GameInfo game = gameInfoRepository.findBygameId(gameId)
+        .orElseThrow(() -> new IllegalArgumentException("Game not found"));
+
+    LikedGamesInfo likedGame = new LikedGamesInfo();
+    likedGame.setUser(user);
+    likedGame.setGame(game);
+    likedGameInfoRepository.save(likedGame);
+  }
+
+  public void unlikeGame(Long likedGameId) {
+    if (!likedGameInfoRepository.existsById(likedGameId)) {
+      throw new IllegalArgumentException("Liked game not found");
+    }
+    likedGameInfoRepository.deleteById(likedGameId);
+  }
 }
