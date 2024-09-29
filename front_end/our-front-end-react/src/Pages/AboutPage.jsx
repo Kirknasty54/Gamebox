@@ -1,6 +1,7 @@
 // AboutPage.js
 import React from 'react';
 import NavBar from '../Components/NavBar';
+import { Link } from 'react-scroll';
 
 import './Aboutus.css';
 
@@ -10,6 +11,7 @@ const AboutPage = () => {
     <>
       <NavBar />
       <h1 className='header'>About Us</h1>
+
       <div className='box'>
         <h3 className='title'>Our Mission</h3>
         <div className='content'> {/* Add this class for flexbox layout */}
