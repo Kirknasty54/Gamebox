@@ -16,10 +16,27 @@ public class LikedGamesInfo {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "user_idsdf")
+  @JoinColumn(name = "user_id")
   private UserInfo user;
 
   @ManyToOne
   @JoinColumn(name = "game_id")
   private GameInfo game;
+
+  public LikedGamesInfo() {
+
+  }
+
+  public LikedGamesInfo(UserInfo user, GameInfo game) {
+    this.user = user;
+    this.game = game;
+  }
+
+  public GameInfo getGame() {
+    return game;
+  }
+
+  public void setGame(GameInfo game) {
+    this.game = game;
+  }
 }
