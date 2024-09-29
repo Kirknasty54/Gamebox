@@ -1,10 +1,12 @@
 package com.GamBox.Project.service;
 
 import com.GamBox.Project.repository.GameInfoRepository;
+import com.GamBox.Project.repository.LikedGameInfoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
 import com.GamBox.Project.domain.GameInfo;
 import java.util.Optional;
 
@@ -14,8 +16,21 @@ public class GameService {
   @Autowired
   private GameInfoRepository gameInfoRepository;
 
+  @Autowired
+  private LikedGameInfoRepository likedGameRepository;
+
   public List<GameInfo> allGames() {
     return gameInfoRepository.findAll();
+  }
+
+  public List<GameInfo> getLikedGames(Long userId) {
+    // This method should interact with the repository to fetch liked games for the
+    // user
+    // For example, assuming you have a LikedGameRepository that links users and
+    // games:
+    return null;
+    // return likedGameRepository.findByUser_uId(userId); // Replace with actual
+    // method
   }
 }
 

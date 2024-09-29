@@ -34,7 +34,7 @@ public class GameController {
     List<GameRespones> gameRespones = new ArrayList<>();
     for (GameInfo game : games) {
       gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(), game.getGameName(), game.getPublisher(),
-          game.getImageUrl()));
+          game.getImageUrl(), game.getDescription()));
     }
     return new ResponseEntity<>(gameRespones, HttpStatus.OK);
   }
@@ -50,14 +50,23 @@ public class GameController {
     private String publisher;
     @Getter
     private String image_url;
+    @Getter
+    private String description;
 
-    public GameRespones(Long gameId, String developer, String game_name, String publisher, String image_url) {
+    public GameRespones(Long gameId, String developer, String game_name, String publisher, String image_url,
+        String description) {
       this.gameId = gameId;
       this.developer = developer;
       this.game_name = game_name;
       this.publisher = publisher;
       this.image_url = image_url;
+      this.description = description;
     }
+  }
+
+  @GetMapping("/{uId}/likedGames")
+  public ResponseEntity<List<GameRespones>> getLikedGames(@PathVariable Long uId) {
+    return null;
   }
 
 }
