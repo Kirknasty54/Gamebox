@@ -1,0 +1,38 @@
+.terms-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    color: #333; /* Consistent text color */
+    background-color: #ffffff; /* Light background */
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.terms-header {
+    text-align: center;
+    font-size: 2rem; /* Header font size */
+    margin-bottom: 20px;
+    color: #4facfe; /* Primary color */
+}
+
+.terms-intro {
+    font-size: 1.2rem; /* Intro font size */
+    margin-bottom: 20px;
+    text-align: center;
+    color: #666; /* Paragraph color */
+}
+
+.terms-section-title {
+    font-size: 1.5rem; /* Section title font size */
+    margin-top: 20px;
+    margin-bottom: 10px;
+    color: #4facfe; /* Primary color */
+}
+
+.terms-paragraph {
+    font-size: 1rem; /* Standard paragraph font size */
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #666; /* Paragraph color */
+}

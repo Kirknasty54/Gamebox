@@ -16,7 +16,7 @@ Ensure you have reviewed the [Rules & FAQ](https://hackmidwest.com/#faq)
 
 1.   **Jackson Kirkpatrick**  || **kirkpatrick545454@gmail.com**  
 2.  || **Kirknasty54**
-3. **John Kutney** || **jkutney@gmail.com**
+3. **John Kutney** || **jkutney21@gmail.com**
 4. **Jacob Lee**
 4. **Noah Bowling**
 5. **Collin Davis** || **cgd09190@ucmo.edu**

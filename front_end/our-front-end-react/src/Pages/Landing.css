@@ -1,10 +1,133 @@
-body {
-  font-family: 'Geist', sans-serif;
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 15px; /* Add padding for inner spacing */
 }
 
-.text-box {
-  background-color: rgba(255, 255, 255, 0.3);
-  border-radius: 15px;
-  padding: 20px;
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center; /* Center vertically */
+  margin-top: auto; /* Push the footer to the bottom */
+  padding-top: 10px; /* Add padding for separation */
+  border-top: 1px solid #ccc; /* Light border to separate from body */
+}
+
+.time-text {
+  font-size: 0.9rem; /* Slightly larger for better readability */
+  color: #888; /* More neutral color */
+}
+
+.btn-group {
+  display: flex;
+  gap: 5px; /* Space between buttons */
+}
+
+.btn {
+  padding: 8px 12px; /* Adjust padding */
+  font-weight: bold; /* Ensure text stands out */
+  border-radius: 20px; /* Round edges for a softer look */
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.btn-primary {
+  background-color: #ff6b6b;
+  color: white;
+}
+
+.btn-primary:hover {
+  background-color: #ff3b3b; 
+  transform: scale(1.05);
+}
+
+.btn-secondary {
+  background-color: #4facfe;
+  color: white;
+}
+
+.btn-secondary:hover {
+  background-color: #3b9ddc; 
+  transform: scale(1.05);
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .btn {
+    padding: 6px 10px; /* Smaller padding for medium screens */
+    font-size: 0.9rem; /* Slightly smaller font size */
+  }
+}
+
+@media (max-width: 576px) {
+  .btn {
+    padding: 5px 8px; /* Smaller padding for small screens */
+    font-size: 0.8rem; /* Even smaller font size */
+  }
+}
+.time-text {
+  font-size: 0.9rem; /* Slightly larger for better readability */
+  color: #888; /* More neutral color */
+  margin-top: 10px; /* Add some spacing above */
+}
+.search-input {
+  width: 100%; /* Full width on its own line */
+  padding: 10px;
   margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  transition: border-color 0.3s;
+}
+
+.button-group {
+  display: flex;
+  justify-content: center; /* Center buttons */
+  gap: 10px; /* Space between buttons */
+}
+
+.footer {
+  background-color: #fff;
+  padding: 20px 0;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+}
+
+.footer-links {
+  margin-top: 10px; /* Spacing above links */
+}
+
+.footer-link {
+  margin: 0 10px; /* Spacing between links */
+  color: #4facfe;
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
+}
+
+/* Additional styles for responsiveness */
+@media (max-width: 576px) {
+  .footer-link {
+    font-size: 0.8rem; /* Smaller font size on small screens */
+  }
+}
+.footer {
+  background-color: rgb(72, 69, 69); /* Dark background color */
+  padding: 20px 0;
+  box-shadow: 0 -1px 10px rgba(0, 0, 0, 0.1);
+  color: rgb(255, 255, 255); /* Light text color */
+}
+
+.footer-links {
+  margin-top: 10px; /* Spacing above links */
+}
+
+.footer-link {
+  margin: 0 10px; /* Spacing between links */
+  color: #009af3; /* White color for links */
+  text-decoration: none;
+}
+
+.footer-link:hover {
+  text-decoration: underline;
 }

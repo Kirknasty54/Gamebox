@@ -5,10 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Components/UserReviews.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Components/UserReviews.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/AboutPage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/AboutPage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/GoToGame.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/GoToGame.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -60,7 +58,7 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "reference.settingsdialog.project.gradle",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -84,6 +82,13 @@
       </list>
     </recent_temporary>
   </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="jdk-17.0.10-corretto-17.0.10-f644763e9732-24fca987" />
+      </set>
+    </attachedChunks>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -95,6 +100,7 @@
       <workItem from="1727546001534" duration="1318000" />
       <workItem from="1727573947453" duration="269000" />
       <workItem from="1727574242049" duration="119000" />
+      <workItem from="1727576055390" duration="483000" />
     </task>
     <servers />
   </component>

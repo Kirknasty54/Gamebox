@@ -1,0 +1,14 @@
+.navbar-logo {
+    width: 40px; /* Set width to fit nicely */
+    height: auto; /* Maintain aspect ratio */
+    margin-right: 10px; /* Space between logo and text */
+    border-radius: 8px; /* Adjust value for desired roundness */
+    overflow: hidden; /* Ensures that rounded corners are applied */
+}
+.user-avatar {
+    width: 40px; /* Set width as needed */
+    height: 40px; /* Set height to maintain aspect ratio */
+    border-radius: 50%; /* Make it round */
+    cursor: pointer; /* Show pointer on hover */
+    object-fit: cover; /* Ensure the image covers the area */
+}

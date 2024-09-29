@@ -1,0 +1,62 @@
+.privacy-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    background-color: #ffffff; /* Light background */
+    border-radius: 8px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    color: #333; /* Consistent text color */
+}
+
+h1 {
+    color: #4facfe; /* Primary color */
+    text-align: center;
+    margin-bottom: 1rem;
+    font-family: 'Geist', sans-serif; /* Consistent font family */
+    font-size: 2rem; /* Header font size */
+}
+
+h2 {
+    color: #4facfe; /* Primary color */
+    margin-top: 1.5rem; 
+    font-size: 1.5rem; /* Section title font size */
+}
+
+p {
+    line-height: 1.7; /* Line height for readability */
+    color: #666; /* Paragraph color */
+    font-size: 1rem; /* Standard paragraph font size */
+}
+
+ul {
+    margin-left: 1.5rem; /* Indentation for lists */
+    padding: 0;
+}
+
+li {
+    margin-bottom: 0.5rem; /* Spacing for list items */
+    list-style-type: disc; /* Disc bullets */
+}
+
+a {
+    color: #4facfe; /* Link color */
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline; /* Underline on hover */
+}
+
+@media (max-width: 600px) {
+    .privacy-container {
+        padding: 1rem; /* Adjust padding for smaller screens */
+    }
+
+    h1 {
+        font-size: 1.8rem; /* Responsive heading size */
+    }
+
+    h2 {
+        font-size: 1.5rem; /* Responsive subheading size */
+    }
+}

@@ -1,107 +1,107 @@
 import React, { useState, useEffect } from 'react';
 
 function Theme() {
-  const [theme, setTheme] = useState('dark'); // Initial theme set to dark
-  const [isOpen, setIsOpen] = useState(false);
+    const [theme, setTheme] = useState('dark');
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
-  const handleThemeChange = (selectedTheme) => {
-    setTheme(selectedTheme);
-    localStorage.setItem('theme', selectedTheme);
-    window.location.reload(); // Reload the page to apply the new theme
-  };
-
-  const applyThemeStyles = (currentTheme) => {
-    const darkThemeStyles = {
-      backgroundColor: '#333',
-      color: '#fff',
+    const handleThemeChange = (selectedTheme) => {
+        setTheme(selectedTheme);
+        localStorage.setItem('theme', selectedTheme);
+        document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme'; // Set body class based on theme
+        setIsModalOpen(false); // Close modal after selection
     };
 
-    const lightThemeStyles = {
-      backgroundColor: '#fff',
-      color: '#000',
-    };
+    useEffect(() => {
+        const savedTheme = localStorage.getItem('theme') || 'dark';
+        setTheme(savedTheme);
+        document.body.className = savedTheme === 'dark' ? 'dark-theme' : 'light-theme'; // Apply theme on load
+    }, []);
 
-    let bodyStyle;
-
-    if (currentTheme === 'auto') {
-      const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
-      bodyStyle = prefersDark ? darkThemeStyles : lightThemeStyles;
-    } else {
-      bodyStyle = currentTheme === 'dark' ? darkThemeStyles : lightThemeStyles;
-    }
-
-    Object.keys(bodyStyle).forEach(key => {
-      document.body.style[key] = bodyStyle[key];
-    });
-  };
-
-  useEffect(() => {
-    // Check for saved theme in local storage on initial load
-    const savedTheme = localStorage.getItem('theme') || 'dark';
-    setTheme(savedTheme);
-    applyThemeStyles(savedTheme);
-  }, []);
-
-  return (
-    <div className="theme-dropdown" style={styles.container}>
-      <button
-        className="btn theme-toggle"
-        onClick={() => setIsOpen(prev => !prev)} // Toggle dropdown on button click
-        aria-label="Toggle theme"
-      >
-        {theme === 'dark' ? '🌙' : '☀️'}
-        <span className="visually-hidden">Toggle theme</span>
-      </button>
-      {isOpen && (
-        <ul className="dropdown-menu" style={styles.dropdown}>
-          <li>
-            <button onClick={() => handleThemeChange('light')} style={styles.button}>
-              ☀️ Light
+    return (
+        <div style={styles.container}>
+            <button
+                className="btn theme-toggle"
+                onClick={() => setIsModalOpen(true)}
+                aria-label="Toggle theme"
+                style={styles.button}
+            >
+                {theme === 'dark' ? '🌙' : '☀️'}
+                <span className="visually-hidden">Toggle theme</span>
             </button>
-          </li>
-          <li>
-            <button onClick={() => handleThemeChange('dark')} style={styles.button}>
-              🌙 Dark
-            </button>
-          </li>
-          <li>
-            <button onClick={() => handleThemeChange('auto')} style={styles.button}>
-              ⚙️ Auto
-            </button>
-          </li>
-        </ul>
-      )}
-    </div>
-  );
+
+            {isModalOpen && (
+                <div style={styles.modal}>
+                    <div style={styles.modalContent}>
+                        <h3>Choose a Theme</h3>
+                        <button onClick={() => handleThemeChange('light')} style={styles.themeButton}>
+                            ☀️ Light
+                        </button>
+                        <button onClick={() => handleThemeChange('dark')} style={styles.themeButton}>
+                            🌙 Dark
+                        </button>
+                        <button onClick={() => handleThemeChange('auto')} style={styles.themeButton}>
+                            ⚙️ Auto
+                        </button>
+                        <button onClick={() => setIsModalOpen(false)} style={styles.closeButton}>
+                            Close
+                        </button>
+                    </div>
+                </div>
+            )}
+        </div>
+    );
 }
 
 const styles = {
-  container: {
-    position: 'fixed',
-    bottom: '20px',
-    right: '20px',
-    zIndex: 1000,
-  },
-  dropdown: {
-    position: 'absolute',
-    backgroundColor: '#fff',
-    border: '1px solid #ccc',
-    borderRadius: '4px',
-    marginTop: '5px',
-    boxShadow: '0 2px 8px rgba(0,0,0,0.15)',
-    padding: '10px',
-    listStyleType: 'none',
-  },
-  button: {
-    background: 'none',
-    border: 'none',
-    padding: '8px 16px',
-    cursor: 'pointer',
-    display: 'flex',
-    alignItems: 'center',
-    width: '100%',
-    textAlign: 'left',
-  },
+    container: {
+        position: 'fixed',
+        bottom: '20px',
+        right: '20px',
+        zIndex: 1000,
+    },
+    button: {
+        background: 'none',
+        border: 'none',
+        cursor: 'pointer',
+        padding: '10px',
+        fontSize: '24px',
+    },
+    modal: {
+        position: 'fixed',
+        top: 0,
+        left: 0,
+        right: 0,
+        bottom: 0,
+        backgroundColor: 'rgba(0, 0, 0, 0.7)',
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        zIndex: 1001,
+    },
+    modalContent: {
+        background: '#fff',
+        padding: '20px',
+        borderRadius: '8px',
+        textAlign: 'center',
+    },
+    themeButton: {
+        margin: '10px',
+        padding: '10px 20px',
+        cursor: 'pointer',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: '#007bff',
+        color: '#fff',
+    },
+    closeButton: {
+        marginTop: '20px',
+        padding: '10px 20px',
+        cursor: 'pointer',
+        border: 'none',
+        borderRadius: '4px',
+        backgroundColor: '#dc3545',
+        color: '#fff',
+    },
 };
 
 export default Theme;

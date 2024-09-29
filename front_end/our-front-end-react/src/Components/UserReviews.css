@@ -8,6 +8,13 @@
     padding: 1rem;
 }
 
+.review-card:hover {
+    transform: scale(1.05);
+    /* Makes the card pop out */
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.2);
+    /* Adds a stronger shadow */
+}
+
 .review-card {
     border: 1px solid #ddd;
     /* Add a light border */
@@ -15,6 +22,7 @@
     /* Optional: Round the corners for a modern look */
     padding: 1.5rem;
     margin-bottom: 1rem;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     /* Spacing between the reviews */
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
     /* Subtle shadow for depth */
