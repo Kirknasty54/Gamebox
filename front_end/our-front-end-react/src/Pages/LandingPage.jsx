@@ -44,14 +44,6 @@ function LandingPage() {
     setSearchTerm(e.target.value);
   };
 
-  const handleFavoriteToggle = (game) => {
-    setFavorites(prevFavorites => 
-      prevFavorites.includes(game) 
-        ? prevFavorites.filter(fav => fav !== game) 
-        : [...prevFavorites, game]
-    );
-  };
-
   const openReviewModal = (game) => {
     setSelectedGameForReview(game);
     setReviewModalVisible(true);
@@ -68,6 +60,23 @@ function LandingPage() {
       setUser(JSON.parse(storedUserSession));
     }
   }, []);
+
+  const formatDescription = (description) => {
+    const words = description.split(' ');
+    const isLong = words.length > 50;
+
+    if (isLong) {
+      return {
+        text: words.slice(0, 50).join(' ') + '...', // Show first 50 words
+        fontSize: '0.625rem', // Set font size to 10px
+      };
+    }
+
+    return {
+      text: description.length > 200 ? description.substring(0, 200) + '...' : description,
+      fontSize: '1rem', // Default font size
+    };
+  };
 
   const navBar = user ? <NavBarUser/> : <NavBar />;
 
@@ -125,28 +134,30 @@ function LandingPage() {
                 }, []).map((group, carouselIndex) => (
                   <div className={`carousel-item ${carouselIndex === 0 ? 'active' : ''}`} key={carouselIndex}>
                     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                      {group.map((game, gameIndex) => (
-                        <div className="col" key={gameIndex}>
-                          <div className="card shadow-sm">
-                            <img src={game.image_url} alt={`Thumbnail for ${game.game_name}`} className="card-img-top" />
-                            <div className="card-body">
-                              <h5 className="card-title">{game.game_name}</h5>
-                              <p className="card-text text-dark">{game.developer}</p>
-                                <p className="card-text text-dark">{game.description}</p>
-                              <div className="rating">{`⭐ ${game.rating}`}</div>
-                            </div>
-                            <div className="card-footer">
-                              <div className="btn-group">
-                                <Link to={`/GoToGame/${game.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
-                                <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
-                                <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
-                                  {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
-                                </button>
+                      {group.map((game, gameIndex) => {
+                        const { text, fontSize } = formatDescription(game.description);
+                        return (
+                          <div className="col" key={gameIndex}>
+                            <div className="card shadow-sm">
+                              <img src={game.image_url} alt={`Thumbnail for ${game.game_name}`} className="card-img-top" />
+                              <div className="card-body">
+                                <h5 className="card-title">{game.game_name}</h5>
+                                <p className="card-text text-dark" style={{ fontSize }}>{text}</p>
+                                <div className="rating">{`⭐ ${game.rating}`}</div>
+                              </div>
+                              <div className="card-footer">
+                                <div className="btn-group">
+                                  <Link to={`/GoToGame/${game.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
+                                  <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
+                                  <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
+                                    {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
+                                  </button>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      ))}
+                        );
+                      })}
                     </div>
                   </div>
                 ))}

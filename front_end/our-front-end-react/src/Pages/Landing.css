@@ -200,20 +200,49 @@
 
 .carousel-control-prev-icon::before {
   content: '◀'; /* Use a custom character or icon for the arrow */
-  font-size: 20px; /* Adjust size */
-  color: gray; /* Set icon color */
+  font-size: 25px; /* Adjust size */
+  color: hwb(188 2% 9%); /* Set icon color */
 }
 
 .carousel-control-next-icon::before {
   content: '▶'; /* Use a custom character or icon for the arrow */
   font-size: 20px; /* Adjust size */
-  color: gray; /* Set icon color */
+  color: hwb(188 2% 9%); /* Set icon color */
 }
 
 .carousel-control-prev:hover .carousel-control-prev-icon::before,
 .carousel-control-next:hover .carousel-control-next-icon::before {
-  color: white; /* Change icon color to white on hover */
+  color: hwb(188 2% 50%); /* Change icon color to white on hover */
 }
 
+.card {
+  height: 350px; /* Fixed height for the card */
+  display: flex;
+  flex-direction: column;
+}
+
+.card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex: 1;
+  padding: 15px; /* Inner spacing */
+  overflow: hidden; /* Prevent overflow of text */
+}
+
+.card-title,
+.card-text,
+.rating {
+  font-size: 2vw; /* Responsive font size based on viewport width */
+  line-height: 1.2; /* Maintain readable line height */
+}
+
+.card-title {
+  flex-grow: 1; /* Allow title to grow */
+}
+
+.card-text {
+  flex-grow: 1; /* Allow description to grow */
+}
 
 

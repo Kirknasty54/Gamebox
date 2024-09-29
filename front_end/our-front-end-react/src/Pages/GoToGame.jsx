@@ -7,15 +7,14 @@ import './GoToGame.css';
 
 function GoToGame() {
     const { gameId } = useParams(); // Get gameId from URL parameters
-    console.log(gameId);
     const [game, setGame] = useState(null); // Changed to single game object
 
     useEffect(() => {
         const getGame = async () => {
             try {
-                const response = await axios.get(`http://localhost:8080/api/v1/games/${gameId}`); // Use gameId in the request
+                const response = await axios.get(`http://localhost:8080/api/v1/games/${gameId}`);
                 if (response.data) {
-                    setGame(response.data); // Set the game object based on response
+                    setGame(response.data);
                 } else {
                     console.error('Response data is not valid:', response.data);
                     setGame(null);
@@ -25,7 +24,7 @@ function GoToGame() {
             }
         };
         getGame();
-    }, [gameId]); // Add gameId as a dependency
+    }, [gameId]);
 
     // If game is not yet fetched, show a loading message or spinner
     if (!game) {
@@ -42,15 +41,15 @@ function GoToGame() {
             <div className="container-fluid mt-3">
                 <div className="row justify-content-center">
                     <div className="col-md-4">
-                        <img src={game.image_url || '../src/image.svg'} alt={`${game.game_name} cover`} /> {/* Use the correct image source */}
+                        <img src={game.image_url || '../src/image.svg'} alt={`${game.game_name} cover`} />
                     </div>
                     <div className="col-md-4">
                         <h1>{game.game_name}</h1>
                         <p>{game.description}</p>
                     </div>
                     <div className="col-md-2 mt-2">
-                        <h4>Year</h4>
-                        <p>{game.year}</p>
+                        <h4>Publisher</h4>
+                        <p>{game.publisher}</p>
                     </div>
                     <div className="col-md-2 mt-2">
                         <h4>Developer</h4>
@@ -59,7 +58,7 @@ function GoToGame() {
                 </div>
                 <div className='row justify-content-end'>
                     <div className='col-md-12 text-center'>
-                        <h2 className="text-black mt-2" style={{ fontFamily: 'Geist' }}>User Reviews</h2>
+                        <h2 className="text-black mt-2">User Reviews</h2>
                         <UserReviews />
                     </div>
                 </div>
