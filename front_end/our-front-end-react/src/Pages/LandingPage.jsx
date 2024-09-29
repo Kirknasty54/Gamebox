@@ -1,28 +1,30 @@
-import React from 'react'
-import GameCards from '../Components/GameCards'
-import NavBar from '../Components/NavBar'
-import { Link } from "react-router-dom";
+import React from 'react';
+import GameCards from '../Components/GameCards';
+import NavBar from '../Components/NavBar';
+import Globe from '../Components/Globe';
+
 function LandingPage() {
   return (
     <>
-    <NavBar/>
-    <section className="py-5 text-center container">
-      <div className="row py-lg-5">
-        <div className="col-lg-6 col-md-8 mx-auto">
-          <h1 className="fw-light text-light">Hello and welcome to GameBox</h1>
-             <div className = 'col-lg-6 mx-auto'>
-                <p className = 'lead mb-4'>
+      <NavBar />
+      <section className="py-5 text-center container" style={{ position: 'relative' }}>
+        <Globe style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />
+        <div className="row py-lg-5">
+          <div className="col-lg-6 col-md-8 mx-auto">
+            <h1 className="fw-light text-light">Hello and welcome to GameBox</h1>
+            <div className='col-lg-6 mx-auto'>
+              <p className='lead mb-4' style={{ color: '#f8f9fa', backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '8px' }}>
                 Quickly design and customize responsive mobile-first sites with Bootstrap, 
                 the world’s most popular front-end open source toolkit, 
                 featuring Sass variables and mixins, responsive grid system, 
                 extensive prebuilt components, and powerful JavaScript plugins.
-            </p>
+              </p>
             </div>
             <a href="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</a>
             <a href="/Popular" className="btn btn-secondary my-2 mx-2">Popular Games</a>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
     <div className="album py-5 bg-body-tertiary">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -38,7 +40,7 @@ function LandingPage() {
                     <p className="card-text text-dark">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="btn-group">
-                        <a href='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</a>
+                        <a  href='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</a>
                       </div>
                       <small className="text-dark">9 mins</small>
                     </div>

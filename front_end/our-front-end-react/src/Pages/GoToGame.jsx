@@ -1,5 +1,6 @@
 import React, { useEffect ,useState } from 'react'
 import NavBar from '../Components/NavBar'
+import UserReviews from '../Components/UserReviews';
 import axios from 'axios'
 function GoToGame(){
     const[games, setGames] = useState([]);
@@ -53,9 +54,10 @@ function GoToGame(){
         </div>
         </>
         ))}
-        <div className = 'row justify-content-center'>
-            <div className = 'col-md-4 text-center'>
+        <div className = 'row justify-content-end'>
+            <div className = 'col-md-12 text-center'>
                 <h2>User Reviews</h2>
+                <UserReviews/>
             </div>
         </div>
     </div>
