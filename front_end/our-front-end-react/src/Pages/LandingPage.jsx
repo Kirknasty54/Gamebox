@@ -85,7 +85,7 @@ function LandingPage() {
                             <input
                                 type="text"
                                 placeholder="Search for games..."
-                                className="search-input"
+                                className="form-control mb-3"
                                 value={searchTerm}
                                 onChange={handleSearch}
                                 aria-label="Search games"

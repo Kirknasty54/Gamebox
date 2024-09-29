@@ -19,17 +19,16 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    if (!values.email || !values.password) {
-    setErrors({ email: !values.email ? 'Email is required' : '', password: !values.password ? 'Password is required' : '' });
-  return;
-     }
     
     axios.post('http://localhost:8080/api/v1/users/auth', values)
       .then(response => {
+        const userData = response.data;
         if (values.rememberMe) {
-          localStorage.setItem('userSession', JSON.stringify(response.data)); // Store session in localStorage
+          localStorage.setItem('userSession', JSON.stringify(userData)); // Store session in localStorage
+        } else {
+          sessionStorage.setItem('userSession', JSON.stringify(userData)); // Store session in sessionStorage
         }
-        navigate('/profile'); // Navigate to the home page on successful login
+        navigate('/UserHome'); // Navigate to the home page on successful login
       })
       .catch(err => console.log(err));
   };
