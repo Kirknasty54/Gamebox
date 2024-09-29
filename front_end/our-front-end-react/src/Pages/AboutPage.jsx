@@ -21,7 +21,7 @@ const AboutPage = () => {
         <div className='content'> {/* Add this class for flexbox layout */}
           <img title='about-image' src='collin.svg' className='about-image' alt='About Us'/>
           <p className='p1'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+              <a className="text-light" href="https://www.linkedin.com/in/collin-davis-8a862a226/">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -33,7 +33,7 @@ const AboutPage = () => {
         <div className='content'> {/* Add this class for flexbox layout */}
           <img title='about-image' src='jacob1.svg' className='about-image' alt='About Us'/>
           <p className='p1'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+          <a className="text-light" href="www.linkedin.com/in/john-k-34349424a">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -46,7 +46,7 @@ const AboutPage = () => {
         <div className='content1'> {/* Add this class for flexbox layout */}
           <img title='about-image1' src='John.svg' className='about-image' alt='About Us'/>
           <p className='p2'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+          <a className="text-light" href="www.linkedin.com/in/john-k-34349424a">LinkedIn</a>
           </p>
         </div>
       </div>
