@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/controller/UserController.java" afterDir="false" />
-    </list>
+    <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -127,7 +124,7 @@
       <workItem from="1727574242049" duration="119000" />
       <workItem from="1727576055390" duration="483000" />
       <workItem from="1727594770283" duration="3327000" />
-      <workItem from="1727601614078" duration="1078000" />
+      <workItem from="1727601614078" duration="1943000" />
     </task>
     <servers />
   </component>
