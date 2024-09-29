@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: space-between;
   flex: 1;
-  height: 200px;
+  height: 325px;
   padding: 15px; /* Add padding for inner spacing */
 }
 .card {
@@ -141,7 +141,7 @@
 
 /* Set a maximum height for the carousel and adjust image/card sizes */
 .carousel-item {
-  height: 500px;
+  height: auto;
   /* Adjust the overall height of each carousel item */
 }
 

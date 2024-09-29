@@ -5,12 +5,15 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import './NavBarUser.css';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 function NavBarUser() {
+    const navigate = useNavigate();
     const handleLogout = (event) => {
     event.preventDefault();
     localStorage.clear();
     sessionStorage.clear();
+    navigate('/')
   };
     const RandomNumber = Math.floor(Math.random() * 5) + 1;
     return (
