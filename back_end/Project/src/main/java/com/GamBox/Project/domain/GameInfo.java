@@ -22,6 +22,5 @@ public class GameInfo {
   private String gameName;
   private String developer;
   private String publisher;
-  private String releaseDate;
   private String imageUrl;
 }
