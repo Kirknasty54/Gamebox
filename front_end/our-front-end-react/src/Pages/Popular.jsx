@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import NavBar from '../Components/NavBar';
 import axios from 'axios';
+import AnimatedBg from 'react-animated-bg';
+import NavBarUser from '../Components/NavBarUser';
 import { Link } from 'react-router-dom';
 
 const Favorited = () => {
@@ -30,19 +32,35 @@ const Favorited = () => {
     title: `Favorite Game ${index + 1}`,
     description: `Description for Favorite Game ${index + 1}`,
   }));
-
+const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setUser(JSON.parse(storedUserSession));
+    }
+  }, []);
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
   return (
     <>
-      <NavBar />
+      {navBar}
+      <AnimatedBg
+        colors={["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bfbcf", "#a0e7e5"]}
+        duration={5}
+        delay={1}
+        timingFunction="linear"
+        randomMode
+        style={{ height: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
+      >
       <section className="py-5 text-center container">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light text-light">Popular Games</h1>
+            <h1 className="fw-light text-dark">Popular Games</h1>
             <a href="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</a>
             <a href="/" className="btn btn-secondary my-2 mx-2">Browse Games</a>
           </div>
         </div>
       </section>
+      </AnimatedBg>
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">

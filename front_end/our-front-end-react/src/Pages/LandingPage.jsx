@@ -68,7 +68,7 @@ function LandingPage() {
       setUser(JSON.parse(storedUserSession));
     }
   }, []);
-  const navBar = user ? <NavBarUser/> : <NavBar />;
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
   return (
     <>
       {navBar}

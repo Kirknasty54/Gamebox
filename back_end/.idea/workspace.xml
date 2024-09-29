@@ -4,7 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="" />
+    <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Components/NavbarUser.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Components/NavbarUser.jsx" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -108,14 +111,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-b114ca120d71-intellij.indexing.shared.core-IU-242.21829.142" />
-        <option value="bundled-js-predefined-d6986cc7102b-7c0b70fcd90d-JavaScript-IU-242.21829.142" />
-      </set>
-    </attachedChunks>
-  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -130,6 +125,7 @@
       <workItem from="1727576055390" duration="483000" />
       <workItem from="1727594770283" duration="3327000" />
       <workItem from="1727601614078" duration="1943000" />
+      <workItem from="1727606696069" duration="2008000" />
     </task>
     <servers />
   </component>
