@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import com.GamBox.Project.domain.UserInfo;
 import com.GamBox.Project.repository.UserInfoRepository;
 import com.GamBox.Project.service.UserService;
+import com.GamBox.Project.service.GameService;
 
 @RestController
 @AllArgsConstructor
@@ -24,10 +25,36 @@ import com.GamBox.Project.service.UserService;
 
 @RequestMapping("/api/v1/users")
 public class UserController {
-  @Autowired
-  private UserService userService;
+  private final UserService userService;
   @Autowired
   private UserInfoRepository userInfoRepository;
+  @Autowired
+  GameService gameService;
+
+  @Autowired
+  public UserController(UserService userService) {
+    this.userService = userService;
+  }
+
+  @PostMapping(value = "/{uId}/{gameId}/like", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Void> likeGame(@PathVariable Long uId, @PathVariable Long gameId) {
+    try {
+      gameService.likeGame(uId, gameId);
+      return new ResponseEntity<>(HttpStatus.OK); // 201 for successfully created
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle error
+    }
+  }
+
+  @DeleteMapping(value = "/{uId}/{gameId}/unlike", produces = MediaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<Void> unlikeGame(@PathVariable Long uId, @PathVariable Long gameId) {
+    try {
+      gameService.unlikeGame(uId, gameId);
+      return new ResponseEntity<>(HttpStatus.OK); // 204 for successful deletion
+    } catch (Exception e) {
+      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle error
+    }
+  }
 
   @GetMapping
   public ResponseEntity<List<UserResponse>> getAllUser() {
@@ -76,8 +103,5 @@ public class UserController {
       return ResponseEntity.ok(response);
     }
   }
-
-  // @PostMapping(value="/check", produces = MediaType.APPLICATION_JSON_VALUE)
-  // public ResponseEntity<?> register(@RequestBody Map<String, String)
 
 }

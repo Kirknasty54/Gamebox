@@ -2,6 +2,8 @@ package com.GamBox.Project.service;
 
 import com.GamBox.Project.repository.GameInfoRepository;
 import com.GamBox.Project.repository.LikedGameInfoRepository;
+import com.GamBox.Project.service.UserService;
+import com.GamBox.Project.domain.LikedGamesInfo;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -19,12 +21,29 @@ public class GameService {
   @Autowired
   private LikedGameInfoRepository likedGameRepository;
 
+  @Autowired
+  private UserService userService;
+
   public List<GameInfo> allGames() {
     return gameInfoRepository.findAll();
   }
 
   public GameInfo findGame(Long gameId) {
     return gameInfoRepository.findBygameId(gameId).get();
+  }
+
+  public void likeGame(Long userId, Long gameId) {
+    // Check if the game is already liked
+    Optional<LikedGamesInfo> likedGameOpt = likedGameRepository.findByUser_uIdAndGame_gameId(userId, gameId);
+    if (!likedGameOpt.isPresent()) {
+      LikedGamesInfo likedGame = new LikedGamesInfo(userService.singleUser(userId).get(), findGame(gameId));
+      likedGameRepository.save(likedGame); // Save the liked game to the database
+    }
+  }
+
+  // Method to unlike a game
+  public void unlikeGame(Long userId, Long gameId) {
+    likedGameRepository.deleteByUserAndGame(userService.singleUser(userId).get(), findGame((gameId)));
   }
 
   public List<GameInfo> getLikedGames(Long userId) {

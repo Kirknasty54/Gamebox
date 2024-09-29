@@ -16,7 +16,7 @@ public class LikedGamesInfo {
   private Long id;
 
   @ManyToOne
-  @JoinColumn(name = "user_id")
+  @JoinColumn(name = "u_id")
   private UserInfo user;
 
   @ManyToOne

@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @CrossOrigin
 public class UserInfo {
   @Id
-  // @GeneratedValue(strategy = GenerationType.IDENTITY)
+  @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long uId;
   @Column(unique = true)
   private String userName;
