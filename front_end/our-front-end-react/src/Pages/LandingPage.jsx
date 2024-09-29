@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
 import AnimatedBg from "react-animated-bg";
-import './Landing.css'; // Ensure this file includes your new CSS
+import './Landing.css';
 import LoadingSpinner from '../Components/LoadingSpinner';
 import ReviewModal from '../Components/ReviewModal';
 import NavBarUser from '../Components/NavBarUser';
@@ -23,7 +23,7 @@ function LandingPage() {
       setLoading(true);
       try {
         const response = await axios.get('http://localhost:8080/api/v1/games');
-        const gamesData = response.data.slice(0, 9); // Limit to 9 games
+        const gamesData = response.data.slice(0, 9);
         setGames(gamesData);
         setFilteredGames(gamesData);
       } catch (error) {
@@ -33,6 +33,11 @@ function LandingPage() {
       }
     };
     fetchGames();
+  }, []);
+
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setFavorites(storedFavorites);
   }, []);
 
   useEffect(() => {
@@ -54,6 +59,20 @@ function LandingPage() {
     setSelectedGameForReview(null);
   };
 
+  const handleFavoriteToggle = (game) => {
+    const isFavorite = favorites.some(fav => fav.gameId === game.gameId);
+    let updatedFavorites;
+
+    if (isFavorite) {
+      updatedFavorites = favorites.filter(fav => fav.gameId !== game.gameId);
+    } else {
+      updatedFavorites = [...favorites, game];
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); // Persist in local storage
+  };
+
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
@@ -67,18 +86,18 @@ function LandingPage() {
 
     if (isLong) {
       return {
-        text: words.slice(0, 50).join(' ') + '...', // Show first 50 words
-        fontSize: '0.625rem', // Set font size to 10px
+        text: words.slice(0, 50).join(' ') + '...',
+        fontSize: '0.625rem',
       };
     }
 
     return {
       text: description.length > 200 ? description.substring(0, 200) + '...' : description,
-      fontSize: '1rem', // Default font size
+      fontSize: '1rem',
     };
   };
 
-  const navBar = user ? <NavBarUser/> : <NavBar />;
+  const navBar = user ? <NavBarUser /> : <NavBar />;
 
   return (
     <>
@@ -148,9 +167,9 @@ function LandingPage() {
                               <div className="card-footer">
                                 <div className="btn-group">
                                   <Link to={`/GoToGame/${game.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
-                                  <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
+                                  {/* <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button> */}
                                   <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
-                                    {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
+                                    {favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite'}
                                   </button>
                                 </div>
                               </div>
