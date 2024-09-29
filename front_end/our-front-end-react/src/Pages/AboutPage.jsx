@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState} from 'react';
 import NavBar from '../Components/NavBar';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
@@ -7,9 +7,17 @@ import Col from 'react-bootstrap/Col';
 import './Aboutus.css';
 
 const AboutPage = () => {
+  const [user, setUser] = useState(null);
+  useEffect(() => {
+    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
+    if (storedUserSession) {
+      setUser(JSON.parse(storedUserSession));
+    }
+  }, []);
+  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
   return (
     <>
-      <NavBar />
+      {navBar}
       <h1 className='header'>About Us</h1>
       <Container>
         <Row>
