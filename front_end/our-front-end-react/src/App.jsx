@@ -9,6 +9,7 @@ import LandingPage from './Pages/LandingPage';
 import Footer from './Components/Footer';
 import Profile from './Pages/Profile';
 import Privacy from "./Pages/Privacy";
+import TermsOfService from "./Pages/TermsOfService";
 
 
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -31,6 +32,8 @@ function App() {
         <Route path="/Popular" element={<Popular />} />
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Privacy" element={<Privacy />} />
+        <Route path="/terms" element={<TermsOfService />} />
+        
       </Routes>
     </BrowserRouter>
     <Theme/>
