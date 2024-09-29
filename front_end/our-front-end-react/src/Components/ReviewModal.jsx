@@ -7,36 +7,38 @@ const ReviewModal = ({ game, closeModal }) => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log(`Review for ${game?.title}:`, { rating, review }); // Use optional chaining
-    closeModal(); // Close modal after submission
+    console.log(`Review for ${game?.title}:`, { rating, review });
+    closeModal();
   };
 
-  if (!game) return null; // Prevent rendering if game is null or undefined
+  if (!game) return null;
 
   return (
     <div className="review-modal">
       <div className="review-modal-content">
         <span className="close" onClick={closeModal}>&times;</span>
-        <h2>Review {game.title}</h2>
+        <h2 className="modal-title">Review {game.title}</h2>
         <form onSubmit={handleSubmit}>
-          <label>
-            Rating:
+          <div className="form-group">
+            <label>Rating:</label>
             <input 
               type="number" 
               value={rating} 
               min="1" 
               max="5" 
-              onChange={(e) => setRating(e.target.value)} 
+              onChange={(e) => setRating(Number(e.target.value))} 
+              className="rating-input"
             />
-          </label>
-          <label>
-            Review:
+          </div>
+          <div className="form-group">
+            <label>Review:</label>
             <textarea 
               value={review} 
               onChange={(e) => setReview(e.target.value)} 
+              className="review-textarea"
             />
-          </label>
-          <button type="submit">Submit Review</button>
+          </div>
+          <button type="submit" className="submit-button">Submit Review</button>
         </form>
       </div>
     </div>

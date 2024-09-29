@@ -1,4 +1,5 @@
-import Theme from "./Components/Theme"
+import Theme from "./Components/Theme";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutPage from './Pages/AboutPage';
 import BrowseGames from "./Pages/BrowseGames";
 import SignIn from './Pages/SignIn';
@@ -10,19 +11,15 @@ import Footer from './Components/Footer';
 import Profile from './Pages/Profile';
 import Privacy from "./Pages/Privacy";
 import TermsOfService from "./Pages/TermsOfService";
-
-
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { BrowserRouter,Routes,Route } from "react-router-dom";
 import GoToGame from "./Pages/GoToGame";
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <>
     <BrowserRouter>
+      <Theme />
       <Routes>
-      <Route path= "/" element = {<LandingPage/>}/>
+        <Route path="/" element={<LandingPage />} />
         <Route path="/GoToGame" element={<GoToGame />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/SignIn" element={<SignIn />} />
@@ -33,14 +30,10 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/terms" element={<TermsOfService />} />
-        
       </Routes>
+      <Footer />
     </BrowserRouter>
-    <Theme/>
-    <Footer/>
-    
-    </>
-  )
+  );
 }
 
-export default App
+export default App;
