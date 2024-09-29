@@ -136,20 +136,7 @@ function LandingPage() {
         />
       )}
 
-      <button className="scroll-top" onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} aria-label="Scroll to top">
-        ↑
-      </button>
-      <footer className="footer">
-  <div className="container text-center">
-    <p>© 2024 GameBox. All Rights Reserved.</p>
-    <div className="footer-links">
-      <Link to="/privacy" className="footer-link">Privacy Policy</Link>
-      <Link to="/terms" className="footer-link">Terms of Service</Link>
-      <Link to="/login" className="footer-link">Login</Link>
-      <Link to="/signup" className="footer-link">Sign Up</Link>
-    </div>
-  </div>
-</footer>
+
 
 
     </>
