@@ -42,7 +42,7 @@ function LandingPage() {
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {Array(9).fill().map((_, index) => (
               <div className="col" key={index}>
-                <div className="card shadow-sm">
+                <div className="card shadow">
                   <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
                     <title>Placeholder</title>
                     <rect width="100%" height="100%" fill="#55595c"></rect>

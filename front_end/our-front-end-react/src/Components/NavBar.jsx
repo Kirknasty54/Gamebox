@@ -9,7 +9,7 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function NavBar() {
     return (
     
-        <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary">
+        <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary fs-6 shadow-lg py-2">
           <Container fluid>
             <Navbar.Brand href="#">GameBox</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
