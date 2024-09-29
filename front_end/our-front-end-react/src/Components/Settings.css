@@ -1,22 +1,30 @@
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
+.settings-wrapper {
+    padding: 20px; /* Space around the container */
+    background-color: #f8f9fa; /* Light background to separate from footer */
+    min-height: calc(100vh - 100px); /* Ensure the wrapper takes full height, accounting for footer */
+}
+
+.settings-container {
+    max-width: 1200px; /* Limit the maximum width */
+    margin: 0 auto; /* Center the container */
+    padding: 20px; /* Add padding */
+    background-color: #ffffff; /* White background */
+    border-radius: 8px; /* Rounded corners */
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1); /* Slight shadow for depth */
 }
 
 .row {
-    margin: 0;
+    margin: 0; /* Remove margin from rows */
 }
 
 .card {
-    border: 1px solid #e0e0e0;
-    border-radius: 8px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    margin-bottom: 20px; /* Space between cards */
+    border: none; /* Remove default border */
+    border-radius: 8px; /* Rounded corners for card */
 }
 
 .card-body {
-    padding: 30px; /* Increased padding */
+    padding: 40px; /* Increased padding */
+    height: auto;
 }
 
 .account-settings {
@@ -27,11 +35,7 @@
 
 .user-profile {
     text-align: center;
-    margin-bottom: 30px; /* Increased margin for better spacing */
-}
-
-.user-avatar {
-    margin-bottom: 15px;
+    margin-bottom: 30px;
 }
 
 .user-avatar img {
@@ -48,30 +52,45 @@
 }
 
 .about h5 {
-    margin-bottom: 10px;
+    margin-bottom: 45px;
+    height: auto;
 }
 
 .about textarea {
-    width: 100%;
-    resize: none;
-    padding: 15px; /* Increased padding for better UX */
-    border: 1px solid #ced4da;
-    border-radius: 4px;
-    margin-bottom: 15px; /* Added bottom margin */
+    width: 180px; /* Set width */
+    height: 336px; /* Set height */
+    resize: none; /* Prevent resizing */
+    padding: 10px; /* Increased padding */
+    border: 1px solid #ced4da; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 15px; /* Bottom margin */
+    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
 }
+
+.about textarea {
+    width: 180px; /* Set width */
+    height: 336px; /* Set height */
+    resize: none; /* Prevent resizing */
+    padding: 10px; /* Increased padding */
+    border: 1px solid #ced4da; /* Border style */
+    border-radius: 4px; /* Rounded corners */
+    margin-bottom: 15px; /* Bottom margin */
+    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
+}
+
 
 .form-group {
     margin-bottom: 20px; /* Increased bottom margin */
 }
 
 .form-group label {
-    font-weight: 600; /* Bold labels for better readability */
+    font-weight: 600; /* Bold labels */
 }
 
 .form-control {
     border: 1px solid #ced4da;
     border-radius: 4px;
-    padding: 12px; /* Added padding for better UX */
+    padding: 12px; /* Added padding */
 }
 
 .btn {
@@ -90,6 +109,6 @@
     }
 
     .form-group {
-        width: 100%; /* Make form groups take full width on smaller screens */
+        width: 100%; /* Full width on smaller screens */
     }
 }
