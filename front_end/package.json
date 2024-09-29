@@ -1,9 +1,12 @@
 {
   "dependencies": {
+    "@tsparticles/react": "^3.0.0",
     "axios": "^1.7.7",
     "bootstrap": "^5.3.3",
     "react-animated-bg": "^1.2.2",
     "react-bootstrap": "^2.10.5",
-    "react-router-dom": "^6.26.2"
+    "react-router-dom": "^6.26.2",
+    "stats-js": "^1.0.1",
+    "tsparticles": "^3.5.0"
   }
 }

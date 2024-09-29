@@ -25,12 +25,16 @@ repositories {
 
 dependencies {
   implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
+  implementation 'com.squareup.okhttp3:okhttp:4.9.3' 
+  implementation 'io.github.cdimascio:java-dotenv:5.2.2'
 	implementation 'org.springframework.boot:spring-boot-starter-mail'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'mysql:mysql-connector-java:8.0.33'
 	compileOnly 'org.projectlombok:lombok'
+	runtimeOnly 'org.apache.activemq:artemis-jakarta-server'
 	runtimeOnly 'com.mysql:mysql-connector-j'
 	runtimeOnly 'mysql:mysql-connector-java'
+  implementation 'io.github.husnjak:igdb-api-jvm:1.2.0'
 	developmentOnly 'org.springframework.boot:spring-boot-devtools'
   compileOnly 'org.springframework:spring-context-support'
 	annotationProcessor 'org.projectlombok:lombok'

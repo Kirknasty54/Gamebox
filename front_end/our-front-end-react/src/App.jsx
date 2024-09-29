@@ -8,6 +8,8 @@ import Popular from './Pages/Popular';
 import LandingPage from './Pages/LandingPage';
 import Footer from './Components/Footer';
 import Profile from './Pages/Profile';
+import Globe from "./Components/Globe";
+
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter,Routes,Route } from "react-router-dom";
 import GoToGame from "./Pages/GoToGame";
