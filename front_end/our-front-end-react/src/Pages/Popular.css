@@ -1,0 +1,55 @@
+/* General Styles */
+body {
+    font-family: 'Geist', sans-serif; /* Ensure the Geist font is applied */
+  }
+  
+  .text-light {
+    color: #f8f9fa; /* Light text color */
+  }
+  
+  .bg-body-tertiary {
+    background-color: #f8f9fa; /* Background color for the album section */
+  }
+  
+  .album {
+    padding: 2rem 0; /* Spacing around the album section */
+  }
+  
+  /* Card Styles */
+  .card {
+    border: none; /* Remove border for a cleaner look */
+    transition: transform 0.2s; /* Add a smooth transition for hover effect */
+  }
+  
+  .card:hover {
+    transform: scale(1.05); /* Scale up the card on hover */
+  }
+  
+  .card-body {
+    padding: 1rem; /* Add padding inside the card body */
+  }
+  
+  .card-title {
+    font-weight: bold; /* Make the title bold */
+  }
+  
+  .card-text {
+    margin-bottom: 1rem; /* Space between text elements */
+  }
+  
+  /* Button Styles */
+  .btn-primary {
+    background-color: #007bff; /* Primary button color */
+  }
+  
+  .btn-secondary {
+    background-color: #6c757d; /* Secondary button color */
+  }
+  
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .text-center {
+      text-align: center; /* Center text for mobile */
+    }
+  }
+  
