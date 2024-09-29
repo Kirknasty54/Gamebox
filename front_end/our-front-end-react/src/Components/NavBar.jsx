@@ -9,9 +9,9 @@ import NavDropdown from 'react-bootstrap/NavDropdown';
 function NavBar() {
     return (
     
-        <Navbar expand="sm" bg="dark" data-bs-theme = "dark" className="bg-body-tertiary fs-6 shadow-lg py-2">
+        <Navbar expand="sm" bg="dark" data-bs-theme = "light" className="bg-body-tertiary fs-6 shadow-lg py-2">
           <Container fluid>
-            <Navbar.Brand href="#">GameBox</Navbar.Brand>
+            <Navbar.Brand href="/">GameBox</Navbar.Brand>
             <Navbar.Toggle aria-controls="navbarScroll" />
             <Navbar.Collapse id="navbarScroll">
               <Nav
@@ -43,7 +43,7 @@ function NavBar() {
               </Form>
               <Nav.Link 
               href="/SignIn" 
-              className='ms-3 fload-end'
+              className='ms-3 fload-end text-secondary'
 
               > 
               Login

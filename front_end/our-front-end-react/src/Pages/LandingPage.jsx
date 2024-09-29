@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import GameCards from '../Components/GameCards';
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
 import AnimatedBg from "react-animated-bg";
@@ -72,12 +73,12 @@ function LandingPage() {
         style={{ height: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <section className="background-section text-center container">
-        <div className="row py-lg-5">
+          <div className="row py-lg-5">
             <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>
+              <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>
                 Hello and welcome to GameBox
-            </h1>
-            <div className="text-box">
+              </h1>
+              <div className="text-box">
                 <p className="lead mb-4 text-dark" style={{ fontFamily: 'Geist' }}>
                 Quickly design and customize responsive mobile-first sites with Bootstrap,
                 the world’s most popular front-end open source toolkit.
@@ -100,33 +101,8 @@ function LandingPage() {
         </section>
 
       </AnimatedBg>
-
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
-<<<<<<< HEAD
-          {loading ? (
-            <LoadingSpinner />
-          ) : (
-            <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-              {filteredGames.map((game, index) => (
-                <div className="col" key={index}>
-                <div className="card shadow-sm">
-                <img src={game.img} alt={`Thumbnail for ${game.title}`} className="card-img-top" />
-                <div className="card-body">
-                    <h5 className="card-title">{game.title}</h5>
-                    <p className="card-text text-dark">{game.description}</p>
-                    <div className="rating">{`⭐ ${game.rating}`}</div>
-                    <small className="time-text">9 mins</small> {/* Moved here */}
-                </div>
-                <div className="card-footer">
-                    <div className="btn-group">
-                    <Link to='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
-                    <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button>
-                    <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
-                        {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
-                    </button>
-                    </div>
-=======
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
             {Array(9).fill().map((_, index) => (
               <div className="col" key={index}>
@@ -143,13 +119,12 @@ function LandingPage() {
                         <Link to='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
                       </div>
                       <small className="text-dark">9 mins</small>
->>>>>>> edccd34c74b8734cfcba203990e61b797fd98d4a
                     </div>
                   </div>
                 </div>
-              ))}
-            </div>
-          )}
+              </div>
+            ))}
+          </div>
         </div>
       </div>
 
