@@ -8,9 +8,8 @@ function LandingPage() {
     <>
       <NavBar />
       <section className="py-5 text-center container" style={{ position: 'relative' }}>
-        <Globe style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: -1 }} />
         <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
+          <div className="col-lg-12 col-md-8 mx-auto">
             <h1 className="fw-light text-light">Hello and welcome to GameBox</h1>
             <div className='col-lg-6 mx-auto'>
               <p className='lead mb-4' style={{ color: '#f8f9fa', backgroundColor: 'rgba(0, 0, 0, 0.5)', padding: '20px', borderRadius: '8px' }}>

@@ -7,7 +7,7 @@ const handleBackToTop = () => {
 
 function Footer() {
   return (
-    <footer className="footer py-4 text-center bg-dark text-light position-absolute-bottom-0">
+    <footer className="footer py-4 mt-auto text-center bg-dark text-light">
       <div className="container">
         <p className="mb-0">&copy; {new Date().getFullYear()} Gamebox</p>
         <div className="py-5">
