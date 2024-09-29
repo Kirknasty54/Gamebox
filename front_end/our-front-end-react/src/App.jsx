@@ -13,6 +13,7 @@ import Privacy from "./Pages/Privacy";
 import TermsOfService from "./Pages/TermsOfService";
 import GoToGame from "./Pages/GoToGame";
 import 'bootstrap/dist/css/bootstrap.min.css';
+import Settings from "./Components/Settings";
 
 function App() {
   return (
@@ -30,9 +31,11 @@ function App() {
         <Route path="/Profile" element={<Profile />} />
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/terms" element={<TermsOfService />} />
+        <Route path="/Settings" element={<Settings />} />
       </Routes>
       <Footer />
     </BrowserRouter>
+    
   );
 }
 
