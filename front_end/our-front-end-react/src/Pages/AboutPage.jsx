@@ -17,11 +17,11 @@ const AboutPage = () => {
       <Row>
         <Col>
         <div className='box'>
-        <h3 className='title'>Our Mission</h3>
+        <h3 className='title'>Collin Davis</h3>
         <div className='content'> {/* Add this class for flexbox layout */}
           <img title='about-image' src='collin.svg' className='about-image' alt='About Us'/>
           <p className='p1'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+              <a className="text-light" href="https://www.linkedin.com/in/collin-davis-8a862a226/">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -29,11 +29,11 @@ const AboutPage = () => {
         </Col>
         <Col>
         <div className='box'>
-        <h3 className='title'>Our Mission</h3>
+        <h3 className='title'>Jacob Lee</h3>
         <div className='content'> {/* Add this class for flexbox layout */}
-          <img title='about-image' src='collin.svg' className='about-image' alt='About Us'/>
+          <img title='about-image' src='jacob1.svg' className='about-image' alt='About Us'/>
           <p className='p1'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+          <a className="text-light" href="www.linkedin.com/in/john-k-34349424a">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -42,11 +42,11 @@ const AboutPage = () => {
       <Row>
         <Col>
         <div className='box1'>
-        <h3 className='title1'>Our Mission</h3>
+        <h3 className='title1'>John Kutney</h3>
         <div className='content1'> {/* Add this class for flexbox layout */}
-          <img title='about-image1' src='collin.svg' className='about-image' alt='About Us'/>
+          <img title='about-image1' src='John.svg' className='about-image' alt='About Us'/>
           <p className='p2'>
-            We are dedicated to providing the best services to our customers. Our mission is to...
+          <a className="text-light" href="www.linkedin.com/in/john-k-34349424a">LinkedIn</a>
           </p>
         </div>
       </div>
@@ -54,7 +54,7 @@ const AboutPage = () => {
         </Col>
         <Col>
         <div className='box1'>
-        <h3 className='title1'>Our Mission</h3>
+        <h3 className='title1'>Noah Bowling</h3>
         <div className='content1'> {/* Add this class for flexbox layout */}
           <img title='about-image1' src='collin.svg' className='about-image' alt='About Us'/>
           <p className='p2'>
@@ -65,7 +65,7 @@ const AboutPage = () => {
       </Col>
         <Col>
         <div className='box1'>
-        <h3 className='title1'>Our Mission</h3>
+        <h3 className='title1'>Jackson Kirkpatrick</h3>
         <div className='content1'> {/* Add this class for flexbox layout */}
           <img title='about-image1' src='collin.svg' className='about-image' alt='About Us'/>
           <p className='p2'>

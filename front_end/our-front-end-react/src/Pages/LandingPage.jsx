@@ -103,6 +103,7 @@ function LandingPage() {
 
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
+<<<<<<< HEAD
           {loading ? (
             <LoadingSpinner />
           ) : (
@@ -125,6 +126,24 @@ function LandingPage() {
                         {favorites.includes(game) ? 'Unfavorite' : 'Favorite'}
                     </button>
                     </div>
+=======
+          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            {Array(9).fill().map((_, index) => (
+              <div className="col" key={index}>
+                <div className="card shadow">
+                  <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
+                    <title>Placeholder</title>
+                    <rect width="100%" height="100%" fill="#55595c"></rect>
+                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
+                  </svg>
+                  <div className="card-body">
+                    <p className="card-text text-dark">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                    <div className="d-flex justify-content-between align-items-center">
+                      <div className="btn-group">
+                        <Link to='/GoToGame' role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
+                      </div>
+                      <small className="text-dark">9 mins</small>
+>>>>>>> edccd34c74b8734cfcba203990e61b797fd98d4a
                     </div>
                   </div>
                 </div>
