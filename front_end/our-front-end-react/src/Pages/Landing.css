@@ -6,7 +6,10 @@ body {
   margin: 0;
   padding: 0;
 }
-
+.carousel-item{
+transition: transform 4s cubic-bezier(0.5, 0, 0.3, 1) !important;
+  /* Longer duration and smoother easing */
+}
 h1 {
   font-size: 2.5rem; /* Larger heading for impact */
   letter-spacing: 2px; /* Increased letter spacing */
@@ -65,8 +68,10 @@ h5 {
 }
 
 .card:hover {
-  transform: translateY(-5px); /* Lift effect on hover */
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
+  transform: translateY(-15px); /* Lift effect on hover */
+  box-shadow: 0 12px 24px rgba(128, 128, 128, 0.6) !important;
+    /* Grey shadow */
+    background-color: rgba(128, 128, 128, 0.1) !important;
 }
 
 /* Placeholder SVG styles */

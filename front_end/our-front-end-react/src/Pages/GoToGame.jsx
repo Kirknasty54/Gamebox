@@ -2,7 +2,9 @@ import React, { useEffect ,useState } from 'react'
 import NavBar from '../Components/NavBar'
 import UserReviews from '../Components/UserReviews';
 import axios from 'axios'
+import './GoToGame.css'
 function GoToGame(){
+
     const[games, setGames] = useState([]);
     useEffect(() => {
         const getGames = async () => {
@@ -56,7 +58,7 @@ function GoToGame(){
         ))}
         <div className = 'row mt-3 justify-content-end bg-white'>
             <div className = 'col-md-12 text-center'>
-                <h2>User Reviews</h2>
+                <h2 className="text-black mt-2" style={{ fontFamily: 'Geist' }}>User Reviews</h2>
                 <UserReviews/>
             </div>
         </div>

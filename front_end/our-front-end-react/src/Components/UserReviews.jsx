@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import '@fortawesome/fontawesome-free/css/all.min.css';
 import './UserReviews.css';  // Make sure you include this line for your CSS file
 
 function UserReviews() {

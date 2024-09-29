@@ -1,0 +1,14 @@
+
+h1,
+h2,
+h3,
+p {
+    font-family: 'Geist' !important;
+}
+
+.container-fluid,
+.row,
+.col-md-4,
+.col-md-2 {
+    /* Any additional styling you need */
+}
