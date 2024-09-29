@@ -11,14 +11,10 @@ const Favorited = () => {
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
-        const response = await axios.get('/api/favorites'); // Replace with your API endpoint
+        const response = await axios.get('http://localhost:8080/api/v1/games');
         // Ensure response data is an array
-        if (Array.isArray(response.data)) {
-          setItems(response.data);
-        } else {
-          console.error('Response data is not an array:', response.data);
-          setItems([]); // Reset to empty array if data is not an array
-        }
+        const gamesData = response.data.slice(21,30)
+        setItems(gamesData);
       } catch (error) {
         console.error('Error fetching favorites:', error);
       }
@@ -27,11 +23,7 @@ const Favorited = () => {
   }, []);
 
   // Sample placeholders for displaying items
-  const sampleItems = Array(9).fill().map((_, index) => ({
-    id: index,
-    title: `Favorite Game ${index + 1}`,
-    description: `Description for Favorite Game ${index + 1}`,
-  }));
+
 const [user, setUser] = useState(null);
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
@@ -64,24 +56,18 @@ const [user, setUser] = useState(null);
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
           <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {(items.length ? items : sampleItems).map((item, index) => (
+            {(items.length ? items : items).map((item, index) => (
               <div className="col" key={index}>
                 <div className="card shadow-sm">
-                  <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                    <title>Placeholder</title>
-                    <rect width="100%" height="100%" fill="#55595c"></rect>
-                    <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                  </svg>
+                  <img src={item.image_url} alt={`Thumbnail for ${item.game_name}`} className="card-img-top" />
                   <div className="card-body">
                     <h5 className="card-title">{item.title}</h5>
                     <p className="card-text text-dark">{item.description}</p>
                     <div className="d-flex justify-content-between align-items-center">
                       <div className="btn-group">
-                        <Link to = {`/GoToGame`} className ="btn btn-primary">View Test</Link>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">View</button>
+                        <Link to={`/GoToGame/${item.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View</Link>
                         <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
                       </div>
-                      <small className="text-dark">9 mins</small>
                     </div>
                   </div>
                 </div>

@@ -49,8 +49,8 @@ function GoToGame() {
                         <p>{game.description}</p>
                     </div>
                     <div className="col-md-2 mt-2">
-                        <h4>Year</h4>
-                        <p>{game.year}</p>
+                        <h4>Publisher</h4>
+                        <p>{game.publisher}</p>
                     </div>
                     <div className="col-md-2 mt-2">
                         <h4>Developer</h4>

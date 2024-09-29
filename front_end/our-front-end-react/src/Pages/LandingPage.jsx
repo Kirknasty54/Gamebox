@@ -17,13 +17,15 @@ function LandingPage() {
   const [reviewModalVisible, setReviewModalVisible] = useState(false);
   const [selectedGameForReview, setSelectedGameForReview] = useState(null);
   const [user, setUser] = useState(null);
+  const [num, setNum] = useState(0);
+    
 
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
       try {
         const response = await axios.get('http://localhost:8080/api/v1/games');
-        const gamesData = response.data.slice(0, 9); // Limit to 9 games
+        const gamesData = response.data; 
         setGames(gamesData);
         setFilteredGames(gamesData);
       } catch (error) {
