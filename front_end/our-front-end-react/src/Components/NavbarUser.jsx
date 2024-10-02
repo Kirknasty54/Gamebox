@@ -18,7 +18,7 @@ function NavBarUser() {
     const RandomNumber = Math.floor(Math.random() * 5) + 1;
     return (
         <>
-            <Navbar expand="sm" bg="dark" data-bs-theme="light" className="bg-body-tertiary fs-6 shadow-lg py-2">
+            <Navbar expand="sm" bg="dark" data-bs-theme="light" className="bg-body-tertiary fs-6 shadow-lg py-2" text>
                 <Container fluid>
                     <Navbar.Brand href="/" className="d-flex align-items-center">
                         <img src="./logo.png" alt="GameBox Logo" className="navbar-logo" />

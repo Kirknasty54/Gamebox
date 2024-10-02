@@ -1,53 +1,49 @@
-import Button from 'react-bootstrap/Button';
-import Container from 'react-bootstrap/Container';
-import Form from 'react-bootstrap/Form';
-import Nav from 'react-bootstrap/Nav';
-import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
-import './NavBar.css'; // Make sure to import your CSS file
-
-// import { FaCog } from 'react-icons/fa'; // Import the settings icon
+import React, { useEffect } from 'react'; 
+import { Navbar, Nav, NavDropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import './NavBar.css';
 
 function NavBar() {
+    useEffect(() => {
+        const handleScroll = () => {
+            const navbar = document.querySelector('.navbar-custom');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
+
     return (
-        <Navbar expand="sm" bg="dark" data-bs-theme="light" className="bg-body-tertiary fs-6 shadow-lg py-2">
-            <Container fluid>
-                <Navbar.Brand href="/" className="d-flex align-items-center">
-                    <img src="./logo.png" alt="GameBox Logo" className="navbar-logo" />
-                    GameBox
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                    <Nav className="me-auto my-2 my-lg-0" style={{ maxHeight: '100px' }} navbarScroll>
-                        <Nav.Link href="/">Home</Nav.Link>
-                        <Nav.Link href="/about">About</Nav.Link>
-                        <NavDropdown title="My List" id="navbarScrollingDropdown">
-                            <NavDropdown.Item href="/Popular">Popular</NavDropdown.Item>
-                            <NavDropdown.Item href="/Favorited">Favorited</NavDropdown.Item>
-                        </NavDropdown>
-                    </Nav>
-                    <Form className="d-flex">
-                        <Form.Control
-                            type="search"
-                            placeholder="Search"
-                            className="me-2"
-                            aria-label="Search"
-                        />
-                        <Button variant="outline-success">Search</Button>
-                    </Form>
-                    <Nav.Link href="/SignIn" className="ms-3 text-secondary">
-                        Login
-                    </Nav.Link>
-                    {/* Add settings icon */}
-                    <Nav.Link href="/settings" className="text-secondary ms-3">
-                        {/* <FaCog /> Render settings icon */}
-                    </Nav.Link>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>
+        <header>
+            <Navbar expand="lg" className="navbar-custom">
+                <div style={{ width: '100%', display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                    <Navbar.Brand as={Link} to="/" style={{ display: 'flex', alignItems: 'center', margin: 'auto' }}>
+                        <img src="./logo.png" alt="GameBox Logo" style={{ height: '40px', marginRight: '10px' }} />
+                        <span style={{ fontSize: '1.5rem', fontWeight: 'bold' }}>GameBox</span>
+                    </Navbar.Brand>
+
+                    <Nav className="d-flex" style={{ display: 'inline', gap: '5px', justifyContent: 'end', marginTop: '0px' }}>
+                            <NavDropdown title={<span className="nav-dropdown-title"  style={{ color: 'rgba(45, 146, 59, 1)',fontSize: '1.2rem' }}>&#9776;</span>} id="navbarScrollingDropdown" align="end">
+                                <NavDropdown.Item as={Link} to="/about" className="nav-item" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>About</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/Popular" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Popular</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/Favorited" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Favorited</NavDropdown.Item>
+                                <NavDropdown.Item as={Link} to="/SignIn" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Login</NavDropdown.Item>
+                            </NavDropdown>
+                            
+                        </Nav>
+                    
+                </div>
+            </Navbar>
+        </header>
     );
 }
 
 export default NavBar;
-
-

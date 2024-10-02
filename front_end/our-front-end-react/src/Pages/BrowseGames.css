@@ -1,0 +1,9 @@
+/* BrowseGames.css */
+.transparent-bg {
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+    backdrop-filter: blur(10px); /* Optional: add a blur effect */
+}
+
+.card {
+    background-color: rgba(255, 255, 255, 0.2); /* Cards with slight transparency */
+}

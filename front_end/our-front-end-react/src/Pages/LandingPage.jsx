@@ -1,12 +1,31 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
 import NavBar from '../Components/NavBar';
 import { Link } from "react-router-dom";
-import AnimatedBg from "react-animated-bg";
-import './Landing.css';
 import LoadingSpinner from '../Components/LoadingSpinner';
 import ReviewModal from '../Components/ReviewModal';
 import NavBarUser from '../Components/NavBarUser';
+import Flickity from 'flickity';
+import 'flickity/css/flickity.css';
+import './Landing.css';
+
+const useDebounce = (value, delay) => {
+  const [debouncedValue, setDebouncedValue] = useState(value);
+
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedValue(value);
+    }, delay);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [value, delay]);
+
+  return debouncedValue;
+};
+
 
 function LandingPage() {
   const [games, setGames] = useState([]);
@@ -17,15 +36,14 @@ function LandingPage() {
   const [reviewModalVisible, setReviewModalVisible] = useState(false);
   const [selectedGameForReview, setSelectedGameForReview] = useState(null);
   const [user, setUser] = useState(null);
-  const [num, setNum] = useState(0);
-    
+  const carouselRef = useRef(null);
 
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
       try {
         const response = await axios.get('http://localhost:8080/api/v1/games');
-        const gamesData = response.data.slice(21,30)
+        const gamesData = response.data.slice(0, 30);
         setGames(gamesData);
         setFilteredGames(gamesData);
       } catch (error) {
@@ -41,14 +59,50 @@ function LandingPage() {
     const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
     setFavorites(storedFavorites);
   }, []);
+  const debouncedSearchTerm = useDebounce(searchTerm, 300); // 300ms debounce
+
+  // Filter games based on the search term
+  useEffect(() => {
+    const filtered = games.filter(game =>
+      game.game_name && game.game_name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+    );
+    setFilteredGames(filtered);
+  }, [debouncedSearchTerm, games]);
+  
+  
+  useEffect(() => {
+    const filtered = games.filter(game =>
+      game.game_name && game.game_name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+    );
+    setFilteredGames(filtered);
+  }, [debouncedSearchTerm, games]);
+  
 
   useEffect(() => {
-    const filtered = games.filter(game => game.game_name.toLowerCase().includes(searchTerm.toLowerCase()));
+    const filtered = games.filter(game =>
+      game.game_name && game.game_name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
+    );
     setFilteredGames(filtered);
-  }, [searchTerm, games]);
+  }, [debouncedSearchTerm, games]);
 
   const handleSearch = (e) => {
-    setSearchTerm(e.target.value);
+    const value = e.target.value || ''; // Ensure value is a string
+    setSearchTerm(value);
+  };
+  const handleFavoriteToggle = async (game) => {
+    const isFavorite = favorites.some(fav => fav.gameId === game.gameId);
+    let updatedFavorites;
+
+    if (isFavorite) {
+      updatedFavorites = favorites.filter(fav => fav.gameId !== game.gameId);
+      await axios.delete(`/api/favorites/${game.gameId}`).catch(error => console.error('Error removing favorite:', error));
+    } else {
+      updatedFavorites = [...favorites, game];
+      await axios.post('/api/favorites', { gameId: game.gameId }).catch(error => console.error('Error adding favorite:', error));
+    }
+
+    setFavorites(updatedFavorites);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
   };
 
   const openReviewModal = (game) => {
@@ -61,20 +115,6 @@ function LandingPage() {
     setSelectedGameForReview(null);
   };
 
-  const handleFavoriteToggle = (game) => {
-    const isFavorite = favorites.some(fav => fav.gameId === game.gameId);
-    let updatedFavorites;
-
-    if (isFavorite) {
-      updatedFavorites = favorites.filter(fav => fav.gameId !== game.gameId);
-    } else {
-      updatedFavorites = [...favorites, game];
-    }
-
-    setFavorites(updatedFavorites);
-    localStorage.setItem('favorites', JSON.stringify(updatedFavorites)); // Persist in local storage
-  };
-
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
@@ -82,126 +122,103 @@ function LandingPage() {
     }
   }, []);
 
-  const formatDescription = (description) => {
-    const words = description.split(' ');
-    const isLong = words.length > 50;
-
-    if (isLong) {
-      return {
-        text: words.slice(0, 50).join(' ') + '...',
-        fontSize: '0.625rem',
-      };
-    }
-
-    return {
-      text: description.length > 200 ? description.substring(0, 200) + '...' : description,
-      fontSize: '1rem',
-    };
-  };
-
   const navBar = user ? <NavBarUser /> : <NavBar />;
+
+  useEffect(() => {
+    if (carouselRef.current) {
+      new Flickity(carouselRef.current, {
+        cellAlign: 'left',
+        contain: true,
+        wrapAround: true,
+        autoPlay: 3000,
+        prevNextButtons: true,
+        pageDots: false,
+      });
+    }
+  }, [filteredGames]);
 
   return (
     <>
       {navBar}
-      <AnimatedBg
-        colors={["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bfbcf", "#a0e7e5"]}
-        duration={5}
-        delay={1}
-        timingFunction="linear"
-        randomMode
-        style={{ height: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      >
-        <section className="background-section text-center container">
-          <div className="row py-lg-5">
-            <div className="col-lg-6 mx-auto">
-              <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>
-                Hello and Welcome to GameBox
-              </h1>
-              <div className="text-box">
-                <p className="lead mb-4 text-dark" style={{ fontFamily: 'Geist' }}>
-                  Quickly design and customize responsive mobile-first sites with Bootstrap,
-                  the world’s most popular front-end open source toolkit.
-                </p>
-              </div>
-              <input
-                type="text"
-                placeholder="Search for games..."
-                className="search-input"
-                value={searchTerm}
-                onChange={handleSearch}
-                aria-label="Search games"
-              />
-              <Link to="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</Link>
-              <Link to="/Popular" className="btn btn-secondary my-2 mx-2">Popular Games</Link>
-            </div>
+      <div className="area">
+        <ul className="circles">
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div className="container relative z-1">
+        <div className="content">
+          <input
+            type="text"
+            placeholder="Search for games..."
+            className="search-input"
+            value={searchTerm}
+            onChange={handleSearch}
+            aria-label="Search games"
+          />
+          <div className="links">
+            <Link to="/Favorited" className="link-item">Favorited Games</Link>
+            <Link to="/Popular" className="link-item">Popular Games</Link>
           </div>
-        </section>
-      </AnimatedBg>
+        </div>
 
-      <div className="album py-5 bg-body-tertiary">
-        <div className="container">
+        <div className="album">
           {loading ? (
             <LoadingSpinner />
           ) : (
-            <div id="gameCarousel" className="carousel slide" data-bs-ride="carousel" data-bs-interval="5000">
-              <div className="carousel-inner">
-                {filteredGames.reduce((rows, game, index) => {
-                  if (index % 3 === 0) {
-                    rows.push([]);
-                  }
-                  rows[rows.length - 1].push(game);
-                  return rows;
-                }, []).map((group, carouselIndex) => (
-                  <div className={`carousel-item ${carouselIndex === 0 ? 'active' : ''}`} key={carouselIndex}>
-                    <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                      {group.map((game, gameIndex) => {
-                        const { text, fontSize } = formatDescription(game.description);
-                        return (
-                          <div className="col" key={gameIndex}>
-                            <div className="card shadow-sm">
-                              <img src={game.image_url} alt={`Thumbnail for ${game.game_name}`} className="card-img-top" />
-                              <div className="card-body">
-                                <h5 className="card-title">{game.game_name}</h5>
-                                <p className="card-text text-dark" style={{ fontSize }}>{text}</p>
-                                <div className="rating">{`⭐ ${game.rating}`}</div>
-                              </div>
-                              <div className="card-footer">
-                                <div className="btn-group">
-                                  <Link to={`/GoToGame/${game.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
-                                  {/* <button className="btn btn-sm btn-outline-secondary" onClick={() => openReviewModal(game)}>Review</button> */}
-                                  <button className="btn btn-sm btn-outline-secondary" onClick={() => handleFavoriteToggle(game)}>
-                                    {favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite'}
-                                  </button>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        );
-                      })}
+            <div className="carousel" ref={carouselRef}>
+              {filteredGames.map((game) => (
+                <div className="carousel-cell" key={game.gameId}>
+                  <div className="card">
+                    <img src={game.image_url} alt={`Image of ${game.game_name}`} className="card-img-top small-image" />
+                    <div className="card-body">
+                      <h5 className="card-title">{game.game_name}</h5>
+                      <p className="card-publisher">Publisher: {game.publisher}</p>
+                      <div className="button-container">
+                        <Link to={`./GoToGame/${game.gameId}`} className="btn btn-outline-primary">
+                          View Game
+                        </Link>
+                        <button
+                          type="button"
+                          className={`btn ${favorites.some(fav => fav.gameId === game.gameId) ? 'btn-danger' : 'btn-outline-danger'}`}
+                          onClick={() => handleFavoriteToggle(game)}
+                        >
+                          {favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite'}
+                        </button>
+                      </div>
                     </div>
                   </div>
-                ))}
-              </div>
-              <button className="carousel-control-prev" type="button" data-bs-target="#gameCarousel" data-bs-slide="prev">
-                <span className="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Previous</span>
-              </button>
-              <button className="carousel-control-next" type="button" data-bs-target="#gameCarousel" data-bs-slide="next">
-                <span className="carousel-control-next-icon" aria-hidden="true"></span>
-                <span className="visually-hidden">Next</span>
-              </button>
+                </div>
+              ))}
             </div>
           )}
         </div>
-      </div>
 
-      {reviewModalVisible && (
-        <ReviewModal 
-          game={selectedGameForReview} 
-          closeModal={closeReviewModal} 
-        />
-      )}
+        {reviewModalVisible && (
+          <ReviewModal
+            game={selectedGameForReview}
+            onClose={closeReviewModal}
+          />
+        )}
+      </div>
     </>
   );
 }

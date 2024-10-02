@@ -1,43 +1,80 @@
 /* Global styles for light and dark themes */
 body.light-theme {
-    background-color: #fff;
-    color: #000;
+    background-color: #fff; /* Light background */
+    color: #000; /* Dark text color */
 }
 
 body.dark-theme {
-    background-color: #333;
-    color: #fff;
+    background-color: #561f9d; /* Dark background that matches your theme */
+    color: #dbf1f5; /* Light text color that contrasts well */
 }
 
+/* Theme button styles */
 .theme-button {
     margin: 10px;
     padding: 10px 20px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
+    background-color: rgba(45, 146, 59, 0.9); /* Greenish background */
+    color: #fff; /* Text color */
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
+.theme-button:hover {
+    background-color: rgba(45, 146, 59, 1); /* Darker green on hover */
+}
+
+/* Close button styles */
 .close-button {
     margin-top: 20px;
     padding: 10px 20px;
     cursor: pointer;
     border: none;
     border-radius: 4px;
-    background-color: #dc3545;
-    color: #fff;
-}
-/* Global styles for light and dark themes */
-body.light-theme {
-    background-color: #fff;
-    color: #000;
+    background-color: #dc3545; /* Red background */
+    color: #fff; /* Text color */
+    transition: background-color 0.3s; /* Smooth transition */
 }
 
-body.dark-theme {
-    background-color: #333;
-    color: #fff;
+.close-button:hover {
+    background-color: #c82333; /* Darker red on hover */
 }
 
-/* Additional styles */
+/* Text color styles */
 .text-dark {
     color: inherit; /* Inherit color from body */
+}
+
+/* Additional styles for modal and buttons */
+.modal {
+    backdrop-filter: blur(10px); /* Blur effect */
+    border-radius: 8px; /* Rounded corners for modal */
+}
+
+/* Modal title styles */
+.modal-title {
+    color: #561f9d; /* Title color matching theme */
+    margin-bottom: 20px;
+}
+
+/* General button styles */
+.btn {
+    border: none; /* Remove border for buttons */
+    border-radius: 4px; /* Rounded corners */
+    transition: background-color 0.3s; /* Smooth transition */
+}
+
+.btn-primary {
+    background-color: rgba(0, 123, 255, 0.9); /* Primary button color */
+    color: #fff; /* White text */
+}
+
+.btn-secondary {
+    background-color: rgba(108, 117, 125, 0.9); /* Secondary button color */
+    color: #fff; /* White text */
+}
+
+.btn:hover {
+    opacity: 0.8; /* Slightly transparent on hover */
 }

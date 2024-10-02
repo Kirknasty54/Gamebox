@@ -1,5 +1,6 @@
 package com.GamBox.Project.service;
 
+import com.GamBox.Project.domain.UserInfo;
 import com.GamBox.Project.repository.GameInfoRepository;
 import com.GamBox.Project.repository.LikedGameInfoRepository;
 import com.GamBox.Project.service.UserService;
@@ -36,10 +37,19 @@ public class GameService {
     // Check if the game is already liked
     Optional<LikedGamesInfo> likedGameOpt = likedGameRepository.findByUser_uIdAndGame_gameId(userId, gameId);
     if (!likedGameOpt.isPresent()) {
-      LikedGamesInfo likedGame = new LikedGamesInfo(userService.singleUser(userId).get(), findGame(gameId));
-      likedGameRepository.save(likedGame); // Save the liked game to the database
+      // Retrieve user and game entities
+      UserInfo user = userService.singleUser(userId)
+              .orElseThrow(() -> new IllegalArgumentException("User not found"));
+      GameInfo game = findGame(gameId);
+
+      // Create and save the liked game
+      LikedGamesInfo likedGame = new LikedGamesInfo(user, game);
+      likedGameRepository.save(likedGame);
+    } else {
+      throw new IllegalArgumentException("Game is already liked by this user.");
     }
   }
+
 
   // Method to unlike a game
   public void unlikeGame(Long userId, Long gameId) {

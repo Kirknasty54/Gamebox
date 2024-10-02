@@ -1,3 +1,4 @@
+// Favorited.js
 import React, { useEffect, useState } from 'react';
 import NavBar from '../Components/NavBar';
 import NavBarUser from '../Components/NavBarUser';
@@ -5,45 +6,58 @@ import axios from 'axios';
 import AnimatedBg from 'react-animated-bg';
 import './Favorited.css'; 
 import { Link } from "react-router-dom";
-import ReviewModal from '../Components/ReviewModal'; // Import the ReviewModal component
-import Spinner from '../Components/LoadingSpinner'; // Import a spinner component
+import ReviewModal from '../Components/ReviewModal'; 
+import Spinner from '../Components/LoadingSpinner'; 
 
 const Favorited = () => {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [modalShow, setModalShow] = useState(false);
   const [selectedGame, setSelectedGame] = useState(null);
+  const [user, setUser] = useState(null);
 
+  
   useEffect(() => {
     const fetchFavorites = async () => {
       try {
         const response = await axios.get('/api/favorites'); 
+        console.log('API Response:', response.data); // Log the response
         if (Array.isArray(response.data)) {
           setItems(response.data);
         } else {
           console.error('Response data is not an array:', response.data);
+          setItems([]); // Set to empty array if not valid
         }
       } catch (error) {
-        console.error('Error fetching favorites:', error.response ? error.response.data : error.message);
+        console.error('Error fetching favorites:', error);
+        setItems([]); // Ensure items is set to an empty array on error
       } finally {
         setLoading(false);
       }
     };
+    
     fetchFavorites();
   }, []);
+  useEffect(() => {
+    const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+    setItems(storedFavorites); // Set items to the stored favorites
+  }, []);
+  
 
-  const handleShowModal = (game) => {
-    setSelectedGame(game);
-    setModalShow(true);
-  };
-const [user, setUser] = useState(null);
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
       setUser(JSON.parse(storedUserSession));
     }
   }, []);
-  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
+
+  const handleShowModal = (game) => {
+    setSelectedGame(game);
+    setModalShow(true);
+  };
+
+  const navBar = user ? <NavBarUser/> : <NavBar />;
+  
   return (
     <>
       {navBar}
@@ -56,41 +70,30 @@ const [user, setUser] = useState(null);
         style={{ height: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
       >
         <section className="text-center container">
-          <div className="row py-lg-5">
-            <div className="col-lg-6 col-md-8 mx-auto">
-              <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>Favorited Games</h1>
-              <Link to="/Popular" className="btn btn-primary my-2 mx-2">Popular Games</Link>
-              <Link to="/" className="btn btn-secondary my-2 mx-2">Browse Games</Link>
-            </div>
-          </div>
+          <h1 className="fw-light text-dark" style={{ fontFamily: 'Geist' }}>Favorited Games</h1>
+          <Link to="/Popular" className="btn btn-primary my-2 mx-2">Popular Games</Link>
+          <Link to="/" className="btn btn-secondary my-2 mx-2">Browse Games</Link>
         </section>
       </AnimatedBg>
 
       <div className="album py-5 bg-body-tertiary">
         <div className="container">
           {loading ? (
-            <Spinner /> // Display the loading spinner while fetching data
+            <Spinner />
           ) : (
             items.length === 0 ? (
               <p>No favorites found. Start adding some!</p>
             ) : (
               <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-                {items.map((item, index) => (
-                  <div className="col" key={index}>
+                {items.map((item) => (
+                  <div className="col" key={item.id}>
                     <div className="card shadow-sm" onClick={() => handleShowModal(item)}>
-                      <svg className="bd-placeholder-img card-img-top" width="100%" height="225" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail" preserveAspectRatio="xMidYMid slice" focusable="false">
-                        <title>Placeholder</title>
-                        <rect width="100%" height="100%" fill="#55595c"></rect>
-                        <text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text>
-                      </svg>
+                      <img src={item.image_url} alt={`Thumbnail for ${item.title}`} className="card-img-top" />
                       <div className="card-body">
-                        <h5 className="card-title" style={{ fontFamily: 'Geist' }}>{item.title}</h5>
-                        <p className="card-text text-dark" style={{ fontFamily: 'Geist' }}>{item.description}</p>
+                        <h5 className="card-title">{item.title}</h5>
+                        <p className="card-text">{item.description}</p>
                         <div className="d-flex justify-content-between align-items-center">
-                          <div className="btn-group">
-                            <Link to={`/game/${item.id}`} role="button" className="btn btn-sm btn-outline-secondary">View Game</Link>
-                          </div>
-                          <small className="text-dark">9 mins</small>
+                          <Link to={`/game/${item.id}`} className="btn btn-sm btn-outline-secondary">View Game</Link>
                         </div>
                       </div>
                     </div>

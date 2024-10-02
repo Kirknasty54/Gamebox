@@ -1,47 +1,51 @@
-.footer {
-  background-color: #343a40; /* Dark background */
-  color: #ffffff; /* Light text */
-  padding: 2rem 0; /* Adequate padding for better spacing */
-  position: relative; /* Position relative for stacking context */
-  z-index: 1; /* Ensure footer is above other elements */
-}
 
-.footer a {
-  color: #ffffff; /* Ensure links are white */
-  text-decoration: none;
-  transition: color 0.3s, transform 0.2s; /* Smooth transition for hover effects */
-}
 
-.footer a:hover {
-  color: #ff6b6b; /* Change link color on hover */
-  text-decoration: underline; /* Underline on hover */
-  transform: scale(1.05); /* Slightly enlarge link on hover */
+.footer-text {
+  margin: 0.5rem 0; /* Reduced space for footer text */
+  font-size: 1rem; /* More subtle font size */
 }
 
 .footer-links {
-  margin-top: 1rem; /* Space above the links */
-  display: flex; /* Use flexbox for links */
-  flex-wrap: wrap; /* Wrap links if needed */
-  justify-content: center; /* Center links horizontally */
+  display: flex;
+  justify-content: center; /* Center the links */
+  gap: 30px; /* Increased spacing between links */
+  margin: 1rem 0; /* Space above and below links */
 }
 
-.footer-link {
-  margin: 0 1rem; /* Horizontal spacing between links */
-  font-size: 0.9rem; /* Slightly smaller font size for links */
+.footer-links a {
+  text-decoration: none; /* Remove underline */
+  color: #ffffff; /* Link color */
+  transition: color 0.3s; /* Smooth color transition */
 }
 
-/* Optional: Responsive adjustments */
+.footer-links a:hover {
+  color: #dbf1f5; /* Change color on hover for contrast */
+}
+
+.back-to-top {
+  background-color: #ff4e4e; /* Button background color */
+  color: #ffffff; /* Button text color */
+  padding: 0.5rem 1rem; /* Button padding */
+  border: none; /* No border */
+  border-radius: 25px; /* Rounded button */
+  cursor: pointer; /* Pointer on hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Smooth transition */
+  margin-top: 1rem; /* Space above button */
+}
+
+.back-to-top:hover {
+  background-color: #e04545; /* Darker red on hover */
+  transform: translateY(-2px); /* Slight lift effect */
+}
+
+/* Responsive adjustments */
 @media (max-width: 576px) {
   .footer {
-      padding: 1.5rem 0; /* Less padding on smaller screens */
+    padding: 1.5rem 0; /* Less padding on smaller screens */
   }
   
   .footer-links {
-      flex-direction: column; /* Stack links vertically */
-      align-items: center; /* Center align links */
-  }
-
-  .footer-link {
-      margin: 0.5rem 0; /* Vertical spacing for stacked links */
+    flex-direction: column; /* Stack links vertically on small screens */
+    gap: 10px; /* Space between stacked links */
   }
 }

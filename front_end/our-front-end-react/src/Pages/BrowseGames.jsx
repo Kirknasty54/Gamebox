@@ -1,17 +1,18 @@
 // BrowseGames.js
 import React from 'react';
 import NavBar from '../Components/NavBar';
+import './BrowseGames.css'; // Ensure to import your CSS file
+
 const BrowseGames = () => {
   return (
     <>
-      <NavBar/>
-      <section className="py-5 text-center container">
+      <NavBar />
+      <section className="py-5 text-center container transparent-bg">
         <div className="row py-lg-5">
           <div className="col-lg-6 col-md-8 mx-auto">
             <h1 className="fw-light text-light">Browse Games</h1>
-          
-              <a href="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</a>
-              <a href="/Popular" className="btn btn-secondary my-2 mx-2">Popular Games</a>
+            <a href="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</a>
+            <a href="/Popular" className="btn btn-secondary my-2 mx-2">Popular Games</a>
           </div>
         </div>
       </section>

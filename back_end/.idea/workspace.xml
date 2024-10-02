@@ -5,7 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/Landing.css" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/Landing.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/service/GameService.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/service/GameService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +80,7 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
-  <component name="RunManager" selected="Application.ProjectApplication">
+  <component name="RunManager">
     <configuration name="ProjectApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.Gamebox.Project.ProjectApplication" />
       <module name="back_end" />

@@ -7,14 +7,14 @@ function Theme() {
     const handleThemeChange = (selectedTheme) => {
         setTheme(selectedTheme);
         localStorage.setItem('theme', selectedTheme);
-        document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme'; // Set body class based on theme
-        setIsModalOpen(false); // Close modal after selection
+        document.body.className = selectedTheme === 'dark' ? 'dark-theme' : 'light-theme';
+        setIsModalOpen(false);
     };
 
     useEffect(() => {
         const savedTheme = localStorage.getItem('theme') || 'dark';
         setTheme(savedTheme);
-        document.body.className = savedTheme === 'dark' ? 'dark-theme' : 'light-theme'; // Apply theme on load
+        document.body.className = savedTheme === 'dark' ? 'dark-theme' : 'light-theme';
     }, []);
 
     return (
@@ -32,7 +32,7 @@ function Theme() {
             {isModalOpen && (
                 <div style={styles.modal}>
                     <div style={styles.modalContent}>
-                        <h3>Choose a Theme</h3>
+                        <h3 style={styles.modalTitle}>Choose a Theme</h3>
                         <button onClick={() => handleThemeChange('light')} style={styles.themeButton}>
                             ☀️ Light
                         </button>
@@ -65,6 +65,7 @@ const styles = {
         cursor: 'pointer',
         padding: '10px',
         fontSize: '24px',
+        color: '#dbf1f5', // Adjusted color for the theme
     },
     modal: {
         position: 'fixed',
@@ -79,10 +80,15 @@ const styles = {
         zIndex: 1001,
     },
     modalContent: {
-        background: '#fff',
+        background: 'rgba(255, 255, 255, 0.9)', // Lighter background for the modal
         padding: '20px',
         borderRadius: '8px',
         textAlign: 'center',
+        backdropFilter: 'blur(10px)', // Optional: blur effect
+    },
+    modalTitle: {
+        color: '#561f9d', // Title color matching the theme
+        marginBottom: '20px',
     },
     themeButton: {
         margin: '10px',
@@ -90,8 +96,9 @@ const styles = {
         cursor: 'pointer',
         border: 'none',
         borderRadius: '4px',
-        backgroundColor: '#007bff',
+        backgroundColor: 'rgba(45, 146, 59, 0.9)', // Button background color
         color: '#fff',
+        transition: 'background-color 0.3s',
     },
     closeButton: {
         marginTop: '20px',
