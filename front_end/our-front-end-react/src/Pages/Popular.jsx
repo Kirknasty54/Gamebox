@@ -1,83 +1,142 @@
-import React, { useEffect, useState } from 'react';
-import NavBar from '../Components/NavBar';
+import React, { useEffect, useState, useRef } from 'react';
 import axios from 'axios';
-import AnimatedBg from 'react-animated-bg';
-import NavBarUser from '../Components/NavBarUser';
-import { Link } from 'react-router-dom';
+import NavBar from '../Components/NavBar';
+import { Link } from "react-router-dom";
+import LoadingSpinner from '../Components/LoadingSpinner';
+import Flickity from 'flickity';
+import 'flickity/css/flickity.css';
+import './Popular.css';
 
-const Favorited = () => {
-  const [items, setItems] = useState([]); // Ensure initial state is an array
+function PopularPage() {
+  const [games, setGames] = useState([]);
+  const [filteredGames, setFilteredGames] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const carouselRefs = useRef([React.createRef(), React.createRef(), React.createRef()]);
+  const [searchTerm, setSearchTerm] = useState('');
 
   useEffect(() => {
-    const fetchFavorites = async () => {
+    const fetchGames = async () => {
+      setLoading(true);
       try {
         const response = await axios.get('http://localhost:8080/api/v1/games');
-        // Ensure response data is an array
-        const gamesData = response.data.slice(21,30)
-        setItems(gamesData);
+        setGames(response.data);
+        setFilteredGames(response.data); // Initialize with all games
       } catch (error) {
-        console.error('Error fetching favorites:', error);
+        console.error('Error fetching games:', error);
+      } finally {
+        setLoading(false);
       }
     };
-    fetchFavorites();
+    fetchGames();
   }, []);
 
-  // Sample placeholders for displaying items
-
-const [user, setUser] = useState(null);
   useEffect(() => {
-    const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
-    if (storedUserSession) {
-      setUser(JSON.parse(storedUserSession));
-    }
-  }, []);
-  const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser/> : <NavBar />;
+    const flktyInstances = carouselRefs.current.map((carouselRef) => {
+      if (carouselRef.current) {
+        return new Flickity(carouselRef.current, {
+          cellAlign: 'left',
+          contain: true,
+          wrapAround: true,
+          autoPlay: 3000,
+          prevNextButtons: true,
+          pageDots: false,
+        });
+      }
+      return null;
+    });
+
+    return () => {
+      flktyInstances.forEach((flkty) => {
+        if (flkty) {
+          flkty.destroy();
+        }
+      });
+    };
+  }, [filteredGames]);
+
+  const handleSearch = (event) => {
+    const value = event.target.value.toLowerCase();
+    setSearchTerm(value);
+    const filtered = games.filter(game => 
+      game.game_name.toLowerCase().includes(value)
+    );
+    setFilteredGames(filtered);
+  };
+
+  const getGamesForCarousel = (startIndex) => {
+    const endIndex = startIndex + 30;
+    return filteredGames.map((game, index) => {
+      if (index >= startIndex && index < endIndex) {
+        return (
+          <div className="carousel-cell" key={game.gameId}>
+            <div className="card">
+              <img src={game.image_url} alt={`Image of ${game.game_name}`} className="card-img-top" />
+              <div className="card-body">
+                <h5 className="card-title">{game.game_name}</h5>
+                <p className="card-publisher">Publisher: {game.publisher}</p>
+                <Link to={`./GoToGame/${game.gameId}`} className="btn btn-outline-primary">View Game</Link>
+              </div>
+            </div>
+          </div>
+        );
+      }
+      return null; // Return null for indices outside the range
+    }).filter(Boolean); // Filter out nulls
+  };
+
   return (
     <>
-      {navBar}
-      <AnimatedBg
-        colors={["#ffadad", "#ffd6a5", "#fdffb6", "#caffbf", "#9bfbcf", "#a0e7e5"]}
-        duration={5}
-        delay={1}
-        timingFunction="linear"
-        randomMode
-        style={{ height: '40vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
-      >
-      <section className="py-5 text-center container">
-        <div className="row py-lg-5">
-          <div className="col-lg-6 col-md-8 mx-auto">
-            <h1 className="fw-light text-dark">Popular Games</h1>
-            <a href="/Favorited" className="btn btn-primary my-2 mx-2">Favorited Games</a>
-            <a href="/" className="btn btn-secondary my-2 mx-2">Browse Games</a>
-          </div>
+      <NavBar />
+      <div className="container">
+        <h1>Popular Games</h1>
+        <input
+          type="text"
+          placeholder="Search for games..."
+          className="search-input"
+          aria-label="Search games"
+          value={searchTerm}
+          onChange={handleSearch}
+        />
+        <div className="links">
+          <Link to="/Favorited" className="link-item">Favorited Games</Link>
+          <Link to="/" className="link-item">Browse Games</Link>
         </div>
-      </section>
-      </AnimatedBg>
-      <div className="album py-5 bg-body-tertiary">
-        <div className="container">
-          <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-            {(items.length ? items : items).map((item, index) => (
-              <div className="col" key={index}>
-                <div className="card shadow-sm">
-                  <img src={item.image_url} alt={`Thumbnail for ${item.game_name}`} className="card-img-top" />
-                  <div className="card-body">
-                    <h5 className="card-title">{item.title}</h5>
-                    <p className="card-text text-dark">{item.description}</p>
-                    <div className="d-flex justify-content-between align-items-center">
-                      <div className="btn-group">
-                        <Link to={`/GoToGame/${item.gameId}`} role="button" className="btn btn-sm btn-outline-secondary">View</Link>
-                        <button type="button" className="btn btn-sm btn-outline-secondary">Edit</button>
-                      </div>
-                    </div>
-                  </div>
+
+        {loading ? (
+          <LoadingSpinner />
+        ) : (
+          <>
+            {filteredGames.length > 0 && (
+              <div className="category">
+                <h2>Hot Now</h2>
+                <div className="carousel" ref={carouselRefs.current[0]}>
+                  {getGamesForCarousel(0)}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
+            )}
+
+            {filteredGames.length > 30 && (
+              <div className="category">
+                <h2>Featured</h2>
+                <div className="carousel" ref={carouselRefs.current[1]}>
+                  {getGamesForCarousel(30)}
+                </div>
+              </div>
+            )}
+
+            {filteredGames.length > 60 && (
+              <div className="category">
+                <h2>Recommended to You</h2>
+                <div className="carousel" ref={carouselRefs.current[2]}>
+                  {getGamesForCarousel(60)}
+                </div>
+              </div>
+            )}
+          </>
+        )}
       </div>
     </>
   );
-};
+}
 
-export default Favorited;
+export default PopularPage;

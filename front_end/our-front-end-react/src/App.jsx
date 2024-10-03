@@ -16,12 +16,12 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import Settings from "./Components/Settings";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import UserHome from "./Components/UserHome";
-
+import Background from "./Components/Background";
 
 function App() {
   return (
     <BrowserRouter>
-      <Theme />
+      <Background />
       <Routes>
         <Route path="/" element={<LandingPage />} />
         <Route path="/Home" element={<LandingPage />} />

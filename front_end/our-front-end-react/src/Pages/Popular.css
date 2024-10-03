@@ -1,142 +1,133 @@
-/* General Styles */
 body {
-    font-family: 'Geist', sans-serif; /* Ensure the Geist font is applied */
-  }
-  
-  .text-light {
-    color: #f8f9fa; /* Light text color */
-  }
-  
-  .bg-body-tertiary {
-    background-color: #f8f9fa; /* Background color for the album section */
-  }
-  
-  .album {
-    padding: 2rem 0; /* Spacing around the album section */
-  }
-  
-  /* Card Styles */
-  .card {
-    border: none; /* Remove border for a cleaner look */
-    transition: transform 0.2s; /* Add a smooth transition for hover effect */
-  }
-  
-  .card:hover {
-    transform: scale(1.05); /* Scale up the card on hover */
-  }
-  
-  .card-body {
-    padding: 1rem; /* Add padding inside the card body */
-  }
-  
-  .card-title {
-    font-weight: bold; /* Make the title bold */
-  }
-  
-  .card-text {
-    margin-bottom: 1rem; /* Space between text elements */
-  }
-  
-  /* Button Styles */
-  .btn-primary {
-    background-color: #007bff; /* Primary button color */
-  }
-  
-  .btn-secondary {
-    background-color: #6c757d; /* Secondary button color */
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    .text-center {
-      text-align: center; /* Center text for mobile */
-    }
-  }
-  /* Global Styles */
-body {
-    font-family: 'Geist', sans-serif;
-    background-color: #f0f8ff; /* Light background for contrast */
-    color: #333; /* Dark text for readability */
-    margin: 0;
-    padding: 0;
-  }
-  
-  h1 {
-    font-size: 2.5rem; /* Larger heading for impact */
-    letter-spacing: 2px; /* Increased letter spacing */
-    font-weight: 700; /* Make it bold for emphasis */
-  }
-  
-  h5 {
-    font-size: 1.25rem;
-    color: #ff6347; /* Tomato color for emphasis */
-  }
-  
-  .text-box {
-    background-color: rgba(255, 255, 255, 0.8); /* Slightly opaque white */
-    border-radius: 10px; /* Curved edges */
-    padding: 20px;
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Light shadow for depth */
-    margin: 20px 0;
-  }
-  
-  /* Button Styles */
-  .btn {
-    border-radius: 20px; /* Round buttons for a retro look */
-    padding: 10px 20px;
-    font-weight: bold;
-    transition: background-color 0.3s, transform 0.2s;
-  }
-  
-  .btn-primary {
-    background-color: #ff6b6b; /* Bright primary color */
-    border: none; /* No border for clean look */
-    color: white;
-  }
-  
-  .btn-primary:hover {
-    background-color: #ff3b3b; /* Darker shade on hover */
-    transform: scale(1.05); /* Slightly enlarge on hover */
-  }
-  
-  .btn-secondary {
-    background-color: #4facfe; /* Sky blue for secondary buttons */
-    border: none;
-    color: white;
-  }
-  
-  .btn-secondary:hover {
-    background-color: #3b9ddc; /* Darker shade on hover */
-    transform: scale(1.05);
-  }
-  
-  /* Card Styles */
-  .card {
-    border: none; /* Remove card border */
-    border-radius: 15px; /* Round card edges */
-    background-color: #fff; /* White background for cards */
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-  
-  .card:hover {
-    transform: translateY(-5px); /* Lift effect on hover */
-    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.2); /* Enhanced shadow on hover */
-  }
-  
-  /* Placeholder SVG styles */
-  .bd-placeholder-img {
-    background-color: #ccc; /* Light gray background for placeholders */
-    border-radius: 15px 15px 0 0; /* Rounded top corners */
-  }
-  
-  /* Responsive Adjustments */
-  @media (max-width: 768px) {
-    h1 {
-      font-size: 2rem; /* Smaller heading on mobile */
-    }
-    
-    .text-box {
-      padding: 15px; /* Less padding on mobile */
-    }
-  }
-  
+  background-color: #f0f4f8; /* Set a light background color */
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  text-align: center;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+  color: #333; /* Darker color for the title */
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin-bottom: 20px;
+  transition: border-color 0.3s ease;
+}
+
+.search-input:focus {
+  border-color: rgba(45, 146, 59, 0.9); /* Green on focus */
+}
+
+.links {
+  display: flex;
+  justify-content: center; /* Center the buttons */
+  gap: 15px; /* Space between buttons */
+  margin-bottom: 30px; /* Space below the buttons */
+}
+
+.link-item {
+  text-decoration: none;
+  background: rgba(45, 146, 59, 0.9);
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  transition: background 0.3s ease;
+}
+
+.link-item:hover {
+  background: rgba(45, 146, 59, 1);
+}
+
+.category {
+  margin-bottom: 40px;
+}
+
+.category h2 {
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+.carousel {
+  background: rgba(0, 0, 0, 0.4);
+  padding: 1px;
+  border-radius: 10px;
+  overflow: hidden; /* Prevent overflow from carousel cells */
+}
+
+.carousel-cell {
+  width: 275px; /* Adjust width based on your design */
+  margin: 0 2px; /* Set left and right margins to 2px */
+  display: inline-block; /* Ensure cells are inline */
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.5) !important; /* Card background */
+  border-radius: 5px; /* Rounded corners */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Shadow for depth */
+  overflow: hidden; /* Ensure content fits within card */
+  transition: transform 0.3s ease; /* Animation effect */
+}
+
+.card:hover {
+  transform: scale(1.05); /* Scale up on hover */
+}
+
+.card-img-top {
+  width: 100%; /* Ensure image fills the card */
+  height: 150px; /* Fixed height to maintain layout */
+  object-fit: cover; /* Ensure images cover the area without distortion */
+  border-radius: 5px 5px 0 0; /* Rounded top corners */
+}
+
+.card-body {
+  text-align: center;
+  padding: 5px; /* Reduced padding inside the card */
+}
+
+.card-title {
+  font-size: 1.25rem;
+  margin-bottom: 5px; /* Reduced bottom margin */
+}
+
+.card-publisher {
+  font-size: 0.9rem;
+  margin-bottom: 10px; /* Reduced bottom margin */
+  color: #666; /* Lighter color for publisher */
+}
+
+.btn {
+  background-color: rgba(45, 146, 59, 0.5);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 6px 10px; /* Adjusted padding for buttons */
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn:hover {
+  background-color: rgba(45, 146, 59, 1);
+}
+
+.btn-primary {
+  background-color: #28a745; /* Green for review button */
+}
+
+.btn-primary:hover {
+  background-color: #218838; /* Darker green on hover */
+}

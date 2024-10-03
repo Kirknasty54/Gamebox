@@ -31,15 +31,24 @@ function NavBar() {
                     </Navbar.Brand>
 
                     <Nav className="d-flex" style={{ display: 'inline', gap: '5px', justifyContent: 'end', marginTop: '0px' }}>
-                            <NavDropdown title={<span className="nav-dropdown-title"  style={{ color: 'rgba(45, 146, 59, 1)',fontSize: '1.2rem' }}>&#9776;</span>} id="navbarScrollingDropdown" align="end">
-                                <NavDropdown.Item as={Link} to="/about" className="nav-item" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>About</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Popular" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Popular</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/Favorited" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Favorited</NavDropdown.Item>
-                                <NavDropdown.Item as={Link} to="/SignIn" style={{ color: 'rgba(149, 149, 149, 0.9)' }}>Login</NavDropdown.Item>
-                            </NavDropdown>
-                            
-                        </Nav>
-                    
+                    <NavDropdown
+                        className="custom-dropdown"
+                        title={<span className="nav-dropdown-title" style={{ color: 'white', fontSize: '1.2rem' }}>&#9776;</span>}
+                        id="navbarScrollingDropdown"
+                        align="end"
+                    >
+                        <div style={{ backgroundColor: 'rgba(0, 0, 0, 0.2)', border: 'none' }}>
+                        <NavDropdown.Item as={Link} to="/about" className="nav-item">About</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/Popular">Popular</NavDropdown.Item>
+                        <NavDropdown.Item as={Link} to="/Favorited">Favorited</NavDropdown.Item>
+
+                        <NavDropdown.Divider />
+
+                        <NavDropdown.Item as={Link} to="/SignIn" style={{ color: '#007BFF' }}>Login</NavDropdown.Item>
+                        </div>
+                    </NavDropdown>
+                
+                </Nav>
                 </div>
             </Navbar>
         </header>
