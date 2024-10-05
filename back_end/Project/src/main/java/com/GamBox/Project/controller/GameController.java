@@ -19,7 +19,8 @@ import com.GamBox.Project.service.GameService;
 
 @RestController
 @AllArgsConstructor
-@CrossOrigin(origins = "https://gameboxusa.com") // Specify your front-end domain
+// @CrossOrigin(origins = "https://gameboxusa.com") // Specify your front-end
+// domain
 @RequestMapping("/api/v1/games")
 public class GameController {
   @Autowired
