@@ -21,7 +21,7 @@ import com.GamBox.Project.service.GameService;
 @AllArgsConstructor
 // @CrossOrigin(origins = "https://gameboxusa.com") // Specify your front-end
 // domain
-@RequestMapping("/api/v1/games")
+@RequestMapping("/v1/games")
 public class GameController {
   @Autowired
   private GameService gameService;
