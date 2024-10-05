@@ -42,7 +42,7 @@ function LandingPage() {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://gameboxusa.com:8080/api/v1/games');
+        const response = await axios.get('https://gameboxusa.com:8080/api/v1/games', { timeout: 5000 });
         const gamesData = response.data.slice(0, 30);
         setGames(gamesData);
         setFilteredGames(gamesData);
