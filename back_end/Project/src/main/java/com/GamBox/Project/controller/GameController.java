@@ -15,7 +15,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.GamBox.Project.domain.GameInfo;
-import com.GamBox.Project.repository.GameInfoRepository;
 import com.GamBox.Project.service.GameService;
 
 @RestController
@@ -25,8 +24,8 @@ import com.GamBox.Project.service.GameService;
 public class GameController {
   @Autowired
   private GameService gameService;
+
   @Autowired
-  private GameInfoRepository gameInfoRepository;
 
   @GetMapping
   public ResponseEntity<List<GameRespones>> getAllGames() {

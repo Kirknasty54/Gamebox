@@ -15,25 +15,20 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import com.GamBox.Project.domain.UserInfo;
-import com.GamBox.Project.repository.UserInfoRepository;
 import com.GamBox.Project.service.UserService;
 import com.GamBox.Project.service.GameService;
 
 @RestController
-@AllArgsConstructor
 @CrossOrigin
 
 @RequestMapping("/api/v1/users")
 public class UserController {
   private final UserService userService;
-  @Autowired
-  private UserInfoRepository userInfoRepository;
-  @Autowired
-  GameService gameService;
+  private final GameService gameService;
 
-  @Autowired
-  public UserController(UserService userService) {
+  public UserController(UserService userService, GameService gameService) {
     this.userService = userService;
+    this.gameService = gameService;
   }
 
   @PostMapping(value = "/{uId}/{gameId}/like", produces = MediaType.APPLICATION_JSON_VALUE)

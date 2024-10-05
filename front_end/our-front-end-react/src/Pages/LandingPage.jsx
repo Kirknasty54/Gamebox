@@ -42,7 +42,7 @@ function LandingPage() {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/games');
+        const response = await axios.get('http://gameboxusa.com:8080/api/v1/games');
         const gamesData = response.data.slice(0, 30);
         setGames(gamesData);
         setFilteredGames(gamesData);
@@ -68,15 +68,15 @@ function LandingPage() {
     );
     setFilteredGames(filtered);
   }, [debouncedSearchTerm, games]);
-  
-  
+
+
   useEffect(() => {
     const filtered = games.filter(game =>
       game.game_name && game.game_name.toLowerCase().includes(debouncedSearchTerm.toLowerCase())
     );
     setFilteredGames(filtered);
   }, [debouncedSearchTerm, games]);
-  
+
 
   useEffect(() => {
     const filtered = games.filter(game =>

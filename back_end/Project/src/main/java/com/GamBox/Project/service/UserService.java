@@ -14,14 +14,17 @@ import java.util.List;
 import java.util.Optional;
 
 @Service
-@AllArgsConstructor
 public class UserService {
-  @Autowired
-  private UserInfoRepository userInfoRepository;
-  @Autowired
-  private GameInfoRepository gameInfoRepository;
-
+  private final UserInfoRepository userInfoRepository;
+  private final GameInfoRepository gameInfoRepository;
   private final LikedGameInfoRepository likedGameInfoRepository;
+
+  public UserService(UserInfoRepository userInfoRepository, GameInfoRepository gameInfoRepository,
+      LikedGameInfoRepository likedGameInfoRepository) {
+    this.userInfoRepository = userInfoRepository;
+    this.gameInfoRepository = gameInfoRepository;
+    this.likedGameInfoRepository = likedGameInfoRepository;
+  }
 
   public void likeGame(UserInfo user, Long gameId) {
     LikedGamesInfo likedGame = new LikedGamesInfo();

@@ -44,7 +44,7 @@ const AboutPage = () => {
               <div className='content'>
                 <img title='about-image' src='jackson.png' className='about-image' alt='About Us' />
                 <p className='p1'>
-                  <a className="color: '#007BFF'" href="https://www.linkedin.com/in/john-k-34349424a">LinkedIn</a>
+                  <a className="color: '#007BFF'" href="https://www.linkedin.com/in/jackson-kirkpatrick-8b4018224/">LinkedIn</a>
                 </p>
                 <div>Email: jdk30150@ucmo.edu</div>
               </div>
@@ -90,7 +90,7 @@ const AboutPage = () => {
           </Col>
         </Row>
       </Container>
-      
+
     </div>
   );
 };

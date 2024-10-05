@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-@CrossOrigin
 public class UserInfo {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
