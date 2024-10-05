@@ -18,7 +18,7 @@ function PopularPage() {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('http://localhost:8080/api/v1/games');
+        const response = await axios.get('https://gameboxusa.com:8080/api/v1/games');
         setGames(response.data);
         setFilteredGames(response.data); // Initialize with all games
       } catch (error) {
@@ -57,7 +57,7 @@ function PopularPage() {
   const handleSearch = (event) => {
     const value = event.target.value.toLowerCase();
     setSearchTerm(value);
-    const filtered = games.filter(game => 
+    const filtered = games.filter(game =>
       game.game_name.toLowerCase().includes(value)
     );
     setFilteredGames(filtered);
