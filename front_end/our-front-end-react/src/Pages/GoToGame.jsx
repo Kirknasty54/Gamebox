@@ -12,7 +12,8 @@ function GoToGame() {
   useEffect(() => {
     const getGame = async () => {
       try {
-        const response = await axios.get(`https://gameboxusa.com/api/v1/games'/${gameId}`);
+        // const response = await axios.get('https://gameboxusa.com/api/v1/games', { timeout: 5000 });
+        const response = await axios.get(`https://gameboxusa.com/api/v1/games/${gameId}`);
         if (response.data) {
           setGame(response.data);
         } else {

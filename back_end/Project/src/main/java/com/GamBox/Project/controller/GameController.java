@@ -72,18 +72,20 @@ public class GameController {
     }
   }
 
-  @GetMapping("/{uId}/likedGames")
-  public ResponseEntity<List<GameRespones>> getLikedGames(@PathVariable Long uId) {
-    List<GameInfo> likedGames = gameService.getLikedGames(uId);
-    List<GameRespones> gameRespones = new ArrayList<>();
-
-    for (GameInfo game : likedGames) {
-      gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(),
-          game.getGameName(), game.getPublisher(), game.getImageUrl(), game.getDescription())); // Add description
-    }
-
-    return new ResponseEntity<>(gameRespones, HttpStatus.OK);
-
-  }
+  // @GetMapping("/{uId}/likedGames")
+  // public ResponseEntity<List<GameRespones>> getLikedGames(@PathVariable Long
+  // uId) {
+  // List<GameInfo> likedGames = gameService.getLikedGames(uId);
+  // List<GameRespones> gameRespones = new ArrayList<>();
+  //
+  // for (GameInfo game : likedGames) {
+  // gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(),
+  // game.getGameName(), game.getPublisher(), game.getImageUrl(),
+  // game.getDescription())); // Add description
+  // }
+  //
+  // return new ResponseEntity<>(gameRespones, HttpStatus.OK);
+  //
+  // }
 
 }
