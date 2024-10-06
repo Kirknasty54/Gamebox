@@ -9,7 +9,9 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import java.sql.Timestamp;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 @Data
 @Entity
@@ -24,4 +26,8 @@ public class GameInfo {
   private String publisher;
   private String imageUrl;
   private String description;
+
+  @JsonIgnore
+  @OneToMany(mappedBy = "game", cascade = CascadeType.ALL, orphanRemoval = true)
+  private Set<LikedGamesInfo> likedByUsers = new HashSet<>();
 }

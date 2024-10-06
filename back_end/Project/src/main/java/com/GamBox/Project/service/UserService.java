@@ -26,12 +26,12 @@ public class UserService {
     this.likedGameInfoRepository = likedGameInfoRepository;
   }
 
-  public void likeGame(UserInfo user, Long gameId) {
-    LikedGamesInfo likedGame = new LikedGamesInfo();
-    likedGame.setUser(user);
-    likedGame.setGame(gameInfoRepository.findBygameId(gameId).get());
-    likedGameInfoRepository.save(likedGame);
-  }
+  // public void likeGame(UserInfo user, Long gameId) {
+  // LikedGamesInfo likedGame = new LikedGamesInfo();
+  // likedGame.setUser(user);
+  // likedGame.setGame(gameInfoRepository.findBygameId(gameId).get());
+  // likedGameInfoRepository.save(likedGame);
+  // }
 
   public List<LikedGamesInfo> getLikedGames(Long userId) {
     return likedGameInfoRepository.findByUser_uId(userId);
