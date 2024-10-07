@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .navbar-custom {
     background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
     backdrop-filter: blur(15px); /* Blurs background content */
@@ -87,7 +86,6 @@
         padding: 0.5rem; /* Adjust padding for dropdown items on smaller screens */
     }
 }
-=======
 .text-secondary {
     color: #ffffff; /* Change to white for visibility */
     font-size: 1.2rem; /* Adjust size if necessary */
@@ -96,4 +94,3 @@
 .text-secondary:hover {
     color: #ffc107; /* Change color on hover */
 }
->>>>>>> 1bba6680a16d40c37d21e9023efe3344dad6fa3a
