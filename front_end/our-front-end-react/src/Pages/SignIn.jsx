@@ -20,8 +20,8 @@ const Login = () => {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    
-    axios.post('http://localhost:8080/api/v1/users/auth', values)
+
+    axios.post('https://gameboxusa.com/api/v1/users/auth', values)
       .then(response => {
         const userData = response.data;
         if (values.rememberMe) {
@@ -41,9 +41,9 @@ const Login = () => {
       setUser(JSON.parse(storedUserSession));
     }
   }, []);
-  
+
   const navBar = localStorage.getItem('userSession') || sessionStorage.getItem('userSession') ? <NavBarUser /> : <NavBar />;
-  
+
   const greyColor = 'rgba(128, 128, 128, 0.8)';
   const hoverGreyColor = 'rgba(169, 169, 169, 1)';
 
@@ -51,7 +51,7 @@ const Login = () => {
     <>
       {navBar}
       <div className="login-container d-flex align-items-center justify-content-center min-vh-100">
-        <div 
+        <div
           className="modal-content rounded-4 shadow"
           style={{
             backgroundColor: 'rgba(0, 0, 0, 0.4)', // Set background to 0.3 opacity
@@ -61,10 +61,10 @@ const Login = () => {
         >
           <div className="modal-header p-5 pb-4 border-bottom-0">
             <h1 className="fw-bold mb-0 fs-2 text-light">Login to your account</h1>
-            <button 
-              type="button" 
-              className="btn-close" 
-              aria-label="Close" 
+            <button
+              type="button"
+              className="btn-close"
+              aria-label="Close"
               onClick={() => navigate('/')}
               style={{
                 color: greyColor, // Brighter grey for the close button

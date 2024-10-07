@@ -36,11 +36,11 @@ function App() {
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/terms" element={<TermsOfService />} />
         <Route path="/Settings" element={<Settings />} />
-        <Route path = "/UserHome" element = {<ProtectedRoute><UserHome/></ProtectedRoute>} />
+        <Route path="/UserHome" element={<ProtectedRoute><UserHome /></ProtectedRoute>} />
       </Routes>
       <Footer />
     </BrowserRouter>
-    
+
   );
 }
 
