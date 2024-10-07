@@ -1,0 +1,8 @@
+.text-secondary {
+    color: #ffffff; /* Change to white for visibility */
+    font-size: 1.2rem; /* Adjust size if necessary */
+}
+
+.text-secondary:hover {
+    color: #ffc107; /* Change color on hover */
+}
