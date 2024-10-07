@@ -1,0 +1,88 @@
+.navbar-custom {
+    background-color: rgba(0, 0, 0, 0.2); /* Semi-transparent background */
+    backdrop-filter: blur(15px); /* Blurs background content */
+    color: rgba(0, 0, 0, 0.2); /* Default text color to grey */
+    padding: 1rem;
+    transition: background-color 0.3s ease;
+    position: fixed; /* Fixed positioning to stay on top */
+    width: 100%;
+    z-index: 1;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between; /* Distributes space evenly */
+    align-items: center; /* Center vertically */
+    width: 100%; /* Full width */
+}
+
+
+.navbar-collapse {
+    justify-content: flex-end; /* Align dropdown to the right */
+}
+.navbar-brand span {
+    color: rgba(45, 146, 59, 0.9); /* GameBox color */
+    display: flex;
+    align-items: center;
+    margin: 0; /* Remove auto margin */
+}
+.nav-item {
+    color: rgba(0, 0, 0, 0.2); /* Change this to your desired color */
+    transition: color 0.3s; /* Smooth transition for hover */
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+}
+
+.custom-dropdown .dropdown-menu {
+    background-color: rgba(0, 0, 0, 0.2); /* Background color */
+    border: none; /* Remove border */
+    box-shadow: none; /* Remove shadow if present */
+}
+
+.custom-dropdown .dropdown-item {
+    color: rgba(149, 149, 149, 0.9); /* Default item color */
+}
+
+.custom-dropdown .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Change hover color */
+    color: white; /* Change hover text color */
+}
+
+
+.search-input {
+    margin-top: 10px; /* Move search bar down */
+    background-color: rgba(0, 0, 0, 0.3); /* Semi-transparent background */
+    border: 1px solid rgba(255, 255, 255, 0.5); /* Light border */
+    color: rgba(149, 149, 149, 0.9); /* Text color to grey */
+}
+
+.search-input::placeholder {
+    color: rgba(128, 128, 128, 0.7); /* Placeholder text color */
+}
+
+.search-input:focus {
+    border-color: rgba(0, 0, 0, 0.2); /* Border color on focus */
+    outline: none; /* Remove default outline */
+}
+
+.dropdown-menu {
+    padding: 1rem; /* Padding for dropdown */
+    min-width: 200px; /* Minimum width for dropdown */
+    margin-top: 0; /* Remove margin */
+    background-color: rgba(45, 146, 59, 1); /* Change to your desired color */
+    }
+
+
+/* Media query for smaller screens */
+@media (max-width: 768px) {
+    .navbar-custom {
+        padding: 0.5rem; /* Adjust padding for smaller screens */
+    }
+
+    .dropdown-menu {
+        padding: 0.5rem; /* Adjust padding for dropdown items on smaller screens */
+    }
+}
