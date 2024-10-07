@@ -47,13 +47,13 @@ const SignUp = () => {
                 <div className="form-floating mb-3">
                   <input
                     type="text"
-                    name="name"
+                    name="username"
                     className="form-control rounded-3"
-                    placeholder="Enter Name"
+                    placeholder="Enter Username"
                     onChange={handleInput}
                   />
-                  <label htmlFor="floatingInput" className="text-dark">Name</label>
-                  {errors.name && <span className="text-danger">{errors.name}</span>}
+                  <label htmlFor="floatingInput" className="text-dark">Username</label>
+                  {errors.username && <span className="text-danger">{errors.username}</span>}
                 </div>
                 <div className="form-floating mb-3">
                   <input
