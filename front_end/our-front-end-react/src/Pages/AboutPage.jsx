@@ -70,7 +70,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Noah Bowling</h3>
-              <p className='role'>Back-End Developer</p>
+              <p className='role'>Back-End Lead Developer</p>
               <div className='content'>
                 <img title='about-image' src='noah.jpg' className='about-image' alt='About Us' />
                 <p className='p1'>
