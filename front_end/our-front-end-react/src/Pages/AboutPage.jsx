@@ -29,6 +29,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Collin Davis</h3>
+              <h5 className='desc'>Front End Team</h5>
               <div className='content'>
                 <img title='about-image' src='collin.svg' className='about-image' alt='About Us' />
                 <p className='p1'>

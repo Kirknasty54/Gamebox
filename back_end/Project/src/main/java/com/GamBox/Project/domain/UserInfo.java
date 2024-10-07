@@ -36,4 +36,5 @@ public class UserInfo {
   @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<LikedGamesInfo> likedGamesInfos = new HashSet<>();
+
 }

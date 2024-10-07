@@ -31,25 +31,31 @@ public class UserController {
     this.gameService = gameService;
   }
 
-  @PostMapping(value = "/{uId}/{gameId}/like", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> likeGame(@PathVariable Long uId, @PathVariable Long gameId) {
-    try {
-      gameService.likeGame(uId, gameId);
-      return new ResponseEntity<>(HttpStatus.OK); // 201 for successfully created
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle error
-    }
-  }
+  // @PostMapping(value = "/{uId}/{gameId}/like", produces =
+  // MediaType.APPLICATION_JSON_VALUE)
+  // public ResponseEntity<Void> likeGame(@PathVariable Long uId, @PathVariable
+  // Long gameId) {
+  // try {
+  // gameService.likeGame(uId, gameId);
+  // return new ResponseEntity<>(HttpStatus.OK); // 201 for successfully created
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle
+  // error
+  // }
+  // }
 
-  @DeleteMapping(value = "/{uId}/{gameId}/unlike", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<Void> unlikeGame(@PathVariable Long uId, @PathVariable Long gameId) {
-    try {
-      gameService.unlikeGame(uId, gameId);
-      return new ResponseEntity<>(HttpStatus.OK); // 204 for successful deletion
-    } catch (Exception e) {
-      return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle error
-    }
-  }
+  // @DeleteMapping(value = "/{uId}/{gameId}/unlike", produces =
+  // MediaType.APPLICATION_JSON_VALUE)
+  // public ResponseEntity<Void> unlikeGame(@PathVariable Long uId, @PathVariable
+  // Long gameId) {
+  // try {
+  // gameService.unlikeGame(uId, gameId);
+  // return new ResponseEntity<>(HttpStatus.OK); // 204 for successful deletion
+  // } catch (Exception e) {
+  // return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); // Handle
+  // error
+  // }
+  // }
 
   @GetMapping
   public ResponseEntity<List<UserResponse>> getAllUser() {

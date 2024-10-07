@@ -43,3 +43,8 @@
   color: #ccc; /* Lighter text color */
 }
 
+.desc{
+  text-align: center;
+  font-size 1.0rem;
+  margin-bottom 10px;
+}
