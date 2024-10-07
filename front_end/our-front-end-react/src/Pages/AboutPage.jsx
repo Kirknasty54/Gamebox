@@ -29,7 +29,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Collin Davis</h3>
-              <h5 className='desc'>Front End Team</h5>
+              <p className='role'>Front-End Developer</p>
               <div className='content'>
                 <img title='about-image' src='collin.svg' className='about-image' alt='About Us' />
                 <p className='p1'>
@@ -42,6 +42,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Jackson Kirkpatrick</h3>
+              <p className='role'>Back-End Developer</p>
               <div className='content'>
                 <img title='about-image' src='jackson.png' className='about-image' alt='About Us' />
                 <p className='p1'>
@@ -56,6 +57,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>John Kutney</h3>
+              <p className='role'>Front-End Developer</p>
               <div className='content'>
                 <img title='about-image' src='John.svg' className='about-image' alt='About Us' />
                 <p className='p1'>
@@ -68,6 +70,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Noah Bowling</h3>
+              <p className='role'>Back-End Developer</p>
               <div className='content'>
                 <img title='about-image' src='noah.jpg' className='about-image' alt='About Us' />
                 <p className='p1'>
@@ -80,6 +83,7 @@ const AboutPage = () => {
           <Col>
             <div className='box'>
               <h3 className='title'>Jacob Lee</h3>
+              <p className='role'>Front-End Developer</p>
               <div className='content'>
                 <img title='about-image' src='jacob1.jpg' className='about-image' alt='About Us' />
                 <p className='p1'>
