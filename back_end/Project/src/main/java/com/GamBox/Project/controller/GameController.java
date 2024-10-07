@@ -26,8 +26,6 @@ public class GameController {
   @Autowired
   private GameService gameService;
 
-  @Autowired
-
   @GetMapping
   public ResponseEntity<List<GameRespones>> getAllGames() {
     List<GameInfo> games = gameService.allGames();
