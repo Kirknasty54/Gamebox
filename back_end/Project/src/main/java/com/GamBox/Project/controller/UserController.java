@@ -19,7 +19,7 @@ import com.GamBox.Project.service.UserService;
 import com.GamBox.Project.service.GameService;
 
 @RestController
-@RequestMapping("/api/v1/users")
+@RequestMapping("/v1/users")
 public class UserController {
   private final UserService userService;
   private final GameService gameService;
