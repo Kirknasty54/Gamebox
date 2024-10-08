@@ -27,11 +27,7 @@ public class Security {
         .cors((Customizer.withDefaults())) // Enable CORS support
         .formLogin(AbstractHttpConfigurer::disable) // Disable form login
         .httpBasic(AbstractHttpConfigurer::disable) // Disable basic authentication
-        .oauth2ResourceServer(oAuth -> oAuth.jwt(Customizer.withDefaults())) // Use JWT for OAuth2 resource server
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Use stateless
-        //
-        // session
-        // management
         )
         .build();
   }
