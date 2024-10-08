@@ -20,7 +20,8 @@ public class Security {
     })
         .authorizeHttpRequests(auth -> auth
             .requestMatchers("/login").permitAll() // Allow access to login endpoint
-            .requestMatchers("/v1/user/**").permitAll() // Allow access to user-related endpoints
+            .requestMatchers("/v1/users/auth").permitAll() // Allow access to user-related endpoints
+            .requestMatchers("/v1/users/register").permitAll() // Allow access to user-related endpoints
             .requestMatchers("/v1/games/**").permitAll() // Allow access to all game-related endpoints
             .anyRequest().authenticated() // Require authentication for all other requests
         )
