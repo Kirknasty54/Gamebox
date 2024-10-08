@@ -2,7 +2,7 @@ import Theme from "./Components/Theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutPage from './Pages/AboutPage';
 import BrowseGames from "./Pages/BrowseGames";
-import SignIn from './Pages/SignIn';
+import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Favorited from './Pages/Favorited';
 import Popular from './Pages/Popular';
@@ -27,8 +27,7 @@ function App() {
         <Route path="/Home" element={<LandingPage />} />
         <Route path="/GoToGame/:gameId" element={<GoToGame />} />
         <Route path="/about" element={<AboutPage />} />
-        <Route path="/Login" element={<SignIn />} />
-        <Route path="/SignIn" element={<SignIn />} />
+        <Route path="/Login" element={<Login />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Browse" element={<BrowseGames />} />
         <Route path="/Favorited" element={<Favorited />} />
