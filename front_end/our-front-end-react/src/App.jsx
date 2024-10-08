@@ -27,6 +27,7 @@ function App() {
         <Route path="/Home" element={<LandingPage />} />
         <Route path="/GoToGame/:gameId" element={<GoToGame />} />
         <Route path="/about" element={<AboutPage />} />
+        <Route path="/Login" element={<SignIn />} />
         <Route path="/SignIn" element={<SignIn />} />
         <Route path="/SignUp" element={<SignUp />} />
         <Route path="/Browse" element={<BrowseGames />} />
