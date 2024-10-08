@@ -32,7 +32,6 @@ public class UserInfo {
   @Column(unique = true)
   private String email;
 
-  // private List<UserApps> userApps = new ArrayList<>();
   @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<LikedGamesInfo> likedGamesInfos = new HashSet<>();
