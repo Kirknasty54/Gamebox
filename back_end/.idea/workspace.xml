@@ -5,7 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/Project/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/config/Security.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -137,6 +140,7 @@
       <workItem from="1728059548186" duration="36000" />
       <workItem from="1728235542264" duration="8000" />
       <workItem from="1728235562418" duration="3000" />
+      <workItem from="1728355466767" duration="1265000" />
     </task>
     <servers />
   </component>
