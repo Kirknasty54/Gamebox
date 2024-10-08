@@ -8,8 +8,9 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 @Configuration
 public class Security {
 
-  @Bean
-  public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
-    return http.build();
-  }
+  // @Bean
+  // public SecurityFilterChain securityFilterChain(HttpSecurity http) throws
+  // Exception {
+  // return http.build();
+  // }
 }
