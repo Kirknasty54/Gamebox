@@ -2,7 +2,6 @@ import Theme from "./Components/Theme";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import AboutPage from './Pages/AboutPage';
 import BrowseGames from "./Pages/BrowseGames";
-import Login from './Pages/Login';
 import SignUp from './Pages/SignUp';
 import Favorited from './Pages/Favorited';
 import Popular from './Pages/Popular';
@@ -17,6 +16,7 @@ import Settings from "./Components/Settings";
 import ProtectedRoute from "./Components/ProtectedRoute";
 import UserHome from "./Components/UserHome";
 import Background from "./Components/Background";
+import Login from "./Pages/Login";
 
 function App() {
   return (
