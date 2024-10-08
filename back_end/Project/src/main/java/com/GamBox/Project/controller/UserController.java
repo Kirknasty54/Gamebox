@@ -6,6 +6,7 @@ import lombok.Getter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -103,4 +104,7 @@ public class UserController {
     }
   }
 
+  @PostMapping(value = "/register", produces = MeditaType.APPLICATION_JSON_VALUE)
+  public ResponseEntity<?> register(@RequestBody Set<String> credentials) {
+  }
 }

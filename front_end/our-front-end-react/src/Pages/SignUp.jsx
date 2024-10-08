@@ -23,7 +23,7 @@ const SignUp = () => {
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      axios.post('https://gameboxusa.com/api/v1/users/auth', values)
+      axios.post('https://gameboxusa.com/api/v1/users/register', values)
         .then(() => {
           navigate('/profile'); // Navigate to the login page on successful signup
         })
