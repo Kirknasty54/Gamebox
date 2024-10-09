@@ -31,9 +31,9 @@ public class GameService {
   @Autowired
   private UserService userService;
 
-  public Page<GameInfo> allGames() {
+  public Page<GameInfo> allGames(int page, int size) {
     // Page<GameInfo> gameEntries = gameInfoRepository.findAll(pageable);
-    return gameInfoRepository.findAll(PageRequest.of(0, 30));
+    return gameInfoRepository.findAll(PageRequest.of(page, size));
   }
 
   public GameInfo findGame(Long gameId) {

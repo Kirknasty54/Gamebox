@@ -1,4 +1,4 @@
 package com.GamBox.Project.dto;
 
-public record RequestPageSize(int page, int size) {
+public record RequestPageSize(Long page, int size) {
 }
