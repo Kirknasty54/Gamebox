@@ -25,9 +25,9 @@ public class GameController {
   private GameService gameService;
 
   @GetMapping
-  public ResponseEntity<List<GameRespones>> getAllGames(@RequestParam("page") int pageNum,
+  public ResponseEntity<List<GameRespones>> getAllGames(@RequestParam("page") int page,
       @RequestParam("size") int size) {
-    var games = gameService.allGames(pageNum, size);
+    var games = gameService.allGames(page, size);
     List<GameRespones> gameRespones = new ArrayList<>();
     for (var game : games) {
       gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(), game.getGameName(), game.getPublisher(),
