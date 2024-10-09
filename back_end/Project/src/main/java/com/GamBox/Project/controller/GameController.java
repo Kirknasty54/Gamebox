@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 import java.util.Map;
@@ -29,10 +30,11 @@ public class GameController {
       @RequestParam("size") int size) {
     var games = gameService.allGames(page, size);
     List<GameRespones> gameRespones = new ArrayList<>();
-    for (var game : games) {
+    for (var game : games.getContent()) {
       gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(), game.getGameName(), game.getPublisher(),
           game.getImageUrl(), game.getDescription()));
     }
+
     return new ResponseEntity<>(gameRespones, HttpStatus.OK);
   }
 
