@@ -19,8 +19,6 @@ import com.GamBox.Project.service.GameService;
 
 @RestController
 @AllArgsConstructor
-// @CrossOrigin(origins = "https://gameboxusa.com") // Specify your front-end
-// domain
 @RequestMapping("/v1/games")
 public class GameController {
   @Autowired
@@ -28,9 +26,9 @@ public class GameController {
 
   @GetMapping
   public ResponseEntity<List<GameRespones>> getAllGames() {
-    List<GameInfo> games = gameService.allGames();
+    var games = gameService.allGames();
     List<GameRespones> gameRespones = new ArrayList<>();
-    for (GameInfo game : games) {
+    for (var game : games) {
       gameRespones.add(new GameRespones(game.getGameId(), game.getDeveloper(), game.getGameName(), game.getPublisher(),
           game.getImageUrl(), game.getDescription()));
     }

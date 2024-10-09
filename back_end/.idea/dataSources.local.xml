@@ -6,5 +6,11 @@
       <user-name>admin</user-name>
       <schema-mapping />
     </data-source>
+    <data-source name="GameBox@hackmidwest-gamebox-db.c986wiuwap7e.us-east-1.rds.amazonaws.com" uuid="315dc0ec-5b8c-4632-bd84-5958e2c37175">
+      <database-info product="" version="" jdbc-version="" driver-name="" driver-version="" dbms="MYSQL" />
+      <secret-storage>master_key</secret-storage>
+      <user-name>admin</user-name>
+      <schema-mapping />
+    </data-source>
   </component>
 </project>

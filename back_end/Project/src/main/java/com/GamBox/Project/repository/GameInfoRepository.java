@@ -1,6 +1,8 @@
 package com.GamBox.Project.repository;
 
 import com.GamBox.Project.domain.GameInfo;
+
+import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -12,8 +14,6 @@ public interface GameInfoRepository extends JpaRepository<GameInfo, Long> {
   Optional<GameInfo> findBygameId(Long gameId);
 
   Optional<GameInfo> findByGameName(String gameName);
-
-  List<GameInfo> findAll();
 
   // Optional<UserInfo> findByuId(Long uId);
 
