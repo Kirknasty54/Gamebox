@@ -23,6 +23,7 @@ const Login = () => {
 
     axios.post('https://gameboxusa.com/api/v1/users/auth', values)
       .then(response => {
+        console.log(response.data);
         const userData = response.data;
         if (values.rememberMe) {
           localStorage.setItem('userSession', JSON.stringify(userData));

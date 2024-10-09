@@ -74,7 +74,7 @@ public class UserController {
       return new ResponseEntity<>(response, HttpStatus.OK);
     } else {
       response = new AuthenticationResponse(null, false);
-      return ResponseEntity.ok(response);
+      return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
   }
 
