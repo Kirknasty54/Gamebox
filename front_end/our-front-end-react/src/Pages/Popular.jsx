@@ -18,7 +18,7 @@ function PopularPage() {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://gameboxusa.com/api/v1/games?page=0&size=30');
+        const response = await axios.get('https://gameboxusa.com/api/v1/games?page=0&size=90');
         setGames(response.data);
         setFilteredGames(response.data); // Initialize with all games
       } catch (error) {
