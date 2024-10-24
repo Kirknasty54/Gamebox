@@ -12,6 +12,7 @@ const Login = () => {
     rememberMe: false,
   });
   const navigate = useNavigate();
+  const [error, setError] = useState(null);
 
   const handleInput = (event) => {
     const { name, value, type, checked } = event.target;
@@ -32,7 +33,13 @@ const Login = () => {
         }
         navigate('/UserHome');
       })
-      .catch(err => console.log(err));
+      .catch(err => {
+        if (err.response && err.response.status === 400) {
+          setError('Invalid email or password. Please try again.');
+        } else {
+          setError('Something went wrong. Please try again later.');
+        }
+      });
   };
 
   const [user, setUser] = useState(null);
