@@ -207,8 +207,7 @@ function LandingPage() {
                           className={`btn ${favorites.some(fav => fav.gameId === game.gameId) ? 'btn-danger' : 'btn-outline-danger'}`}
                           onClick={() => handleFavoriteToggle(game)}
                         >
-                          {favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite'}
-                        </button>
+                          {localStorage.getItem('userSession') ? (favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite') : 'Login to Favorite'} </button>
                       </div>
                     </div>
                   </div>
