@@ -42,7 +42,7 @@ function LandingPage() {
     const fetchGames = async () => {
       setLoading(true);
       try {
-        const response = await axios.get('https://gameboxusa.com/api/v1/games?page=0&size=30', { timeout: 5000 });
+        const response = await axios.get('https://gameboxusa.com/api/v1/games', { timeout: 5000 });
         const gamesData = response.data.slice(0, 30);
         setGames(gamesData);
         setFilteredGames(gamesData);
@@ -90,6 +90,12 @@ function LandingPage() {
     setSearchTerm(value);
   };
   const handleFavoriteToggle = async (game) => {
+    const loggedIn = localStorage.getItem('userSession') !== null;
+    if (!loggedIn) {
+      alert('PLEASE LOG IN OR SIGN UP TO ADD FAVORITES!');
+      return;
+    }
+
     const isFavorite = favorites.some(fav => fav.gameId === game.gameId);
     let updatedFavorites;
 
