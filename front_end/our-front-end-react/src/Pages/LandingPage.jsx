@@ -90,8 +90,8 @@ function LandingPage() {
     setSearchTerm(value);
   };
   const handleFavoriteToggle = async (game) => {
-    const loggedIn = localStorage.getItem('userSession') !== null;
-    if (!loggedIn) {
+    const loggedIn = localStorage.getItem('userSession');
+    if (loggedIn === null) {
       alert('PLEASE LOG IN OR SIGN UP TO ADD FAVORITES!');
       return;
     }
