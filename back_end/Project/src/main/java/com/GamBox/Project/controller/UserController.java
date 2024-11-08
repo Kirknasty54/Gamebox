@@ -69,15 +69,13 @@ public class UserController {
     System.out.println(userEmail);
     System.out.println(password);
     Optional<UserInfo> authenticatedUser = userService.auth(userEmail, password);
-    if (true)
-      return new ResponseEntity<>(HttpStatus.OK);
     if (authenticatedUser.isPresent()) {
       UserInfo user = authenticatedUser.get();
       response = new AuthenticationResponse(user.getEmail(), true);
       return new ResponseEntity<>(response, HttpStatus.OK);
     } else {
       response = new AuthenticationResponse(null, false);
-      return new ResponseEntity(response, HttpStatus.UNAUTHORIZED);
+      return new ResponseEntity(response, HttpStatus.BAD_REQUEST);
     }
   }
 
