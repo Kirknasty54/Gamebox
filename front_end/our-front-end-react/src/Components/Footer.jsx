@@ -14,8 +14,8 @@ function Footer() {
       </p>
 
       <div className="footer-links" style={{ display: 'flex', justifyContent: 'center', gap: '15px', marginBottom: '3rem' }}>
-        <a href="/privacy" style={{ color: '#ffffff', textDecoration: 'none' }}>Privacy Policy</a>
-        <a href="/terms" style={{ color: '#ffffff', textDecoration: 'none' }}>Terms of Service</a>
+        <a href="/privacy" style={{ color: '#007BFF', textDecoration: 'none' }}>Privacy Policy</a>
+        <a href="/terms" style={{ color: '#007BFF', textDecoration: 'none' }}>Terms of Service</a>
         <a href="/login" style={{ color: '#007BFF', textDecoration: 'none' }}>Login</a>
         <a href="/signup" style={{ color: '#007BFF', textDecoration: 'none' }}>Sign Up</a>
       </div>
