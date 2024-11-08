@@ -26,7 +26,6 @@ public class Security {
             .requestMatchers("/v1/games/**").permitAll() // Allow access to all game-related endpoints
             .anyRequest().authenticated() // Require authentication for all other requests
         )
-        .cors((Customizer.withDefaults())) // Enable CORS support
         .formLogin(AbstractHttpConfigurer::disable) // Disable form login
         .httpBasic(AbstractHttpConfigurer::disable) // Disable basic authentication
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Use stateless
