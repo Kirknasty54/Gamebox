@@ -38,6 +38,8 @@ function LandingPage() {
   const [user, setUser] = useState(null);
   const carouselRef = useRef(null);
 
+
+
   useEffect(() => {
     const fetchGames = async () => {
       setLoading(true);
@@ -89,9 +91,10 @@ function LandingPage() {
     const value = e.target.value || ''; // Ensure value is a string
     setSearchTerm(value);
   };
+
   const handleFavoriteToggle = async (game) => {
-    const loggedIn = localStorage.getItem('userSession');
-    if (loggedIn === null) {
+    const loggedIn = user ? true : false;
+    if (loggedIn === false) {
       alert('PLEASE LOG IN OR SIGN UP TO ADD FAVORITES!');
       return;
     }
@@ -207,7 +210,7 @@ function LandingPage() {
                           className={`btn ${favorites.some(fav => fav.gameId === game.gameId) ? 'btn-danger' : 'btn-outline-danger'}`}
                           onClick={() => handleFavoriteToggle(game)}
                         >
-                          {localStorage.getItem('userSession') ? (favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite') : 'Login to Favorite'} </button>
+                          {user ? (favorites.some(fav => fav.gameId === game.gameId) ? 'Unfavorite' : 'Favorite') : 'Login to Favorite'} </button>
                       </div>
                     </div>
                   </div>
