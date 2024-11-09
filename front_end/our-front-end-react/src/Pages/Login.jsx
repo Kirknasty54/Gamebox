@@ -7,7 +7,6 @@ import {Turnstile} from "@marsidev/react-turnstile";
 
 const Login = () => {
   const [values, setValues] = useState({
-    name: '',
     email: '',
     password: '',
     rememberMe: false,
