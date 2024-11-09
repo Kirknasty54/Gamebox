@@ -1,6 +1,7 @@
 package com.GamBox.Project.controller;
 
 import com.GamBox.Project.dto.AuthenticationResponse;
+import com.GamBox.Project.dto.UserRegistrationRequest;
 import com.GamBox.Project.dto.UserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -59,7 +60,8 @@ public class UserController {
   }
 
   @PostMapping(value = "/register", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<?> register(@RequestBody Set<String> credentials) {
-    return null;
+  public ResponseEntity<?> register(@RequestBody UserRegistrationRequest credentials) {
+    var user = userService.register(credentials);
+    return new ResponseEntity<>(user, HttpStatus.CREATED);
   }
 }

@@ -2,10 +2,14 @@ package com.GamBox.Project.service;
 
 import com.GamBox.Project.domain.GameInfo;
 import com.GamBox.Project.domain.LikedGamesInfo;
+import com.GamBox.Project.domain.UserDetailsInfo;
 import com.GamBox.Project.domain.UserInfo;
+import com.GamBox.Project.dto.UserRegistrationRequest;
+import com.GamBox.Project.repository.UserDetailsInfoRepository;
 import com.GamBox.Project.repository.UserInfoRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import com.GamBox.Project.repository.LikedGameInfoRepository;
 import com.GamBox.Project.repository.GameInfoRepository;
@@ -18,27 +22,16 @@ public class UserService {
   private final UserInfoRepository userInfoRepository;
   private final GameInfoRepository gameInfoRepository;
   private final LikedGameInfoRepository likedGameInfoRepository;
+  private final PasswordEncoder passwordEncoder;
+  private final UserDetailsInfoRepository userDetailsInfoRepository;
 
   public UserService(UserInfoRepository userInfoRepository, GameInfoRepository gameInfoRepository,
-      LikedGameInfoRepository likedGameInfoRepository) {
+                     LikedGameInfoRepository likedGameInfoRepository, PasswordEncoder passwordEncoder, UserDetailsInfoRepository userDetailsInfoRepository) {
     this.userInfoRepository = userInfoRepository;
     this.gameInfoRepository = gameInfoRepository;
     this.likedGameInfoRepository = likedGameInfoRepository;
-  }
-
-  // public void likeGame(UserInfo user, Long gameId) {
-  // LikedGamesInfo likedGame = new LikedGamesInfo();
-  // likedGame.setUser(user);
-  // likedGame.setGame(gameInfoRepository.findBygameId(gameId).get());
-  // likedGameInfoRepository.save(likedGame);
-  // }
-
-  // public List<LikedGamesInfo> getLikedGames(Long userId) {
-  // return likedGameInfoRepository.findByUser_uId(userId);
-  // }
-
-  public UserInfo create(UserInfo user) {
-    return userInfoRepository.save(user);
+    this.passwordEncoder = passwordEncoder;
+    this.userDetailsInfoRepository = userDetailsInfoRepository;
   }
 
   public Optional<UserInfo> singleUser(Long uId) {
@@ -49,16 +42,17 @@ public class UserService {
     return userInfoRepository.findAll();
   }
 
-  public Optional<UserInfo> auth(String userEmail, String password) {
-    return userInfoRepository.findByEmailAndPassword(userEmail, password);
-  }
-
-  public UserInfo save(UserInfo userInfo) {
-    return userInfoRepository.save(userInfo);
-  }
-
-  public Optional<UserInfo> check(String username) {
-    return userInfoRepository.findByUserName(username);
+  public UserInfo register(UserRegistrationRequest userRegistrationRequest) {
+    UserInfo userInfo = new UserInfo();
+    userInfo.setUserName(userRegistrationRequest.username());
+    userInfo.setEmail(userRegistrationRequest.email());
+    userInfo.setPassword(passwordEncoder.encode(userRegistrationRequest.password()));
+    userInfoRepository.save(userInfo);
+    UserDetailsInfo userDetailsInfo = new UserDetailsInfo(userInfo, true, true, true, true);
+    userDetailsInfoRepository.save(userDetailsInfo);
+    userInfo.setUserDetailsInfo(userDetailsInfo);
+    userInfoRepository.updateUserDetailsInfoByUId(userDetailsInfo, userInfo.getUId());
+    return userInfo;
   }
 
   // public void likeGame(Long userId, Long gameId) {
