@@ -6,7 +6,6 @@ import Navbar from "../Components/NavBar"
 
 const SignUp = () => {
   const [values, setValues] = useState({
-    name: '',
     email: '',
     password: ''
   });
@@ -22,13 +21,13 @@ const SignUp = () => {
     const validationErrors = Validation(values);
     setErrors(validationErrors);
 
-    if (Object.keys(validationErrors).length === 0) {
+    //if (Object.keys(validationErrors).length === 0) {
       axios.post('https://gameboxusa.com/api/v1/users/register', values)
         .then(() => {
           navigate('/profile'); // Navigate to the login page on successful signup
         })
         .catch(err => console.log(err));
-    }
+    //}
   };
 
   return (
