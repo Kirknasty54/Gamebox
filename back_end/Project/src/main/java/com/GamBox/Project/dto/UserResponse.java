@@ -1,12 +1,12 @@
 package com.GamBox.Project.dto;
 
-import com.GamBox.Project.domain.UserInfo;
+import lombok.Getter;
 
 public class UserResponse {
+  @Getter
   private Long UId;
 
-  public UserResponse(UserInfo userInfo) {
-
+  public UserResponse(Long UId) {
+    this.UId = UId;
   }
-
 }

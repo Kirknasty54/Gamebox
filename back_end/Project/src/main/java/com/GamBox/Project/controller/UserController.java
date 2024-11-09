@@ -1,5 +1,7 @@
 package com.GamBox.Project.controller;
 
+import com.GamBox.Project.dto.AuthenticationResponse;
+import com.GamBox.Project.dto.UserResponse;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 
@@ -37,27 +39,6 @@ public class UserController {
       userResponses.add(new UserResponse(user.getUId()));
     }
     return new ResponseEntity<>(userResponses, HttpStatus.OK);
-  }
-
-  private static class UserResponse {
-    @Getter
-    private Long UId;
-
-    public UserResponse(Long UId) {
-      this.UId = UId;
-    }
-  }
-
-  static class AuthenticationResponse {
-    @Getter
-    private String userEmail;
-    @Getter
-    private boolean authenticated;
-
-    public AuthenticationResponse(String userEmail, boolean authenticated) {
-      this.userEmail = userEmail;
-      this.authenticated = authenticated;
-    }
   }
 
   @PostMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
