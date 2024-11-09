@@ -9,6 +9,7 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
+import java.util.Collection;
 import java.util.HashSet;
 // import java.sql.Timestamp;
 // import java.util.ArrayList;
@@ -16,13 +17,16 @@ import java.util.List;
 import java.util.Set;
 
 //
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.CrossOrigin;
 
 @Data
 @Entity
 @AllArgsConstructor
 @NoArgsConstructor
-public class UserInfo {
+public class UserInfo implements UserDetails {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long uId;
@@ -31,9 +35,41 @@ public class UserInfo {
   private String password;
   @Column(unique = true)
   private String email;
+  @OneToOne
+  @JoinColumn
+  private UserDetailsInfo userDetailsInfo;
 
   @JsonIgnore
   @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
   private Set<LikedGamesInfo> likedGamesInfos = new HashSet<>();
 
+  @Override
+  public Collection<? extends GrantedAuthority> getAuthorities() {
+    return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+  }
+
+  @Override
+  public String getUsername() {
+    return userName;
+  }
+
+  @Override
+  public boolean isAccountNonExpired() {
+    return userDetailsInfo.isAccountNonExpired();
+  }
+
+  @Override
+  public boolean isAccountNonLocked() {
+    return userDetailsInfo.isAccountNonLocked();
+  }
+
+  @Override
+  public boolean isCredentialsNonExpired() {
+    return userDetailsInfo.isCredentialsNonExpired();
+  }
+
+  @Override
+  public boolean isEnabled() {
+    return userDetailsInfo.isEnabled();
+  }
 }

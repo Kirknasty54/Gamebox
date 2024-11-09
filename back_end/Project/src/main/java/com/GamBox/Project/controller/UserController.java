@@ -9,7 +9,6 @@ import java.util.Optional;
 import java.util.Set;
 import java.util.Map;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
@@ -66,8 +65,6 @@ public class UserController {
     AuthenticationResponse response;
     String userEmail = credentials.get("email");
     String password = credentials.get("password");
-    System.out.println(userEmail);
-    System.out.println(password);
     Optional<UserInfo> authenticatedUser = userService.auth(userEmail, password);
     if (authenticatedUser.isPresent()) {
       UserInfo user = authenticatedUser.get();
