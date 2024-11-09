@@ -1,5 +1,6 @@
 package com.GamBox.Project.controller;
 
+import com.GamBox.Project.dto.AuthenticationRequest;
 import com.GamBox.Project.dto.AuthenticationResponse;
 import com.GamBox.Project.dto.UserRegistrationRequest;
 import com.GamBox.Project.dto.UserResponse;
@@ -49,8 +50,8 @@ public class UserController {
   }
 
   @PostMapping(value = "/auth", produces = MediaType.APPLICATION_JSON_VALUE)
-  public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
-    Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(credentials.get("username"), credentials.get("password"));
+  public ResponseEntity<?> authenticate(@RequestBody AuthenticationRequest credentials) {
+    Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(credentials.email(), credentials.password());
     Authentication authenticationResponse = this.authenticationManager.authenticate(authenticationRequest);
     if (authenticationResponse != null || authenticationResponse.isAuthenticated()) {
       return new ResponseEntity<>(HttpStatus.OK);

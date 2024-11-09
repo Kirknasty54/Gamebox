@@ -5,9 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fbe2f7d5-3e66-4974-82bb-f110cd17eec4" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/dto/AuthenticationRequest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/config/Security.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/config/Security.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/Project/src/main/java/com/GamBox/Project/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/../front_end/our-front-end-react/src/Pages/Login.jsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -40,8 +41,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
-        <option value="Record" />
         <option value="Interface" />
+        <option value="Record" />
       </list>
     </option>
   </component>
@@ -186,7 +187,7 @@
       <workItem from="1728742350376" duration="139000" />
       <workItem from="1731173060439" duration="1536000" />
       <workItem from="1731175554084" duration="7612000" />
-      <workItem from="1731184227718" duration="3163000" />
+      <workItem from="1731184227718" duration="3469000" />
     </task>
     <servers />
   </component>

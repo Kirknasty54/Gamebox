@@ -9,7 +9,6 @@ const Login = () => {
   const [values, setValues] = useState({
     email: '',
     password: '',
-    rememberMe: false,
   });
 
   const navigate = useNavigate();
@@ -32,11 +31,6 @@ const Login = () => {
       .then(response => {
         console.log(response.data);
         const userData = response.data;
-        if (values.rememberMe) {
-          localStorage.setItem('userSession', JSON.stringify(userData));
-        } else {
-          sessionStorage.setItem('userSession', JSON.stringify(userData));
-        }
         navigate('/UserHome');
       })
       .catch(err => {
@@ -112,15 +106,6 @@ const Login = () => {
                   required
                 />
                 <label htmlFor="floatingPassword" style={{ color: greyColor }}>Password</label>
-              </div>
-              <div className="mb-3">
-                <input
-                  type="checkbox"
-                  name="rememberMe"
-                  className="input"
-                  onChange={handleInput}
-                />
-                <label className="label" htmlFor="rememberMe" style={{ color: greyColor }}>Keep me signed in</label>
               </div>
               <Turnstile siteKey={"0x4AAAAAAAzkkivQY5bLx-Hk"}
                          onSuccess={handleCaptchaSuccess}/>
