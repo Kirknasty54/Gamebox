@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import NavBarUser from '../Components/NavBarUser';
 import NavBar from '../Components/NavBar';
+import {Turnstile} from "@marsidev/react-turnstile";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -11,8 +12,14 @@ const Login = () => {
     password: '',
     rememberMe: false,
   });
+
   const navigate = useNavigate();
   const [error, setError] = useState(null);
+  const [captchaComplete, setCaptchaComplete] = useState(false);
+
+  const handleCaptchaSuccess = (token) => {
+    setCaptchaComplete(true);
+  };
 
   const handleInput = (event) => {
     const { name, value, type, checked } = event.target;
@@ -116,7 +123,9 @@ const Login = () => {
                 />
                 <label className="label" htmlFor="rememberMe" style={{ color: greyColor }}>Keep me signed in</label>
               </div>
-              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit">Login</button>
+              <Turnstile siteKey={"0x4AAAAAAAzkkivQY5bLx-Hk"}
+                         onSuccess={handleCaptchaSuccess}/>
+              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" disabled={!captchaComplete}>Login</button>
               <small className="text-body-secondary" style={{ color: greyColor }}>
                 Don't have an account? <Link to="/signup" style={{ color: '#007bff' }}>Sign up</Link>
               </small>
