@@ -52,7 +52,7 @@ public class UserController {
   public ResponseEntity<?> authenticate(@RequestBody Map<String, String> credentials) {
     Authentication authenticationRequest = UsernamePasswordAuthenticationToken.unauthenticated(credentials.get("username"), credentials.get("password"));
     Authentication authenticationResponse = this.authenticationManager.authenticate(authenticationRequest);
-    if (authenticationResponse != null && authenticationResponse.isAuthenticated()) {
+    if (authenticationResponse != null || authenticationResponse.isAuthenticated()) {
       return new ResponseEntity<>(HttpStatus.OK);
     }else{
       return new ResponseEntity<>(HttpStatus.UNAUTHORIZED);
