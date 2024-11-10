@@ -4,6 +4,7 @@ import axios from 'axios';
 import NavBarUser from '../Components/NavBarUser';
 import NavBar from '../Components/NavBar';
 import {Turnstile} from "@marsidev/react-turnstile";
+import {apiCaller} from "../Utils/axiosSettings.js";
 
 const Login = () => {
   const [values, setValues] = useState({
@@ -27,7 +28,9 @@ const Login = () => {
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    axios.post('https://gameboxusa.com/api/v1/users/auth', values)
+    console.log(import.meta.env.VITE_STUFF)
+    //apiCaller.post
+    axios.post("https://gameboxusa.com/api/v1/users/auth", values)
       .then(response => {
         console.log(response.data);
         const userData = response.data;
@@ -46,7 +49,7 @@ const Login = () => {
   useEffect(() => {
     const storedUserSession = localStorage.getItem('userSession') || sessionStorage.getItem('userSession');
     if (storedUserSession) {
-      setUser(JSON.parse(storedUserSession));
+      setUser(JSON.parse(storedUserSession))
     }
   }, []);
 
@@ -107,9 +110,9 @@ const Login = () => {
                 />
                 <label htmlFor="floatingPassword" style={{ color: greyColor }}>Password</label>
               </div>
-              <Turnstile siteKey={"0x4AAAAAAAzkkivQY5bLx-Hk"}
-                         onSuccess={handleCaptchaSuccess}/>
-              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" disabled={!captchaComplete}>Login</button>
+              {/*<Turnstile siteKey={"0x4AAAAAAAzkkivQY5bLx-Hk"}
+                         onSuccess={handleCaptchaSuccess}/>*/}
+              <button className="w-100 mb-2 btn btn-lg rounded-3 btn-primary" type="submit" /*disabled={!captchaComplete}*/>Login</button>
               <small className="text-body-secondary" style={{ color: greyColor }}>
                 Don't have an account? <Link to="/signup" style={{ color: '#007bff' }}>Sign up</Link>
               </small>

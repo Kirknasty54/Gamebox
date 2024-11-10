@@ -16,6 +16,11 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configurers.AbstractHttpConfigurer;
 import org.springframework.security.config.http.SessionCreationPolicy;
+import org.springframework.web.cors.CorsConfiguration;
+import org.springframework.web.cors.CorsConfigurationSource;
+import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
+
+import java.util.List;
 
 @Configuration
 @EnableWebSecurity
@@ -42,7 +47,7 @@ public class Security {
         .formLogin(AbstractHttpConfigurer::disable) // Disable form login
         .httpBasic(AbstractHttpConfigurer::disable) // Disable basic authentication
         .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS) // Use stateless
-        )
+        ).cors(cors -> cors.configurationSource(corsConfigurationSource()))
         .build();
   }
 
@@ -58,5 +63,14 @@ public class Security {
         //
         return new ProviderManager(authenticationProvider);
     }
-
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration configuration = new CorsConfiguration();
+        configuration.setAllowedOrigins(List.of("http://localhost:5174", "http://localhost:5173", "https://gameboxusa.com"));
+        configuration.setAllowedMethods(List.of(CorsConfiguration.ALL));
+        configuration.setAllowedHeaders(List.of(CorsConfiguration.ALL));
+        configuration.setExposedHeaders(List.of("Content-Type", "DNT", "Referer", "User-Agent"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", configuration);
+        return source;
+    }
 }
