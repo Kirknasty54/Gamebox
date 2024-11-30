@@ -30,7 +30,7 @@ Gamebox
 <br /><br />
 ## What does your app do?
 *Describe in a paragraph or so*
-It's like MovieBox but for Games. Really good! Super Good!
+It's like LetterBox but for Games. Really good! Super Good!
 
 <br /><br />
 
